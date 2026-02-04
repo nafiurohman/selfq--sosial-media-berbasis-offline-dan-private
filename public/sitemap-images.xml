@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://selfx.bezn.id/</loc>
+    <image:image>
+      <image:loc>https://selfx.bezn.id/logo/logo.png</image:loc>
+      <image:title>selfX - Platform Journaling Pribadi Offline</image:title>
+      <image:caption>Logo selfX, platform journaling pribadi dengan enkripsi AES-256</image:caption>
+      <image:geo_location>Indonesia</image:geo_location>
+      <image:license>https://selfx.bezn.id/license</image:license>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://selfx.bezn.id/icon-192.png</image:loc>
+      <image:title>selfX App Icon 192x192</image:title>
+      <image:caption>Ikon aplikasi selfX untuk PWA dan mobile</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://selfx.bezn.id/icon-512.png</image:loc>
+      <image:title>selfX App Icon 512x512</image:title>
+      <image:caption>Ikon aplikasi selfX resolusi tinggi</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://selfx.bezn.id/og-image.png</image:loc>
+      <image:title>selfX Open Graph Image</image:title>
+      <image:caption>Gambar preview untuk media sosial selfX</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://selfx.bezn.id/twitter-image.png</image:loc>
+      <image:title>selfX Twitter Card Image</image:title>
+      <image:caption>Gambar preview untuk Twitter selfX</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://selfx.bezn.id/screenshot.png</image:loc>
+      <image:title>selfX Application Screenshot</image:title>
+      <image:caption>Screenshot antarmuka aplikasi selfX</image:caption>
+    </image:image>
+  </url>
+
+</urlset>
