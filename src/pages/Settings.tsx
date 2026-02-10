@@ -130,7 +130,12 @@ export default function Settings() {
       setShowImportDialog(true);
     } catch (error) {
       console.error('Import validation failed:', error);
-      toast.error('File tidak valid. Pastikan ini adalah backup selfQ yang benar.');
+      const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+      if (errorMsg.includes('Invalid selfQ backup')) {
+        toast.error('File bukan backup selfQ yang valid. Pastikan file berasal dari export selfQ.');
+      } else {
+        toast.error('File tidak valid atau rusak. Pastikan ini adalah backup selfQ yang benar.');
+      }
     } finally {
       setIsImporting(false);
       e.target.value = '';

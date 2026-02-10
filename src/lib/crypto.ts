@@ -1,9 +1,27 @@
 // AES-256-GCM encryption with salt for multi-layer security
 
 const ENCRYPTION_KEY = 'selfQ-secure-key-2024';
+const LEGACY_ENCRYPTION_KEYS = [
+  'selfQ-secure-key-2024',
+  'selfX-secure-key-2024',
+  'selfQ-secure-key-2023',
+  'selfX-secure-key-2023',
+];
 const SALT_ROUNDS = 3; // Multiple layers of encryption
 const SELFX_SIGNATURE = 'SELFX_BACKUP_V2'; // Signature untuk validasi
 const SELFX_SHARE_SIGNATURE = 'SELFX_SHARE_V1'; // Signature untuk shared post
+
+// Legacy signatures untuk backward compatibility
+const LEGACY_SIGNATURES = [
+  'SELFX_BACKUP_V2',
+  'SELFX_BACKUP_V1', 
+  'SELFQ_BACKUP_V2',
+  'SELFQ_BACKUP_V1',
+  'selfQ-backup-v2.0',
+  'selfQ-backup-v1.0',
+  'selfX-backup-v2.0',
+  'selfX-backup-v1.0',
+];
 
 async function deriveKey(password: string, salt: Uint8Array): Promise<CryptoKey> {
   const encoder = new TextEncoder();
@@ -96,6 +114,16 @@ export async function decrypt(encryptedData: string): Promise<string> {
   return result;
 }
 
+// Multi-layer decryption with legacy key support
+async function decryptWithKey(encryptedData: string, encryptionKey: string): Promise<string> {
+  let result = encryptedData;
+  for (let i = SALT_ROUNDS - 1; i >= 0; i--) {
+    const layerKey = `${encryptionKey}-layer-${i}`;
+    result = await decryptOnce(result, layerKey);
+  }
+  return result;
+}
+
 // Encrypt any object - with size limit check and signature
 export async function encryptData<T>(data: T): Promise<string> {
   // Add selfQ signature to data
@@ -147,13 +175,23 @@ export async function decryptSharedData<T>(encryptedData: string): Promise<T> {
 
 // Decrypt to object with signature validation
 export async function decryptData<T>(encryptedData: string): Promise<T> {
-  const jsonString = await decrypt(encryptedData);
-  const parsed = JSON.parse(jsonString);
+  let lastError: Error | null = null;
   
-  // Validate selfQ signature
-  if (!parsed.signature || parsed.signature !== SELFX_SIGNATURE) {
-    throw new Error('Invalid selfQ backup file');
+  // Try each encryption key
+  for (const key of LEGACY_ENCRYPTION_KEYS) {
+    try {
+      const jsonString = await decryptWithKey(encryptedData, key);
+      const parsed = JSON.parse(jsonString);
+      
+      // Validate selfQ signature (support legacy signatures)
+      if (parsed.signature && LEGACY_SIGNATURES.includes(parsed.signature)) {
+        return parsed.data as T;
+      }
+    } catch (error) {
+      lastError = error as Error;
+      continue;
+    }
   }
   
-  return parsed.data as T;
+  throw new Error('Invalid selfQ backup file - ' + (lastError?.message || 'unknown error'));
 }
