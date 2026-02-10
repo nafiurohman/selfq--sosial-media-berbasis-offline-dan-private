@@ -1,9 +1,47 @@
 import type { User } from './types';
 
-const USER_KEY = 'selfx-user';
-const THEME_KEY = 'selfx-theme';
-const ONBOARDED_KEY = 'selfx-onboarded';
-const TERMS_KEY = 'selfx-terms-accepted';
+const USER_KEY = 'selfq-user';
+const THEME_KEY = 'selfq-theme';
+const ONBOARDED_KEY = 'selfq-onboarded';
+const TERMS_KEY = 'selfq-terms-accepted';
+
+// Legacy keys for migration
+const LEGACY_USER_KEY = 'selfx-user';
+const LEGACY_THEME_KEY = 'selfx-theme';
+const LEGACY_ONBOARDED_KEY = 'selfx-onboarded';
+const LEGACY_TERMS_KEY = 'selfx-terms-accepted';
+
+// Auto-migrate from legacy keys
+function migrateLegacyData(): void {
+  if (typeof window === 'undefined') return;
+  
+  // Migrate user
+  const legacyUser = localStorage.getItem(LEGACY_USER_KEY);
+  if (legacyUser && !localStorage.getItem(USER_KEY)) {
+    localStorage.setItem(USER_KEY, legacyUser);
+  }
+  
+  // Migrate theme
+  const legacyTheme = localStorage.getItem(LEGACY_THEME_KEY);
+  if (legacyTheme && !localStorage.getItem(THEME_KEY)) {
+    localStorage.setItem(THEME_KEY, legacyTheme);
+  }
+  
+  // Migrate onboarded
+  const legacyOnboarded = localStorage.getItem(LEGACY_ONBOARDED_KEY);
+  if (legacyOnboarded && !localStorage.getItem(ONBOARDED_KEY)) {
+    localStorage.setItem(ONBOARDED_KEY, legacyOnboarded);
+  }
+  
+  // Migrate terms
+  const legacyTerms = localStorage.getItem(LEGACY_TERMS_KEY);
+  if (legacyTerms && !localStorage.getItem(TERMS_KEY)) {
+    localStorage.setItem(TERMS_KEY, legacyTerms);
+  }
+}
+
+// Run migration on module load
+migrateLegacyData();
 
 export function getUser(): User | null {
   const data = localStorage.getItem(USER_KEY);

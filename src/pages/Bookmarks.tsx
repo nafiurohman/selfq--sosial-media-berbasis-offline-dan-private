@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bookmark, Trash2, ChevronDown, Settings, User, Archive } from 'lucide-react';
+import { Bookmark, Trash2, ChevronDown, Settings, User, Archive, Lightbulb, Bug } from 'lucide-react';
 import { getBookmarkedPosts, getBookmarkCategories, deleteBookmarkCategory, setBookmark, addPost, toggleLike, deletePost } from '@/lib/db';
 import type { Post, BookmarkCategory, MediaItem } from '@/lib/types';
 import { PostCard } from '@/components/PostCard';
@@ -107,9 +107,9 @@ export default function Bookmarks() {
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title="Simpanan - selfX"
-        description="Postingan yang disimpan di selfX - platform sosial media pribadi offline"
-        keywords="simpanan selfx, bookmark, postingan tersimpan"
+        title="Simpanan - selfQ"
+        description="Postingan yang disimpan di selfQ - platform sosial media pribadi offline"
+        keywords="simpanan selfq, bookmark, postingan tersimpan"
       />
       
       {/* Navigation */}
@@ -121,7 +121,7 @@ export default function Bookmarks() {
         <header className="clean-nav sticky top-0 z-30 md:hidden">
           <div className="container flex items-center justify-between h-16 px-4">
             <div className="flex items-center gap-3">
-              <img src="/images/logo/logo.png" alt="selfX Logo" className="w-8 h-8 rounded-xl" />
+              <img src="/images/logo/logo.png" alt="selfQ Logo" className="w-8 h-8 rounded-xl" />
               <h1 className="text-lg font-bold">Simpanan</h1>
             </div>
 
@@ -159,6 +159,14 @@ export default function Bookmarks() {
                   <DropdownMenuItem onClick={() => navigate('/settings')}>
                     <Settings className="w-4 h-4 mr-2" />
                     Pengaturan
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/request-feature')}>
+                    <Lightbulb className="w-4 h-4 mr-2" />
+                    Request Fitur
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/report-bug')}>
+                    <Bug className="w-4 h-4 mr-2" />
+                    Report Bug
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

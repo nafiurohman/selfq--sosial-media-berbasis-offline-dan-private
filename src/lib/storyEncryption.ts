@@ -1,5 +1,5 @@
 // Story Encryption with AES-256-GCM and Multi-layer Salt
-const SELFX_STORY_SIGNATURE = 'selfX-story-encrypted-v2.0';
+const SELFX_STORY_SIGNATURE = 'selfQ-story-encrypted-v2.0';
 const ENCRYPTION_LAYERS = 3;
 
 // Generate random salt
@@ -72,7 +72,7 @@ async function decryptLayer(encryptedHex: string, saltHex: string, ivHex: string
 
 // Generate unique password for each layer
 function generateLayerPassword(baseData: string, layer: number): string {
-  return `selfX-${layer}-${btoa(baseData.slice(0, 20))}-${Date.now().toString(36)}`;
+  return `selfQ-${layer}-${btoa(baseData.slice(0, 20))}-${Date.now().toString(36)}`;
 }
 
 // Encrypt story with multiple layers
@@ -126,7 +126,7 @@ export async function decryptStoryData(encryptedJson: string): Promise<any> {
 
     // Validate signature
     if (encryptedPackage.signature !== SELFX_STORY_SIGNATURE) {
-      throw new Error('File bukan dari selfX atau signature tidak valid');
+      throw new Error('File bukan dari selfQ atau signature tidak valid');
     }
 
     // Validate version

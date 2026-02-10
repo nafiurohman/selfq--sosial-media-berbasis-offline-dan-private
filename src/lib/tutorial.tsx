@@ -13,8 +13,8 @@ export interface TutorialStep {
 export const tutorialSteps: TutorialStep[] = [
   {
     id: 'welcome',
-    title: 'Selamat Datang di selfX! 🎉',
-    description: 'Mari kita mulai tur singkat untuk mengenal fitur-fitur utama selfX. Klik "Selanjutnya" untuk melanjutkan.',
+    title: 'Selamat Datang di selfQ! 🎉',
+    description: 'Mari kita mulai tur singkat untuk mengenal fitur-fitur utama selfQ. Klik "Selanjutnya" untuk melanjutkan.',
     target: 'body',
     position: 'center',
     action: 'none',
@@ -140,7 +140,7 @@ export const tutorialSteps: TutorialStep[] = [
   {
     id: 'complete',
     title: 'Tutorial Selesai! 🎊',
-    description: 'Anda sudah mengenal fitur-fitur utama selfX. Selamat menulis dan dokumentasikan momen Anda!',
+    description: 'Anda sudah mengenal fitur-fitur utama selfQ. Selamat menulis dan dokumentasikan momen Anda!',
     target: 'body',
     position: 'center',
     action: 'none',

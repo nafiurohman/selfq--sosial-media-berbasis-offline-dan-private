@@ -51,7 +51,7 @@ const blogPosts = [
       </ul>
       
       <h3>Solusi: Privacy-First Tools</h3>
-      <p>Tools seperti selfX menawarkan alternatif dengan prinsip privacy by design. Dengan enkripsi end-to-end dan penyimpanan lokal, pengguna memiliki kontrol penuh atas data mereka.</p>
+      <p>Tools seperti selfQ menawarkan alternatif dengan prinsip privacy by design. Dengan enkripsi end-to-end dan penyimpanan lokal, pengguna memiliki kontrol penuh atas data mereka.</p>
       
       <blockquote>
         "Privasi bukan tentang menyembunyikan sesuatu yang buruk, tetapi tentang melindungi sesuatu yang berharga - otonomi dan kebebasan kita."
@@ -118,11 +118,11 @@ const blogPosts = [
   },
   {
     id: 'enkripsi-aes-256-explained',
-    title: 'Enkripsi AES-256: Mengapa Data Anda Aman di selfX',
+    title: 'Enkripsi AES-256: Mengapa Data Anda Aman di selfQ',
     excerpt: 'Pelajari bagaimana enkripsi AES-256-GCM melindungi data Anda. Penjelasan teknis yang mudah dipahami tentang keamanan data.',
     content: `
       <h2>Apa itu Enkripsi AES-256?</h2>
-      <p>Advanced Encryption Standard (AES) dengan kunci 256-bit adalah standar enkripsi yang digunakan oleh pemerintah AS untuk melindungi informasi rahasia. Ini adalah enkripsi yang sama yang digunakan selfX untuk melindungi data Anda.</p>
+      <p>Advanced Encryption Standard (AES) dengan kunci 256-bit adalah standar enkripsi yang digunakan oleh pemerintah AS untuk melindungi informasi rahasia. Ini adalah enkripsi yang sama yang digunakan selfQ untuk melindungi data Anda.</p>
       
       <h3>Seberapa Kuat AES-256?</h3>
       <p>Untuk memecahkan enkripsi AES-256 dengan brute force, dibutuhkan:</p>
@@ -132,8 +132,8 @@ const blogPosts = [
         <li>Bahkan dengan quantum computer, masih sangat sulit dipecahkan</li>
       </ul>
       
-      <h3>Implementasi di selfX</h3>
-      <p>selfX menggunakan AES-256-GCM dengan fitur tambahan:</p>
+      <h3>Implementasi di selfQ</h3>
+      <p>selfQ menggunakan AES-256-GCM dengan fitur tambahan:</p>
       <ul>
         <li><strong>Salt Berlapis:</strong> Setiap data memiliki salt unik</li>
         <li><strong>Key Derivation:</strong> Password di-hash dengan PBKDF2</li>
@@ -163,7 +163,7 @@ const blogPosts = [
           <th>Key Control</th>
         </tr>
         <tr>
-          <td>selfX</td>
+          <td>selfQ</td>
           <td>AES-256-GCM</td>
           <td>Tidak ada</td>
           <td>User</td>
@@ -202,7 +202,7 @@ export default function Blog() {
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-primary/5 via-background to-primary/5">
       {/* SEO Meta Tags */}
       <div style={{ display: 'none' }}>
-        <h1>Blog selfX - Tips Privasi Digital, Journaling, dan Keamanan Data</h1>
+        <h1>Blog selfQ - Tips Privasi Digital, Journaling, dan Keamanan Data</h1>
         <p>Baca artikel terbaru tentang privasi digital, tips journaling offline, keamanan data, dan teknologi privacy-first dari tim Bezn Project.</p>
       </div>
 
@@ -243,7 +243,7 @@ export default function Blog() {
               <BookOpen className="w-8 h-8 text-primary-foreground" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-4">
-              Blog selfX
+              Blog selfQ
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Tips privasi digital, panduan journaling offline, dan insight tentang 
@@ -363,13 +363,13 @@ export default function Blog() {
               Dapatkan Update Terbaru
             </h2>
             <p className="text-muted-foreground mb-6">
-              Ikuti perkembangan selfX dan dapatkan tips privasi digital 
+              Ikuti perkembangan selfQ dan dapatkan tips privasi digital 
               langsung dari tim Bezn Project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 variant="outline"
-                onClick={() => window.open('https://github.com/beznproject/selfx', '_blank')}
+                onClick={() => window.open('https://github.com/beznproject/selfq', '_blank')}
                 className="gap-2"
               >
                 <Share2 className="w-4 h-4" />

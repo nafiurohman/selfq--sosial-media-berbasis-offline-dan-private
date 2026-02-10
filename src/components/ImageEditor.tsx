@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Check, RotateCw, Crop, Palette, Sparkles, Sun, Contrast, Droplets } from 'lucide-react';
+import { X, Check, RotateCw, RotateCcw, Crop, Palette, Sparkles, Sun, Contrast, Droplets } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
@@ -32,6 +32,7 @@ export function ImageEditor({ isOpen, onClose, imageData, onSave }: ImageEditorP
   const [brightness, setBrightness] = useState(100);
   const [contrast, setContrast] = useState(100);
   const [saturation, setSaturation] = useState(100);
+  const [rotation, setRotation] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -105,8 +106,19 @@ export function ImageEditor({ isOpen, onClose, imageData, onSave }: ImageEditorP
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d')!;
         
-        canvas.width = img.width;
-        canvas.height = img.height;
+        // Set canvas size based on rotation
+        if (rotation === 90 || rotation === 270) {
+          canvas.width = img.height;
+          canvas.height = img.width;
+        } else {
+          canvas.width = img.width;
+          canvas.height = img.height;
+        }
+        
+        // Apply rotation
+        ctx.save();
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.rotate((rotation * Math.PI) / 180);
         
         // Apply brightness, contrast, saturation
         ctx.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%)`;
@@ -117,7 +129,9 @@ export function ImageEditor({ isOpen, onClose, imageData, onSave }: ImageEditorP
           ctx.filter += ` ${filter.filter}`;
         }
         
-        ctx.drawImage(img, 0, 0);
+        ctx.drawImage(img, -img.width / 2, -img.height / 2);
+        ctx.restore();
+        
         resolve(canvas.toDataURL('image/jpeg', 0.9));
       };
       img.src = base64;
@@ -133,8 +147,8 @@ export function ImageEditor({ isOpen, onClose, imageData, onSave }: ImageEditorP
         processedImage = await cropImage(cropRatio);
       }
       
-      // Then apply filters
-      if (selectedFilter !== 'none' || brightness !== 100 || contrast !== 100 || saturation !== 100) {
+      // Then apply filters and rotation
+      if (selectedFilter !== 'none' || brightness !== 100 || contrast !== 100 || saturation !== 100 || rotation !== 0) {
         processedImage = await applyFiltersToImage(processedImage);
       }
       
@@ -151,6 +165,15 @@ export function ImageEditor({ isOpen, onClose, imageData, onSave }: ImageEditorP
     setBrightness(100);
     setContrast(100);
     setSaturation(100);
+    setRotation(0);
+  };
+
+  const handleRotateRight = () => {
+    setRotation((prev) => (prev + 90) % 360);
+  };
+
+  const handleRotateLeft = () => {
+    setRotation((prev) => (prev - 90 + 360) % 360);
   };
 
   return (
@@ -203,8 +226,8 @@ export function ImageEditor({ isOpen, onClose, imageData, onSave }: ImageEditorP
                       ref={imgRef}
                       src={imageData}
                       alt="Preview"
-                      className="max-w-full max-h-[40vh] md:max-h-[60vh] object-contain rounded-lg"
-                      style={{ filter: applyFilter() }}
+                      className="max-w-full max-h-[40vh] md:max-h-[60vh] object-contain rounded-lg transition-transform duration-300"
+                      style={{ filter: applyFilter(), transform: `rotate(${rotation}deg)` }}
                     />
                   </div>
                 </div>
@@ -315,6 +338,37 @@ export function ImageEditor({ isOpen, onClose, imageData, onSave }: ImageEditorP
 
                     {activeTab === 'adjust' && (
                       <div className="space-y-6">
+                        {/* Rotate */}
+                        <div>
+                          <div className="flex items-center justify-between mb-2">
+                            <div className="flex items-center gap-2">
+                              <RotateCw className="w-4 h-4 text-muted-foreground" />
+                              <label className="text-sm font-medium">Rotate</label>
+                            </div>
+                            <span className="text-sm text-muted-foreground">{rotation}°</span>
+                          </div>
+                          <div className="grid grid-cols-2 gap-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={handleRotateLeft}
+                              className="w-full"
+                            >
+                              <RotateCcw className="w-4 h-4 mr-2" />
+                              Kiri
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={handleRotateRight}
+                              className="w-full"
+                            >
+                              <RotateCw className="w-4 h-4 mr-2" />
+                              Kanan
+                            </Button>
+                          </div>
+                        </div>
+
                         {/* Brightness */}
                         <div>
                           <div className="flex items-center justify-between mb-2">

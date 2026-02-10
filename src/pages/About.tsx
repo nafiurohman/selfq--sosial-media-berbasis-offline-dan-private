@@ -58,9 +58,9 @@ export default function About() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <SEO 
-        title="Tentang selfX"
-        description="selfX - Platform sosial media pribadi offline yang mengutamakan privasi dengan enkripsi AES-256"
-        keywords="selfx, sosial media pribadi, offline, privasi, enkripsi, PWA"
+        title="Tentang selfQ"
+        description="selfQ - Platform sosial media pribadi offline yang mengutamakan privasi dengan enkripsi AES-256"
+        keywords="selfq, sosial media pribadi, offline, privasi, enkripsi, PWA"
       />
       
       {/* Hero Section */}
@@ -84,7 +84,7 @@ export default function About() {
             >
               <img 
                 src="/images/logo/logo.png" 
-                alt="selfX Logo" 
+                alt="selfQ Logo" 
                 className="w-32 h-32 mx-auto rounded-3xl shadow-2xl mb-6"
               />
             </motion.div>
@@ -94,7 +94,7 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
             >
-              selfX
+              selfQ
             </motion.h1>
             
             <motion.p
@@ -134,7 +134,7 @@ export default function About() {
       <section className="py-20 bg-white/50 dark:bg-gray-800/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Mengapa selfX?</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Mengapa selfQ?</h2>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
               Solusi terdepan untuk journaling pribadi dengan keamanan tingkat militer
             </p>
@@ -251,7 +251,7 @@ export default function About() {
                 Kode terbuka dan transparan. Anda bisa melihat source code di GitHub.
               </p>
               <a
-                href="https://github.com/nafiurohman/selfX--sosial-media-berbasis-offline-dan-private.git"
+                href="https://github.com/nafiurohman/selfQ--sosial-media-berbasis-offline-dan-private.git"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors text-sm font-medium"
@@ -270,7 +270,7 @@ export default function About() {
         <div className="container mx-auto px-4">
           <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-2xl border border-white/20 rounded-3xl p-12">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">selfX dalam Angka</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">selfQ dalam Angka</h2>
               <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 px-4">
                 Statistik pengembangan dan fitur
               </p>
@@ -407,7 +407,7 @@ export default function About() {
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 px-4">Bezn Project</h2>
               <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed px-4">
-                selfX adalah bagian dari <strong>Bezn Project</strong> - inisiatif pengembangan 
+                selfQ adalah bagian dari <strong>Bezn Project</strong> - inisiatif pengembangan 
                 aplikasi yang berfokus pada privasi, keamanan, dan pengalaman pengguna yang luar biasa. 
                 Kami berkomitmen untuk menciptakan teknologi yang memberdayakan pengguna.
               </p>
@@ -482,7 +482,7 @@ export default function About() {
               Belikan Developer Kopi
             </h2>
             <p className="text-lg md:text-xl mb-8 opacity-90 max-w-2xl mx-auto px-4">
-              Jika selfX bermanfaat untuk Anda, dukung pengembangan dengan memberikan donasi. 
+              Jika selfQ bermanfaat untuk Anda, dukung pengembangan dengan memberikan donasi. 
               Setiap kontribusi sangat berarti untuk keberlanjutan proyek ini.
             </p>
             
@@ -518,11 +518,11 @@ export default function About() {
       <footer className="py-16 bg-white/50 dark:bg-gray-800/50">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {/* selfX */}
+            {/* selfQ */}
             <div>
               <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                 <Shield className="w-5 h-5 text-blue-600" />
-                selfX
+                selfQ
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                 <li>
@@ -532,7 +532,7 @@ export default function About() {
                 </li>
                 <li>
                   <button onClick={() => navigate('/about')} className="hover:text-blue-600 transition-colors">
-                    Tentang selfX
+                    Tentang selfQ
                   </button>
                 </li>
                 <li>

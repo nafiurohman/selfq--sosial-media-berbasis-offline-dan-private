@@ -37,8 +37,8 @@ export function ReceiveShareModal({ isOpen, onClose, onSuccess }: ReceiveShareMo
     } catch (error) {
       console.error('Import failed:', error);
       if (error instanceof Error) {
-        if (error.message.includes('Invalid selfX shared post')) {
-          toast.error('File bukan kiriman selfX yang valid');
+        if (error.message.includes('Invalid selfQ shared post')) {
+          toast.error('File bukan kiriman selfQ yang valid');
         } else if (error.message.includes('Invalid shared post format')) {
           toast.error('Format file tidak valid');
         } else if (error.message.includes('atob')) {
@@ -97,7 +97,7 @@ export function ReceiveShareModal({ isOpen, onClose, onSuccess }: ReceiveShareMo
                   
                   <h3 className="text-lg font-semibold mb-2">Terima Kiriman Post</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Impor post yang dibagikan oleh pengguna selfX lain. File harus berformat JSON terenkripsi dari selfX.
+                    Impor post yang dibagikan oleh pengguna selfQ lain. File harus berformat JSON terenkripsi dari selfQ.
                   </p>
                 </div>
 
@@ -142,7 +142,7 @@ export function ReceiveShareModal({ isOpen, onClose, onSuccess }: ReceiveShareMo
                     <div>
                       <p className="text-xs font-medium text-foreground">Keamanan Terjamin</p>
                       <p className="text-xs text-muted-foreground mt-0.5">
-                        Hanya file dari selfX yang valid yang dapat diimpor
+                        Hanya file dari selfQ yang valid yang dapat diimpor
                       </p>
                     </div>
                   </div>

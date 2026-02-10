@@ -41,7 +41,7 @@ export function Navbar({ showHelp = true, showBack = false, isLoggedIn = false }
             >
               <Sparkles className="w-4 h-4 text-primary-foreground" />
             </motion.div>
-            <span className="font-bold text-lg">selfX</span>
+            <span className="font-bold text-lg">selfQ</span>
           </Link>
         )}
 

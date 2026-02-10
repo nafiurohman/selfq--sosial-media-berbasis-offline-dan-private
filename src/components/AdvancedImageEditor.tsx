@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { X, RotateCw, Crop, Sparkles, Check, Undo } from 'lucide-react';
+import { X, RotateCw, RotateCcw, Crop, Sparkles, Check, Undo } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -37,6 +37,10 @@ export function AdvancedImageEditor({ isOpen, onClose, imageUrl, onSave }: Advan
 
   const handleRotate = () => {
     setRotation((prev) => (prev + 90) % 360);
+  };
+
+  const handleRotateLeft = () => {
+    setRotation((prev) => (prev - 90 + 360) % 360);
   };
 
   const handleReset = () => {
@@ -199,14 +203,27 @@ export function AdvancedImageEditor({ isOpen, onClose, imageUrl, onSave }: Advan
 
               {/* Rotate */}
               <div>
-                <Button
-                  variant="outline"
-                  onClick={handleRotate}
-                  className="w-full"
-                >
-                  <RotateCw className="w-4 h-4 mr-2" />
-                  Putar 90° ({rotation}°)
-                </Button>
+                <label className="text-sm font-medium mb-2 block">
+                  Rotasi: {rotation}°
+                </label>
+                <div className="grid grid-cols-2 gap-2">
+                  <Button
+                    variant="outline"
+                    onClick={handleRotateLeft}
+                    className="w-full"
+                  >
+                    <RotateCcw className="w-4 h-4 mr-2" />
+                    Kiri 90°
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={handleRotate}
+                    className="w-full"
+                  >
+                    <RotateCw className="w-4 h-4 mr-2" />
+                    Kanan 90°
+                  </Button>
+                </div>
               </div>
             </div>
 

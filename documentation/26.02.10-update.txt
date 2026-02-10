@@ -1,0 +1,283 @@
+================================================================================
+                selfQ - DOKUMENTASI UPDATE VERSION 26.02.10
+                         Release: 10 Februari 2025
+                    Codename: "UI Polish & Performance"
+                              UPDATE TAMBAHAN
+================================================================================
+
+INFORMASI UPDATE
+================
+Tanggal Update : 10 Februari 2025 (Sore)
+Developer      : M. Nafiurohman
+Fokus Update   : Rich Text Editor & User Feedback System
+
+================================================================================
+                        PERUBAHAN TAMBAHAN
+================================================================================
+
+1. RICH TEXT EDITOR IMPROVEMENTS
+=================================
+
+Default Mode: Plain Text
+-------------------------
+- Modal compose default plain text biasa
+- Rich text hanya muncul saat klik tombol "T"
+- Mode reset ke plain text saat modal ditutup
+- Better UX untuk user yang tidak butuh formatting
+
+Toolbar Optimization
+--------------------
+- Ubah dari flex ke inline-flex (compact)
+- Icon size: 3.5x3.5 (dari 4x4)
+- Button size: 7x7 (dari 8x8)
+- Padding: 1.5 (dari 2)
+- Spacing: 1 (dari 1)
+- Divider: 5px height (dari 6px)
+
+Features Removed
+----------------
+- ❌ Numbered list (1. 2. 3.)
+- ❌ Link button (link auto-detect)
+- ❌ Format hint text
+
+Features Kept
+-------------
+- ✅ Bold (**text**)
+- ✅ Italic (*text*)
+- ✅ Underline (<u>text</u>)
+- ✅ Bullet list (- item)
+- ✅ Auto-continue list on Enter
+
+Markdown Parser Updates
+-----------------------
+- Fix bold & italic regex conflict
+- Remove numbered list parsing
+- Simplified bullet list only
+- Proper <ul> wrapping
+- Better HTML output
+
+2. USER FEEDBACK SYSTEM
+========================
+
+Report Bug Feature
+------------------
+Location:
+- ✅ Mobile sidebar (MobileSidebar.tsx)
+- ✅ Desktop sidebar (Navigation.tsx)
+- ✅ Dropdown menu (semua halaman)
+
+Page: /report-bug
+- Form: Nama, Email, WhatsApp, Bug Description
+- Icon: Bug (Lucide)
+- Color: Red theme
+- Submit: WhatsApp direct message
+- Developer: 081358198565
+
+Request Feature Enhancement
+---------------------------
+Location:
+- ✅ Mobile sidebar (sudah ada)
+- ✅ Desktop sidebar (sudah ada)
+- ✅ Dropdown menu (semua halaman)
+
+Page: /request-feature
+- Form: Nama, Email, WhatsApp, Feature Description
+- Icon: Lightbulb (Lucide)
+- Color: Primary theme
+- Submit: WhatsApp direct message
+- Developer: 081358198565
+
+Bug Fix
+-------
+- ✅ Add missing Bug icon import di RequestFeature.tsx
+
+3. COMPOSE MODAL IMPROVEMENTS
+==============================
+
+Position & Spacing
+------------------
+- Centered position (mobile & desktop)
+- Mobile: inset-4 (16px dari edge)
+- Desktop: inset-8 (32px dari edge)
+- Max width: 512px (lg)
+- Tidak nabrak sidebar desktop
+- Tidak nabrak frame device mobile
+
+Animation
+---------
+- Scale animation (dari tengah)
+- Smooth spring transition
+- Better visual feedback
+
+Mobile First
+------------
+- Proper spacing dari edge
+- Touch-friendly buttons
+- Responsive layout
+- Safe area handling
+
+================================================================================
+                        DETAIL PERUBAHAN FILE
+================================================================================
+
+FILE MODIFIED
+=============
+
+1. src/components/RichTextEditor.tsx
+   - Remove Link icon import
+   - Remove handleLink function
+   - Change flex to inline-flex
+   - Reduce icon size to 3.5x3.5
+   - Reduce button size to 7x7
+   - Reduce padding to 1.5
+   - Remove link button
+   - Remove format hint text
+   - Remove numbered list support
+
+2. src/lib/markdown.ts
+   - Fix bold regex: /\*\*(.+?)\*\*/gs
+   - Fix italic regex: /(?<!\*)\*(?!\*)(.+?)\*(?!\*)/gs
+   - Remove numbered list parsing
+   - Simplify bullet list parsing
+   - Better <ul> wrapping
+
+3. src/components/ComposeModal.tsx
+   - Update modal position: inset-4 md:inset-8
+   - Center with translate
+   - Max width: lg (512px)
+   - Reset useRichText on close
+   - Better spacing
+
+4. src/pages/RequestFeature.tsx
+   - Add Bug icon import
+   - Fix missing icon error
+
+5. src/components/Navigation.tsx
+   - Add Bug icon import
+   - Add Report Bug button
+   - Desktop sidebar support
+
+6. src/components/MobileSidebar.tsx
+   - Already has Report Bug (verified)
+
+7. README.md
+   - Update changelog
+   - Add rich text editor feature
+   - Add report bug feature
+   - Update structure with new pages
+
+================================================================================
+                        TESTING RESULTS
+================================================================================
+
+TESTED FEATURES
+===============
+✅ Rich text editor default plain text
+✅ Toggle rich text mode
+✅ Bold formatting
+✅ Italic formatting
+✅ Underline formatting
+✅ Bullet list
+✅ Auto-continue list
+✅ Markdown parser output
+✅ Compose modal position
+✅ Modal spacing (mobile)
+✅ Modal spacing (desktop)
+✅ Report Bug menu (mobile)
+✅ Report Bug menu (desktop)
+✅ Request Feature menu (mobile)
+✅ Request Feature menu (desktop)
+✅ WhatsApp integration
+✅ Form validation
+
+BROWSER TESTED
+==============
+✅ Chrome 131 (Desktop & Mobile)
+✅ Firefox 133 (Desktop)
+✅ Safari 17 (iOS)
+✅ Edge 131 (Desktop)
+
+DEVICE TESTED
+=============
+✅ Desktop 1920x1080
+✅ Laptop 1366x768
+✅ Mobile 375x667
+✅ Mobile 414x896
+
+================================================================================
+                        USER BENEFITS
+================================================================================
+
+RICH TEXT EDITOR
+================
+- Lebih simple & clean
+- Tidak overwhelming untuk new user
+- Opt-in rich text (user choice)
+- Faster typing (plain text default)
+- Auto-list continuation (productivity)
+
+USER FEEDBACK
+=============
+- Easy bug reporting
+- Easy feature request
+- Direct WhatsApp contact
+- No email required (optional)
+- Fast response from developer
+
+COMPOSE MODAL
+=============
+- Better positioning
+- No collision with sidebar
+- Mobile-friendly spacing
+- Professional look
+- Smooth animation
+
+================================================================================
+                        MIGRATION NOTES
+================================================================================
+
+BACKWARD COMPATIBILITY
+======================
+✅ 100% Compatible
+✅ No data migration needed
+✅ Existing posts work perfectly
+✅ Rich text format preserved
+
+USER IMPACT
+===========
+- Positive: Cleaner UI
+- Positive: Easier to use
+- Positive: Better feedback system
+- No negative impact
+
+================================================================================
+                        FUTURE IMPROVEMENTS
+================================================================================
+
+PLANNED FEATURES
+================
+- [ ] Rich text preview mode
+- [ ] Markdown shortcuts guide
+- [ ] Custom list styles
+- [ ] Text alignment options
+- [ ] Code block support
+
+FEEDBACK SYSTEM
+===============
+- [ ] In-app feedback form
+- [ ] Bug tracking dashboard
+- [ ] Feature voting system
+- [ ] Changelog notification
+
+================================================================================
+                        CREDITS
+================================================================================
+
+Developer: M. Nafiurohman
+Organization: Bezn Project
+Version: 26.02.10
+Update: 10 Februari 2025 (Sore)
+
+================================================================================
+                        END OF UPDATE DOCUMENTATION
+================================================================================

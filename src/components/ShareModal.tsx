@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { sharePost } from '@/lib/db';
 import type { Post } from '@/lib/types';
 import { toast } from '@/lib/toast';
+import { downloadFile } from '@/lib/mobile-download';
 
 interface ShareModalProps {
   isOpen: boolean;
@@ -30,20 +31,17 @@ export function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
     }
   };
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!shareData) return;
 
-    const blob = new Blob([shareData], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `selfx-shared-post-${new Date().toISOString().split('T')[0]}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    
-    toast.success('File berhasil didownload');
+    try {
+      const filename = `selfq-shared-post-${new Date().toISOString().split('T')[0]}.json`;
+      await downloadFile(shareData, filename, 'application/json');
+      toast.success('File berhasil didownload');
+    } catch (error) {
+      console.error('Download failed:', error);
+      toast.error('Gagal mendownload file');
+    }
   };
 
   const handleCopyData = async () => {
@@ -163,7 +161,7 @@ export function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
                     <p className="font-medium mb-1">💡 Cara berbagi:</p>
                     <p>1. Download file JSON atau salin data</p>
                     <p>2. Kirim ke teman melalui chat/email</p>
-                    <p>3. Teman dapat import di selfX mereka</p>
+                    <p>3. Teman dapat import di selfQ mereka</p>
                   </div>
                 </div>
               )}

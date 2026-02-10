@@ -1,6 +1,90 @@
-# Changelog - selfX
+# Changelog - selfQ
 
-## Version 26.01.08 (8 Januari 2025)
+## Version 26.02.10 (10 Februari 2025)
+
+### 🎨 UI Improvements
+
+#### Perbaikan Tampilan Form
+- Konsistensi penggunaan icon Lucide di seluruh aplikasi
+- Icon size optimization: 4x4 untuk form input, 5x5 untuk button
+- Padding adjustment: pl-9 untuk konsistensi spacing
+- Perbaikan alignment icon dan text di form input
+- Remove emoji, ganti dengan Lucide icons (Smartphone, Heart)
+
+#### Navigation Improvements
+- Sidebar hanya muncul di halaman Profile (MobileSidebar)
+- Dropdown menu untuk semua halaman lain (Feed, Archive, Bookmarks, dll)
+- Request Fitur menu ditambahkan ke semua dropdown
+- Cleaner UI dan faster navigation
+
+### ⚡ Performance Improvements
+
+#### Download System Optimization
+- Implementasi File System Access API untuk Chrome/Edge (native "Save As" dialog)
+- Web Share API fallback untuk mobile devices
+- Blob URL fallback untuk universal compatibility
+- Async/await implementation untuk better error handling
+- Memory leak prevention dengan proper cleanup
+- Fix backup tidak bisa diunduh di PWA mode
+
+### 🐛 Bug Fixes
+
+- Fix duplicate code di textarea RequestFeature
+- Fix icon dan text alignment di form input
+- Fix sidebar muncul di semua halaman (seharusnya hanya Profile)
+- Fix URL GitHub yang salah
+- Fix deskripsi aplikasi (hapus kata "sosial media")
+- Fix nama aplikasi dari selfX menjadi selfQ di semua file
+- Fix struktur folder di README (selfx/ → selfq/)
+- Fix rotate feature di Image Editor
+
+### 🔄 Image Editor Enhancement
+
+#### Rotate Feature
+- Tambah tombol Rotate Left (90° counter-clockwise)
+- Tambah tombol Rotate Right (90° clockwise)
+- Real-time preview saat rotate
+- Canvas-based rotation dengan proper dimension handling
+- Save rotated image dengan kualitas terjaga
+- Reset function includes rotation state
+
+### 📝 Content Update
+
+#### Deskripsi Baru
+- Old: "Platform sosial media pribadi 100% offline..."
+- New: "selfQ adalah ruang pribadi untuk mengungkapkan perasaan yang sebenarnya dari diri sendiri. Tempat aman tanpa tekanan sosial, di mana kamu bebas mengekspresikan diri apa adanya."
+
+#### Branding Consistency
+- Update semua meta tags (index.html, manifest.json, package.json)
+- Update SEO configuration (src/lib/seo.ts)
+- Update README.md dengan deskripsi dan branding baru
+- Konsistensi nama selfQ di semua file
+- URL canonical update ke selfq.bezn.web.id
+
+### 📦 Files Modified
+- src/lib/mobile-download.ts
+- src/pages/RequestFeature.tsx
+- src/pages/Feed.tsx
+- src/pages/Archive.tsx
+- src/pages/Bookmarks.tsx
+- src/pages/CalendarView.tsx
+- src/pages/Stories.tsx
+- src/pages/Search.tsx
+- src/components/ImageEditor.tsx
+- index.html
+- public/manifest.json
+- package.json
+- src/lib/seo.ts
+- README.md
+- CHANGELOG.md
+
+### 🔗 Links
+**Website**: https://selfq.bezn.web.id
+**Documentation**: https://selfq.bezn.web.id/docs/26.02.10.html
+
+---
+
+## Version 26.02.08 (8 Februari 2025)
 
 ### 🎉 Fitur Baru
 
@@ -19,134 +103,68 @@
 - Real-time update saat cerita dibuat/dihapus
 
 #### 3. Voice Recorder (Perekam Suara)
-- Fitur perekaman audio langsung dari aplikasi
+- Perekaman audio langsung dari aplikasi menggunakan MediaRecorder API
 - Batas maksimal 3 menit per rekaman
-- Visualisasi waveform dengan 25 bar animasi
+- Visualisasi waveform real-time dengan 25 bar animasi
 - Kontrol lengkap: Record, Pause, Resume, Stop
 - Preview audio sebelum ditambahkan ke post
-- Handling permission mikrofon otomatis
-- Limit 1 audio per post
-- Audio tersimpan dalam format WebM/MP4
+- Automatic microphone permission handling
+- Format output: WebM (Chrome/Edge) atau MP4 (Safari)
 
 #### 4. Audio Player UI
-- Player audio di PostCard dengan kontrol play/pause
-- Progress bar real-time dengan tracking durasi
-- Display waktu current/total (format MM:SS)
-- Tombol download untuk save audio
-- Player audio di MultiMediaPicker untuk preview
-- Icon centering yang pixel-perfect
-- Responsive dan mobile-friendly
+- Play/Pause controls dengan icon yang jelas
+- Progress bar real-time menunjukkan posisi playback
+- Duration tracking dengan format MM:SS
+- Tombol download untuk save audio ke device
+- Scrubbing support - klik progress bar untuk jump ke posisi tertentu
+- Auto-pause saat audio selesai
 
 #### 5. URL Detection & Styling
-- Deteksi otomatis URL dalam konten post
-- URL menjadi clickable link dengan target _blank
+- Auto-detect URL dalam text post
+- Support berbagai format URL (http://, https://, www., domain.com)
+- Clickable link dengan target="_blank"
 - Icon Lucide Link2 SVG inline (bukan emoji)
 - Styling khusus dengan warna primary dan hover effect
-- Icon scalable dan konsisten di semua device
-- Inherit color untuk mendukung dark/light theme
 
-#### 6. Calendar View
-- Halaman kalender untuk melihat aktivitas berdasarkan tanggal
+#### 6. Halaman Calendar (Kalender)
+- Calendar view dengan react-day-picker
+- Highlight tanggal yang ada aktivitas
+- Filter berdasarkan tanggal
 - Period summary dengan statistik lengkap
-- Navigation mudah antar bulan
 
-#### 7. Archive Page
-- Halaman untuk mengelola post yang diarsipkan
-- Unarchive dan delete permanent
+#### 7. Halaman Archive (Arsip)
+- List semua post yang diarsipkan
+- Unarchive post untuk kembalikan ke feed
+- Delete permanent dari archive
 - Search dan sort functionality
 
 #### 8. Advanced Photo Editor
-- Crop tool dengan aspect ratio preset (1:1, 4:5, 16:9)
-- Rotate dan flip (90°, 180°, 270°, horizontal, vertical)
-- Filter effects: Grayscale, Sepia, Blur, Sharpen, Vintage, Cool, Warm
-- Brightness adjustment (-100 sampai +100)
-- Contrast adjustment (-100 sampai +100)
-- Real-time preview dan reset function
-- Responsive UI untuk mobile dan desktop
+- Crop Tool dengan aspect ratio preset
+- Rotate foto 90°, 180°, 270°
+- Filter Effects: Grayscale, Sepia, Blur, Sharpen, Vintage, Cool, Warm
+- Brightness & Contrast Adjustment
+- Real-time Preview
+- Reset Function
 
-#### 9. Bug Fixes & Improvements
-- Fix memory leak pada audio recorder
-- Fix progress bar update issues
-- Fix toast notification bugs
-- Fix statistics real-time update
-- Fix image transparency issues
+### 🐛 Bug Fixes & Improvements
+- Fix memory leak pada audio recorder component
+- Fix progress bar tidak update pada beberapa browser
+- Fix toast notification tidak muncul di beberapa kondisi
+- Fix statistics tidak update real-time
+- Fix image transparency issue pada PNG files
 - Fix dark mode inconsistency
-- Performance optimizations (rendering, bundle size, IndexedDB)
-- Stability improvements (error handling, offline functionality)
+- Fix responsive layout issue di mobile devices
+- Fix service worker caching issue
+- Fix IndexedDB transaction error handling
 
-### 🔧 Perbaikan & Peningkatan
+### ⚡ Performance Optimization
+- Optimasi rendering untuk large media files
+- Reduce bundle size dengan code splitting
+- Improve IndexedDB query performance
+- Optimize image loading dengan lazy loading
+- Better memory management untuk audio/video
+- Faster app initialization
 
-#### Performance
-- Optimasi timer dengan cleanup yang proper
-- Audio progress tracking dengan onTimeUpdate event
-- Cleanup audio resources saat component unmount
-- Efficient state management untuk audio playback
-
-#### UI/UX
-- Icon play/pause dengan margin adjustment untuk centering
-- Progress bar dengan animasi smooth
-- Waveform visualization yang responsif
-- URL link dengan inline-flex untuk alignment sempurna
-- Consistent spacing dan padding di semua komponen
-
-#### Code Quality
-- TypeScript types yang lebih strict untuk MediaItem
-- Separation of concerns untuk audio encryption
-- Reusable audio player components
-- Clean utility functions untuk URL detection
-- Proper error handling untuk microphone permission
-
-### 📁 File Baru
-- `src/lib/toast.ts` - Global toast callback system
-- `src/components/CustomToast.tsx` - Custom toast component
-- `src/components/AudioRecorder.tsx` - Voice recorder component
-- `src/lib/urlUtils.ts` - URL detection utilities
-
-### 📝 File Dimodifikasi
-- `src/App.tsx` - Integrasi CustomToast
-- `src/lib/stats.ts` - Story statistics functions
-- `src/lib/types.ts` - MediaItem interface dengan audio type
-- `src/pages/Settings.tsx` - Story statistics display
-- `src/pages/Profile.tsx` - Story statistics display
-- `src/components/PeriodSummary.tsx` - Story stats di calendar
-- `src/components/MultiMediaPicker.tsx` - Audio recorder integration
-- `src/components/PostCard.tsx` - Audio player implementation
-- `src/index.css` - URL link styling
-
-### 🎨 Design System
-- Consistent icon usage dari Lucide React
-- Mobile-first approach dengan min 40px touch targets
-- Dark/Light theme support untuk semua komponen baru
-- Framer Motion animations untuk smooth transitions
-
-### 🔐 Security & Privacy
-- Audio tersimpan 100% offline di IndexedDB
-- Tidak ada external API calls untuk URL metadata
-- Microphone permission handling yang aman
-- Audio encryption support untuk backup/export
-
-### 📱 PWA Support
-- Audio recording bekerja di PWA mode
-- Offline-first untuk semua fitur baru
-- Service worker compatible
-- Install-able di Android, iOS, dan Desktop
-
----
-
-## Version History
-
-### Version 1.0.0 (Desember 2024)
-- Initial release
-- Basic post creation dengan foto/video
-- Bookmark system dengan kategori
-- Dark/Light mode
-- Export/Import terenkripsi
-- PWA support
-- Story editor dengan kategori
-- Enkripsi AES-256 multi-layer
-
----
-
-**Developer**: M. Nafiurohman  
-**Project**: Bezn Project  
-**Website**: https://selfx.bezn.web.id
+### 🔗 Links
+**Website**: https://selfq.bezn.web.id
+**Documentation**: https://selfq.bezn.web.id/docs/26.02.08.html

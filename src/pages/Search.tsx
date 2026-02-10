@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ArrowLeft, X, ChevronDown, Settings, User, Edit, Bookmark, Archive } from 'lucide-react';
+import { Search, ArrowLeft, X, ChevronDown, Settings, User, Edit, Bookmark, Archive, Lightbulb, Bug } from 'lucide-react';
 import { AdvancedSearchFilter, type SearchFilters } from '@/components/AdvancedSearchFilter';
 import { SearchHistory, addToSearchHistory } from '@/components/SearchHistory';
 import { startOfDay, endOfDay, isWithinInterval } from 'date-fns';
@@ -153,9 +153,9 @@ export default function SearchPage() {
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title={searchQuery ? `Pencarian: ${searchQuery} - selfX` : 'Pencarian - selfX'}
-        description="Cari postingan di selfX - platform sosial media pribadi offline"
-        keywords="pencarian selfx, cari postingan, search"
+        title={searchQuery ? `Pencarian: ${searchQuery} - selfQ` : 'Pencarian - selfQ'}
+        description="Cari postingan di selfQ - platform sosial media pribadi offline"
+        keywords="pencarian selfq, cari postingan, search"
       />
       
       <Navigation />
@@ -165,7 +165,7 @@ export default function SearchPage() {
         <header className="clean-nav sticky top-0 z-30 md:hidden">
           <div className="container flex items-center justify-between h-16 px-4">
             <div className="flex items-center gap-3">
-              <img src="/images/logo/logo.png" alt="selfX Logo" className="w-8 h-8 rounded-xl" />
+              <img src="/images/logo/logo.png" alt="selfQ Logo" className="w-8 h-8 rounded-xl" />
               <h1 className="text-lg font-bold">Pencarian</h1>
             </div>
 
@@ -203,6 +203,14 @@ export default function SearchPage() {
                   <DropdownMenuItem onClick={() => navigate('/settings')}>
                     <Settings className="w-4 h-4 mr-2" />
                     Pengaturan
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/request-feature')}>
+                    <Lightbulb className="w-4 h-4 mr-2" />
+                    Request Fitur
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/report-bug')}>
+                    <Bug className="w-4 h-4 mr-2" />
+                    Report Bug
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

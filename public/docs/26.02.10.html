@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selfQ - Dokumentasi Version 26.02.10</title>
+    <link rel="icon" type="image/png" href="/images/logo/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <div class="max-w-5xl mx-auto px-4 py-8">
+        <div class="mb-6">
+            <a href="/docs/doc.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Kembali ke Daftar Dokumentasi
+            </a>
+        </div>
+        
+        <header class="text-center mb-12 border-b-4 border-blue-600 pb-8">
+            <h1 class="text-4xl font-bold mb-2">selfQ - DOKUMENTASI VERSION 26.02.10</h1>
+            <p class="text-xl text-gray-600 mb-1">Release: 10 Februari 2025</p>
+            <p class="text-lg text-blue-600 font-semibold">Codename: "UI Polish & Performance"</p>
+        </header>
+
+        <section class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 border-b-2 border-blue-200 pb-2">
+                <i class="fas fa-info-circle mr-2"></i>INFORMASI UMUM
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div><span class="font-semibold">Versi:</span> 26.02.10</div>
+                <div><span class="font-semibold">Tanggal Rilis:</span> 10 Februari 2025</div>
+                <div><span class="font-semibold">Developer:</span> M. Nafiurohman</div>
+                <div><span class="font-semibold">Organisasi:</span> Bezn Project</div>
+                <div><span class="font-semibold">Website:</span> <a href="https://selfq.bezn.web.id" class="text-blue-600 hover:underline">selfq.bezn.web.id</a></div>
+                <div><span class="font-semibold">Lisensi:</span> MIT License</div>
+            </div>
+        </section>
+
+        <section class="mb-12 bg-blue-50 rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 border-b-2 border-blue-200 pb-2">
+                <i class="fas fa-clipboard-list mr-2"></i>RINGKASAN UPDATE
+            </h2>
+            <p class="mb-4">Version 26.02.10 merupakan update maintenance yang fokus pada perbaikan tampilan, peningkatan performa, dan bug fixes. Update ini menyempurnakan pengalaman pengguna dengan UI yang lebih konsisten, performa yang lebih baik, dan stabilitas yang lebih tinggi.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                <div class="bg-white p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-blue-600"><i class="fas fa-palette"></i> 15+</div>
+                    <div class="text-sm text-gray-600">UI Changes</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-green-600"><i class="fas fa-bug"></i> 10+</div>
+                    <div class="text-sm text-gray-600">Bug Fixes</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-purple-600"><i class="fas fa-rocket"></i> 8</div>
+                    <div class="text-sm text-gray-600">Performance</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-orange-600"><i class="fas fa-file-code"></i> 20+</div>
+                    <div class="text-sm text-gray-600">Files Modified</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center text-blue-600">
+                <i class="fas fa-star mr-2"></i>PERUBAHAN UTAMA
+            </h2>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold mb-3 text-green-600">
+                    <i class="fas fa-paint-brush mr-2"></i>1. PERBAIKAN TAMPILAN (UI)
+                </h3>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Konsistensi icon Lucide di seluruh aplikasi</li>
+                    <li>Perbaikan spacing dan alignment form input</li>
+                    <li>Icon size optimization (4x4 untuk form)</li>
+                    <li>Padding adjustment (pl-9 untuk konsistensi)</li>
+                    <li>Sidebar hanya di halaman Profile</li>
+                    <li>Dropdown menu untuk halaman lain</li>
+                    <li>Request Fitur menu di semua dropdown</li>
+                    <li>Dark/Light mode consistency</li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold mb-3 text-green-600">
+                    <i class="fas fa-tachometer-alt mr-2"></i>2. PENINGKATAN PERFORMA
+                </h3>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>File System Access API untuk Chrome/Edge</li>
+                    <li>Web Share API fallback untuk mobile</li>
+                    <li>Blob URL optimization</li>
+                    <li>Async/await implementation</li>
+                    <li>Better error handling</li>
+                    <li>Memory leak prevention</li>
+                    <li>Faster backup export/import</li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold mb-3 text-green-600">
+                    <i class="fas fa-bug mr-2"></i>3. PERBAIKAN BUG
+                </h3>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Fix backup tidak bisa diunduh di PWA</li>
+                    <li>Fix duplicate code di textarea</li>
+                    <li>Fix emoji diganti Lucide icons</li>
+                    <li>Fix icon alignment di form</li>
+                    <li>Fix sidebar muncul di semua halaman</li>
+                    <li>Fix URL GitHub</li>
+                    <li>Fix deskripsi aplikasi</li>
+                    <li>Fix nama aplikasi (selfX → selfQ)</li>
+                    <li>Fix rotate feature di Image Editor</li>
+                    <li>Fix rich text editor bugs</li>
+                    <li>Fix missing Bug icon import</li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold mb-3 text-green-600">
+                    <i class="fas fa-edit mr-2"></i>4. RICH TEXT EDITOR
+                </h3>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Default mode: Plain text</li>
+                    <li>Toggle rich text dengan tombol "T"</li>
+                    <li>Toolbar compact (inline-flex)</li>
+                    <li>Bold, Italic, Underline, Bullet list</li>
+                    <li>Auto-continue list on Enter</li>
+                    <li>Remove numbered list</li>
+                    <li>Remove link button (auto-detect)</li>
+                    <li>Remove format hint text</li>
+                    <li>Better markdown parser</li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold mb-3 text-green-600">
+                    <i class="fas fa-comments mr-2"></i>5. USER FEEDBACK SYSTEM
+                </h3>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Report Bug menu (mobile & desktop)</li>
+                    <li>Request Feature menu (enhanced)</li>
+                    <li>WhatsApp direct integration</li>
+                    <li>Form: Nama, Email, WhatsApp, Description</li>
+                    <li>Accessible di sidebar & dropdown</li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold mb-3 text-green-600">
+                    <i class="fas fa-file-alt mr-2"></i>6. PEMBARUAN KONTEN
+                </h3>
+                <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                    <p class="font-semibold mb-2">Deskripsi Baru:</p>
+                    <p class="italic">"selfQ adalah ruang pribadi untuk mengungkapkan perasaan yang sebenarnya dari diri sendiri. Tempat aman tanpa tekanan sosial, di mana kamu bebas mengekspresikan diri apa adanya."</p>
+                </div>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Update meta tags (index.html, manifest, package.json)</li>
+                    <li>Update SEO configuration</li>
+                    <li>Update README.md</li>
+                    <li>Konsistensi branding selfQ</li>
+                    <li>URL canonical update</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 border-b-2 border-blue-200 pb-2">
+                <i class="fas fa-lightbulb mr-2"></i>FITUR BARU & IMPROVEMENTS
+            </h2>
+            
+            <div class="mb-6">
+                <h3 class="text-xl font-bold mb-3 text-purple-600">
+                    <i class="fas fa-download mr-2"></i>Download System
+                </h3>
+                <p class="mb-3">Metode Download (Priority Order):</p>
+                <ol class="list-decimal list-inside space-y-2 ml-4">
+                    <li><strong>File System Access API</strong> - Native "Save As" dialog (Chrome/Edge)</li>
+                    <li><strong>Web Share API</strong> - Share dialog native (Mobile)</li>
+                    <li><strong>Blob URL Fallback</strong> - Auto download (Universal)</li>
+                </ol>
+            </div>
+
+            <div class="mb-6">
+                <h3 class="text-xl font-bold mb-3 text-purple-600">
+                    <i class="fas fa-image mr-2"></i>Image Editor
+                </h3>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Rotate Left (90° counter-clockwise)</li>
+                    <li>Rotate Right (90° clockwise)</li>
+                    <li>Real-time preview</li>
+                    <li>Canvas-based rotation</li>
+                    <li>Save rotated image</li>
+                </ul>
+            </div>
+
+            <div class="mb-6">
+                <h3 class="text-xl font-bold mb-3 text-purple-600">
+                    <i class="fas fa-bars mr-2"></i>Navigation
+                </h3>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Profile page: MobileSidebar (full menu)</li>
+                    <li>Other pages: Dropdown menu (compact)</li>
+                    <li>Request Fitur di semua dropdown</li>
+                    <li>Report Bug di sidebar & dropdown</li>
+                    <li>Cleaner UI & faster navigation</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-3 text-purple-600">
+                    <i class="fas fa-window-maximize mr-2"></i>Compose Modal
+                </h3>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Centered position (mobile & desktop)</li>
+                    <li>Proper spacing (inset-4 mobile, inset-8 desktop)</li>
+                    <li>No collision with sidebar</li>
+                    <li>Scale animation from center</li>
+                    <li>Mobile-first design</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-12 bg-yellow-50 rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 text-yellow-600 border-b-2 border-yellow-200 pb-2">
+                <i class="fas fa-sync-alt mr-2"></i>MIGRATION & UPGRADE
+            </h2>
+            <ol class="list-decimal list-inside space-y-2 ml-4 mb-4">
+                <li>Backup data existing (Export)</li>
+                <li>Update aplikasi ke version 26.02.10</li>
+                <li>Refresh browser / Restart PWA</li>
+                <li>Data otomatis compatible</li>
+                <li>Improvements langsung tersedia</li>
+            </ol>
+            <div class="bg-green-100 border-l-4 border-green-500 p-4">
+                <p class="font-bold">Breaking Changes: TIDAK ADA</p>
+                <p>Backward compatible 100%</p>
+            </div>
+        </section>
+
+        <section class="mb-12 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 border-b-2 border-white pb-2">
+                <i class="fas fa-headset mr-2"></i>CONTACT & SUPPORT
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-bold mb-3"><i class="fas fa-user-tie mr-2"></i>Developer</h3>
+                    <ul class="space-y-2">
+                        <li><i class="fas fa-envelope mr-2"></i>nafiurohman25@gmail.com</li>
+                        <li><i class="fab fa-whatsapp mr-2"></i>081358198565</li>
+                        <li><i class="fas fa-globe mr-2"></i>nafiurohman.pages.dev</li>
+                        <li><i class="fab fa-instagram mr-2"></i>@nafiurohman_</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-3"><i class="fas fa-building mr-2"></i>Bezn Project</h3>
+                    <ul class="space-y-2">
+                        <li><i class="fas fa-envelope mr-2"></i>support@beznproject.web.id</li>
+                        <li><i class="fab fa-whatsapp mr-2"></i>085189643588</li>
+                        <li><i class="fas fa-globe mr-2"></i>beznproject.web.id</li>
+                        <li><i class="fab fa-instagram mr-2"></i>@bezn.project</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bg-white bg-opacity-20 rounded-lg p-4 mt-6">
+                <h3 class="text-lg font-bold mb-2"><i class="fas fa-donate mr-2"></i>Donation</h3>
+                <p>Bank Jago: <strong>507938016692</strong></p>
+                <p>a.n M. Nafiurohman</p>
+            </div>
+        </section>
+
+        <footer class="text-center py-8 border-t-4 border-blue-600">
+            <p class="text-lg font-bold mb-2">Version 26.02.10 - UI Polish & Performance</p>
+            <p class="mb-4">Generated: 10 Februari 2025</p>
+            <p class="text-2xl font-bold text-blue-600">Terima kasih telah menggunakan selfQ!</p>
+            <div class="mt-6">
+                <a href="https://selfq.bezn.web.id" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                    Kunjungi selfQ
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+            class="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</body>
+</html>

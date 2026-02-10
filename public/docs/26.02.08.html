@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selfQ - Dokumentasi Version 26.02.08</title>
+    <link rel="icon" type="image/png" href="/images/logo/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <div class="max-w-5xl mx-auto px-4 py-8">
+        <!-- Back Button -->
+        <div class="mb-6">
+            <a href="/docs/doc.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+                Kembali ke Daftar Dokumentasi
+            </a>
+        </div>
+        <!-- Header -->
+        <header class="text-center mb-12 border-b-4 border-blue-600 pb-8">
+            <h1 class="text-4xl font-bold mb-2">selfQ - DOKUMENTASI VERSION 26.02.08</h1>
+            <p class="text-xl text-gray-600 mb-1">Release: 8 Febrari 2025</p>
+            <p class="text-lg text-blue-600 font-semibold">Codename: "Voice & Stats Edition"</p>
+        </header>
+
+        <!-- Informasi Umum -->
+        <section class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 border-b-2 border-blue-200 pb-2">INFORMASI UMUM</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div><span class="font-semibold">Versi:</span> 26.02.08 (Format: YY.MM.DD)</div>
+                <div><span class="font-semibold">Tanggal Rilis:</span> 8 Februari 2025</div>
+                <div><span class="font-semibold">Developer:</span> M. Nafiurohman</div>
+                <div><span class="font-semibold">Organisasi:</span> Bezn Project</div>
+                <div><span class="font-semibold">Website:</span> <a href="https://selfq.bezn.web.id" class="text-blue-600 hover:underline">https://selfq.bezn.web.id</a></div>
+                <div><span class="font-semibold">Lisensi:</span> MIT License</div>
+            </div>
+        </section>
+
+        <!-- Ringkasan Update -->
+        <section class="mb-12 bg-blue-50 rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 border-b-2 border-blue-200 pb-2">RINGKASAN UPDATE</h2>
+            <p class="mb-4">Version 26.02.08 merupakan update major yang menambahkan 9 fitur baru utama, advanced photo editor, bug fixes, peningkatan UI/UX, dan perbaikan performa. Update ini fokus pada peningkatan pengalaman pengguna dengan fitur multimedia (audio recording), statistik yang lebih lengkap, dan sistem notifikasi yang lebih baik.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                <div class="bg-white p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-blue-600">9</div>
+                    <div class="text-sm text-gray-600">Fitur Baru</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-green-600">5</div>
+                    <div class="text-sm text-gray-600">File Baru</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-purple-600">11</div>
+                    <div class="text-sm text-gray-600">File Dimodifikasi</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-orange-600">~2,500</div>
+                    <div class="text-sm text-gray-600">Baris Kode</div>
+                </div>
+            </div>
+        </section>
+        <!-- Fitur Baru Lengkap -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center text-blue-600">FITUR BARU LENGKAP</h2>
+            
+            <!-- Fitur 1: Custom Toast -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold mb-3 text-green-600">1. CUSTOM TOAST NOTIFICATION SYSTEM</h3>
+                <p class="mb-4 font-semibold">Deskripsi:</p>
+                <p class="mb-4">Sistem notifikasi custom yang menggantikan library sonner dengan implementasi native yang lebih ringan dan sesuai dengan design system selfQ.</p>
+                
+                <p class="mb-2 font-semibold">Fitur Detail:</p>
+                <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                    <li>Toast popup muncul di tengah layar (centered)</li>
+                    <li>Auto-close otomatis dalam 3 detik</li>
+                    <li>Progress bar visual menunjukkan countdown</li>
+                    <li>Tombol close manual (X) untuk menutup sebelum timeout</li>
+                    <li>Animasi smooth dengan Framer Motion (fade in/out)</li>
+                    <li>Support 3 tipe notifikasi: Success (hijau), Error (merah), Info (biru)</li>
+                    <li>Responsive di semua ukuran layar</li>
+                    <li>Dark/Light theme support</li>
+                </ul>
+                
+                <p class="mb-2 font-semibold">Implementasi Teknis:</p>
+                <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                    <li>Global callback system di src/lib/toast.ts</li>
+                    <li>Custom component di src/components/CustomToast.tsx</li>
+                    <li>useCustomToast hook untuk state management</li>
+                    <li>AnimatePresence untuk smooth transitions</li>
+                    <li>Timer cleanup yang proper untuk prevent memory leak</li>
+                </ul>
+                
+                <p class="mb-2 font-semibold">File Terkait:</p>
+                <div class="bg-gray-100 p-3 rounded">
+                    <code class="text-sm">
+                        - src/lib/toast.ts (BARU)<br>
+                        - src/components/CustomToast.tsx (BARU)<br>
+                        - src/App.tsx (MODIFIED)
+                    </code>
+                </div>
+            </div>
+
+            <!-- Fitur 2: Story Statistics -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold mb-3 text-green-600">2. STORY STATISTICS (STATISTIK CERITA)</h3>
+                <p class="mb-4 font-semibold">Deskripsi:</p>
+                <p class="mb-4">Penambahan 2 statistik baru terkait cerita (stories) yang terintegrasi di berbagai halaman untuk memberikan insight lebih lengkap kepada pengguna.</p>
+                
+                <p class="mb-2 font-semibold">Fitur Detail:</p>
+                <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                    <li>Total Cerita: Jumlah keseluruhan cerita yang pernah dibuat</li>
+                    <li>Cerita Hari Ini: Jumlah cerita yang dibuat hari ini</li>
+                    <li>Total statistik sekarang: 6 (dari sebelumnya 4)</li>
+                    <li>Icon BookOpen dari Lucide untuk representasi cerita</li>
+                    <li>Real-time update saat cerita dibuat/dihapus</li>
+                    <li>Terintegrasi di 3 halaman utama: Settings, Profile, Calendar</li>
+                </ul>
+                
+                <p class="mb-2 font-semibold">File Terkait:</p>
+                <div class="bg-gray-100 p-3 rounded">
+                    <code class="text-sm">
+                        - src/lib/stats.ts (MODIFIED)<br>
+                        - src/pages/Settings.tsx (MODIFIED)<br>
+                        - src/pages/Profile.tsx (MODIFIED)<br>
+                        - src/components/PeriodSummary.tsx (MODIFIED)
+                    </code>
+                </div>
+            </div>
+
+            <!-- Fitur 3: Voice Recorder -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold mb-3 text-green-600">3. VOICE RECORDER (PEREKAM SUARA)</h3>
+                <p class="mb-4 font-semibold">Deskripsi:</p>
+                <p class="mb-4">Fitur perekaman audio langsung dari aplikasi untuk menambahkan dimensi baru dalam berbagi konten. Pengguna dapat merekam suara, musik, atau audio lainnya dan menambahkannya ke dalam post.</p>
+                
+                <p class="mb-2 font-semibold">Fitur Detail:</p>
+                <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                    <li>Perekaman audio langsung menggunakan MediaRecorder API</li>
+                    <li>Batas maksimal: 3 menit (180 detik) per rekaman</li>
+                    <li>Visualisasi waveform real-time dengan 25 bar animasi</li>
+                    <li>Kontrol lengkap: Record, Pause, Resume, Stop</li>
+                    <li>Preview audio sebelum ditambahkan ke post</li>
+                    <li>Automatic microphone permission handling</li>
+                    <li>Limit: 1 audio per post</li>
+                    <li>Format output: WebM (Chrome/Edge) atau MP4 (Safari)</li>
+                    <li>Timer countdown menunjukkan sisa waktu</li>
+                    <li>Auto-stop saat mencapai 3 menit</li>
+                </ul>
+                
+                <p class="mb-2 font-semibold">Use Cases:</p>
+                <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                    <li>Voice notes untuk post</li>
+                    <li>Rekam musik/lagu</li>
+                    <li>Podcast mini</li>
+                    <li>Audio diary</li>
+                    <li>Catatan suara penting</li>
+                </ul>
+                
+                <p class="mb-2 font-semibold">File Terkait:</p>
+                <div class="bg-gray-100 p-3 rounded">
+                    <code class="text-sm">
+                        - src/components/AudioRecorder.tsx (BARU)<br>
+                        - src/components/MultiMediaPicker.tsx (MODIFIED)<br>
+                        - src/lib/types.ts (MODIFIED)
+                    </code>
+                </div>
+            </div>
+
+            <!-- Fitur 4: Audio Player -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold mb-3 text-green-600">4. AUDIO PLAYER UI</h3>
+                <p class="mb-4 font-semibold">Deskripsi:</p>
+                <p class="mb-4">Interface player audio yang terintegrasi di PostCard dan MultiMediaPicker untuk playback audio yang telah direkam atau ditambahkan ke post.</p>
+                
+                <p class="mb-2 font-semibold">Fitur Detail:</p>
+                <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                    <li>Play/Pause controls dengan icon yang jelas</li>
+                    <li>Progress bar real-time menunjukkan posisi playback</li>
+                    <li>Duration tracking dengan format MM:SS</li>
+                    <li>Display waktu: Current time & Total duration</li>
+                    <li>Tombol download untuk save audio ke device</li>
+                    <li>Scrubbing support - klik progress bar untuk jump ke posisi tertentu</li>
+                    <li>Auto-pause saat audio selesai</li>
+                    <li>Icon centering pixel-perfect dengan margin adjustment</li>
+                    <li>Responsive design untuk mobile dan desktop</li>
+                    <li>Dark/Light theme support</li>
+                </ul>
+                
+                <p class="mb-2 font-semibold">File Terkait:</p>
+                <div class="bg-gray-100 p-3 rounded">
+                    <code class="text-sm">
+                        - src/components/PostCard.tsx (MODIFIED)<br>
+                        - src/components/MultiMediaPicker.tsx (MODIFIED)<br>
+                        - src/index.css (MODIFIED)
+                    </code>
+                </div>
+            </div>
+
+            <!-- Fitur 5: URL Detection -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold mb-3 text-green-600">5. URL DETECTION & STYLING</h3>
+                <p class="mb-4 font-semibold">Deskripsi:</p>
+                <p class="mb-4">Deteksi otomatis URL dalam konten post dan mengubahnya menjadi clickable link dengan styling yang menarik dan icon yang konsisten.</p>
+                
+                <p class="mb-2 font-semibold">Fitur Detail:</p>
+                <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                    <li>Auto-detect URL dalam text post</li>
+                    <li>Support berbagai format URL: http://, https://, www., domain.com</li>
+                    <li>Clickable link dengan target="_blank" (buka tab baru)</li>
+                    <li>rel="noopener noreferrer" untuk security</li>
+                    <li>Icon Lucide Link2 SVG inline (bukan emoji)</li>
+                    <li>Icon properties: Size 14x14px, Stroke width 2, Scalable vector</li>
+                    <li>Styling khusus: Warna primary (biru), Hover effect (underline)</li>
+                    <li>Consistent di semua device</li>
+                    <li>Dark/Light theme support</li>
+                </ul>
+                
+                <p class="mb-2 font-semibold">Limitasi:</p>
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-3 mb-4">
+                    <p class="text-sm">Tidak ada URL metadata fetching (preview card). Alasan: Offline-first architecture & CORS restrictions. Fokus pada clickable link dengan styling yang baik.</p>
+                </div>
+                
+                <p class="mb-2 font-semibold">File Terkait:</p>
+                <div class="bg-gray-100 p-3 rounded">
+                    <code class="text-sm">
+                        - src/lib/urlUtils.ts (BARU)<br>
+                        - src/components/PostCard.tsx (MODIFIED)<br>
+                        - src/index.css (MODIFIED)
+                    </code>
+                </div>
+            </div>
+
+            <!-- Fitur 6: Calendar View -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold mb-3 text-green-600">6. HALAMAN CALENDAR (KALENDER)</h3>
+                <p class="mb-4 font-semibold">Deskripsi:</p>
+                <p class="mb-4">Halaman kalender untuk melihat aktivitas berdasarkan tanggal dengan visualisasi yang intuitif dan statistik periode tertentu.</p>
+                
+                <p class="mb-2 font-semibold">Fitur Detail:</p>
+                <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                    <li>Calendar view dengan react-day-picker</li>
+                    <li>Highlight tanggal yang ada aktivitas</li>
+                    <li>Filter berdasarkan tanggal</li>
+                    <li>Period summary dengan statistik: Total Posts, Bookmarks, Stories</li>
+                    <li>Navigation mudah antar bulan</li>
+                    <li>Responsive design</li>
+                    <li>Dark/Light theme support</li>
+                </ul>
+                
+                <p class="mb-2 font-semibold">File Terkait:</p>
+                <div class="bg-gray-100 p-3 rounded">
+                    <code class="text-sm">
+                        - src/pages/CalendarView.tsx<br>
+                        - src/components/PeriodSummary.tsx (MODIFIED)
+                    </code>
+                </div>
+            </div>
+
+            <!-- Fitur 7: Archive Page -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold mb-3 text-green-600">7. HALAMAN ARCHIVE (ARSIP)</h3>
+                <p class="mb-4 font-semibold">Deskripsi:</p>
+                <p class="mb-4">Halaman untuk melihat dan mengelola post yang telah diarsipkan, memberikan cara untuk menyimpan post lama tanpa menghapusnya.</p>
+                
+                <p class="mb-2 font-semibold">Fitur Detail:</p>
+                <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                    <li>List semua post yang diarsipkan</li>
+                    <li>Unarchive post untuk kembalikan ke feed</li>
+                    <li>Delete permanent dari archive</li>
+                    <li>Search dalam archive</li>
+                    <li>Sort by date</li>
+                    <li>Responsive design</li>
+                    <li>Empty state yang informatif</li>
+                </ul>
+                
+                <p class="mb-2 font-semibold">File Terkait:</p>
+                <div class="bg-gray-100 p-3 rounded mb-4">
+                    <code class="text-sm">
+                        - src/pages/Archive.tsx
+                    </code>
+                </div>
+                
+                <p class="mb-2 font-semibold">Use Cases:</p>
+                <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                    <li>Simpan post lama</li>
+                    <li>Clean up feed tanpa hapus data</li>
+                    <li>Organize konten</li>
+                    <li>Backup post penting</li>
+                </ul>
+            </div>
+
+            <!-- Fitur 8: Photo Editor -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold mb-3 text-green-600">8. ADVANCED PHOTO EDITOR</h3>
+                <p class="mb-4 font-semibold">Deskripsi:</p>
+                <p class="mb-4">Editor foto yang lebih canggih dengan fitur crop, rotate, filter effects, dan adjustment brightness/contrast untuk mengedit foto langsung sebelum diposting.</p>
+                
+                <p class="mb-2 font-semibold">Fitur Detail:</p>
+                <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                    <li><strong>Crop Tool:</strong> Potong foto dengan aspect ratio custom atau preset (1:1, 4:5, 16:9)</li>
+                    <li><strong>Rotate:</strong> Putar foto 90°, 180°, 270° atau flip horizontal/vertical</li>
+                    <li><strong>Filter Effects:</strong> Grayscale, Sepia, Blur, Sharpen, Vintage, Cool, Warm</li>
+                    <li><strong>Brightness Adjustment:</strong> Atur kecerahan foto (-100 sampai +100)</li>
+                    <li><strong>Contrast Adjustment:</strong> Atur kontras foto (-100 sampai +100)</li>
+                    <li>Real-time Preview: Lihat hasil edit secara langsung</li>
+                    <li>Reset Function: Kembalikan ke foto original</li>
+                    <li>Save & Apply: Simpan hasil edit ke post</li>
+                    <li>Responsive UI: Bekerja optimal di mobile dan desktop</li>
+                    <li>Dark/Light theme support</li>
+                </ul>
+                
+                <p class="mb-2 font-semibold">Use Cases:</p>
+                <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                    <li>Edit foto sebelum posting</li>
+                    <li>Crop foto untuk aspect ratio yang pas</li>
+                    <li>Tambahkan filter untuk aesthetic</li>
+                    <li>Adjust brightness untuk foto gelap</li>
+                    <li>Quick photo editing tanpa app eksternal</li>
+                </ul>
+                
+                <p class="mb-2 font-semibold">File Terkait:</p>
+                <div class="bg-gray-100 p-3 rounded">
+                    <code class="text-sm">
+                        - src/components/PhotoEditor.tsx (BARU/MODIFIED)<br>
+                        - src/components/MultiMediaPicker.tsx (MODIFIED)<br>
+                        - src/lib/imageUtils.ts (BARU/MODIFIED)
+                    </code>
+                </div>
+            </div>
+
+            <!-- Fitur 9: Bug Fixes -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold mb-3 text-green-600">9. BUG FIXES & IMPROVEMENTS</h3>
+                <p class="mb-4 font-semibold">Deskripsi:</p>
+                <p class="mb-4">Perbaikan berbagai bug dan peningkatan stabilitas aplikasi untuk pengalaman pengguna yang lebih baik.</p>
+                
+                <div class="mb-4">
+                    <p class="mb-2 font-semibold text-red-600">Bug Fixes:</p>
+                    <ul class="list-disc list-inside space-y-1 ml-4 text-sm">
+                        <li>Fix memory leak pada audio recorder component</li>
+                        <li>Fix progress bar tidak update pada beberapa browser</li>
+                        <li>Fix toast notification tidak muncul di beberapa kondisi</li>
+                        <li>Fix statistics tidak update real-time</li>
+                        <li>Fix image transparency issue pada PNG files</li>
+                        <li>Fix dark mode inconsistency di beberapa komponen</li>
+                        <li>Fix responsive layout issue di mobile devices</li>
+                        <li>Fix service worker caching issue</li>
+                        <li>Fix IndexedDB transaction error handling</li>
+                        <li>Fix URL detection regex untuk edge cases</li>
+                    </ul>
+                </div>
+                
+                <div class="mb-4">
+                    <p class="mb-2 font-semibold text-blue-600">Performance Improvements:</p>
+                    <ul class="list-disc list-inside space-y-1 ml-4 text-sm">
+                        <li>Optimasi rendering untuk large media files</li>
+                        <li>Reduce bundle size dengan code splitting</li>
+                        <li>Improve IndexedDB query performance</li>
+                        <li>Optimize image loading dengan lazy loading</li>
+                        <li>Better memory management untuk audio/video</li>
+                        <li>Faster app initialization</li>
+                        <li>Smooth animations dengan GPU acceleration</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <p class="mb-2 font-semibold text-green-600">Stability Improvements:</p>
+                    <ul class="list-disc list-inside space-y-1 ml-4 text-sm">
+                        <li>Better error handling di semua components</li>
+                        <li>Graceful degradation untuk unsupported features</li>
+                        <li>Improved offline functionality</li>
+                        <li>Better PWA installation experience</li>
+                        <li>More reliable data persistence</li>
+                        <li>Enhanced security measures</li>
+                    </ul>
+                </div>
+            </div>
+                <p class="mb-4 font-semibold">Deskripsi:</p>
+                <p class="mb-4">Halaman untuk melihat dan mengelola post yang telah diarsipkan, memberikan cara untuk menyimpan post lama tanpa menghapusnya.</p>
+                
+                <p class="mb-2 font-semibold">Fitur Detail:</p>
+                <ul class="list-disc list-inside space-y-1 mb-4 ml-4">
+                    <li>List semua post yang diarsipkan</li>
+                    <li>Unarchive post untuk kembalikan ke feed</li>
+                    <li>Delete permanent dari archive</li>
+                    <li>Search dalam archive</li>
+                    <li>Sort by date</li>
+                    <li>Responsive design</li>
+                    <li>Empty state yang informatif</li>
+                </ul>
+                
+                <p class="mb-2 font-semibold">File Terkait:</p>
+                <div class="bg-gray-100 p-3 rounded">
+                    <code class="text-sm">
+                        - src/pages/Archive.tsx
+                    </code>
+                </div>
+            </div>
+        </section>
+        <!-- Perbaikan & Peningkatan -->
+        <section class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 border-b-2 border-blue-200 pb-2">PERBAIKAN & PENINGKATAN</h2>
+            
+            <div class="mb-6">
+                <h3 class="text-xl font-bold mb-3 text-purple-600">Performance Optimization</h3>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>Timer Cleanup:</strong> Proper useEffect cleanup untuk prevent memory leak</li>
+                    <li><strong>Audio Resource Management:</strong> Cleanup audio element on unmount</li>
+                    <li><strong>State Management:</strong> Efficient state updates untuk audio playback</li>
+                    <li><strong>Storage Optimization:</strong> IndexedDB untuk large audio files</li>
+                </ul>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="text-xl font-bold mb-3 text-purple-600">UI/UX Improvements</h3>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>Icon Centering:</strong> Play/Pause icon dengan margin adjustment (marginLeft: 2px)</li>
+                    <li><strong>Progress Bar:</strong> Smooth animations dengan CSS transitions</li>
+                    <li><strong>Waveform Visualization:</strong> 25 bar dengan height yang dinamis</li>
+                    <li><strong>URL Link Styling:</strong> Inline-flex untuk perfect alignment</li>
+                    <li><strong>Mobile-First Design:</strong> Touch targets minimum 40px</li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-bold mb-3 text-purple-600">Code Quality</h3>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>TypeScript:</strong> Strict types untuk MediaItem interface</li>
+                    <li><strong>Component Architecture:</strong> Reusable AudioRecorder component</li>
+                    <li><strong>Utility Functions:</strong> linkifyText(), formatTime(), calculateStoryStats()</li>
+                    <li><strong>Error Handling:</strong> Try-catch blocks untuk async operations</li>
+                    <li><strong>Code Organization:</strong> Logical file structure dan clear naming conventions</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- File Structure -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-center text-blue-600">FILE STRUCTURE</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-green-50 rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold mb-4 text-green-600">FILE BARU (5)</h3>
+                    <ol class="list-decimal list-inside space-y-2">
+                        <li><code class="bg-white px-2 py-1 rounded">src/lib/toast.ts</code> - Global toast callback system</li>
+                        <li><code class="bg-white px-2 py-1 rounded">src/components/CustomToast.tsx</code> - Custom toast component</li>
+                        <li><code class="bg-white px-2 py-1 rounded">src/components/AudioRecorder.tsx</code> - Voice recorder component</li>
+                        <li><code class="bg-white px-2 py-1 rounded">src/lib/urlUtils.ts</code> - URL detection utilities</li>
+                        <li><code class="bg-white px-2 py-1 rounded">src/lib/version.ts</code> - Version constants</li>
+                    </ol>
+                </div>
+                
+                <div class="bg-blue-50 rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold mb-4 text-blue-600">FILE DIMODIFIKASI (11)</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-sm">
+                        <li><code class="bg-white px-2 py-1 rounded">src/App.tsx</code></li>
+                        <li><code class="bg-white px-2 py-1 rounded">src/lib/stats.ts</code></li>
+                        <li><code class="bg-white px-2 py-1 rounded">src/lib/types.ts</code></li>
+                        <li><code class="bg-white px-2 py-1 rounded">src/pages/Settings.tsx</code></li>
+                        <li><code class="bg-white px-2 py-1 rounded">src/pages/Profile.tsx</code></li>
+                        <li><code class="bg-white px-2 py-1 rounded">src/components/PeriodSummary.tsx</code></li>
+                        <li><code class="bg-white px-2 py-1 rounded">src/components/MultiMediaPicker.tsx</code></li>
+                        <li><code class="bg-white px-2 py-1 rounded">src/components/PostCard.tsx</code></li>
+                        <li><code class="bg-white px-2 py-1 rounded">src/index.css</code></li>
+                        <li><code class="bg-white px-2 py-1 rounded">package.json</code></li>
+                        <li><code class="bg-white px-2 py-1 rounded">README.md</code></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teknologi -->
+        <section class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 border-b-2 border-blue-200 pb-2">TEKNOLOGI & DEPENDENCIES</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-bold mb-3 text-gray-700">Core Technologies</h3>
+                    <ul class="space-y-1">
+                        <li>• React 18.3.1</li>
+                        <li>• TypeScript 5.8.3</li>
+                        <li>• Vite 5.4.19</li>
+                        <li>• Tailwind CSS 3.4.17</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-3 text-gray-700">New APIs Used</h3>
+                    <ul class="space-y-1">
+                        <li>• MediaRecorder API - Audio recording</li>
+                        <li>• AudioContext API - Waveform visualization</li>
+                        <li>• AnalyserNode API - Frequency data</li>
+                        <li>• Web Crypto API - Audio encryption</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-3 text-gray-700">Libraries</h3>
+                    <ul class="space-y-1">
+                        <li>• Framer Motion 12.29.2 - Animations</li>
+                        <li>• Lucide React 0.462.0 - Icons</li>
+                        <li>• idb 8.0.3 - IndexedDB wrapper</li>
+                        <li>• date-fns 3.6.0 - Date formatting</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security & Privacy -->
+        <section class="mb-12 bg-green-50 rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 text-green-600 border-b-2 border-green-200 pb-2">SECURITY & PRIVACY</h2>
+            
+            <div class="space-y-4">
+                <div>
+                    <h3 class="text-lg font-bold mb-2">Audio Security</h3>
+                    <ul class="list-disc list-inside space-y-1 ml-4">
+                        <li>Audio tersimpan 100% offline di IndexedDB</li>
+                        <li>Tidak ada upload ke server</li>
+                        <li>Encryption support untuk backup/export</li>
+                        <li>AES-256-GCM encryption untuk shared audio</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-2">Permission Handling</h3>
+                    <ul class="list-disc list-inside space-y-1 ml-4">
+                        <li>Microphone permission request yang jelas</li>
+                        <li>Error handling untuk permission denied</li>
+                        <li>User control penuh atas microphone access</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-2">Data Privacy</h3>
+                    <ul class="list-disc list-inside space-y-1 ml-4">
+                        <li>Tidak ada external API calls</li>
+                        <li>Tidak ada URL metadata fetching</li>
+                        <li>Tidak ada tracking atau analytics</li>
+                        <li>Semua data tetap di device pengguna</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PWA Support -->
+        <section class="mb-12 bg-purple-50 rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 text-purple-600 border-b-2 border-purple-200 pb-2">PWA SUPPORT</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-bold mb-3">Compatibility</h3>
+                    <ul class="space-y-1">
+                        <li>✓ Audio recording di PWA mode</li>
+                        <li>✓ Offline-first untuk semua fitur</li>
+                        <li>✓ Service worker compatible</li>
+                        <li>✓ Install-able di Android</li>
+                        <li>✓ Install-able di iOS</li>
+                        <li>✓ Install-able di Desktop</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-3">Browser Support</h3>
+                    <ul class="space-y-1">
+                        <li>✓ Chrome 88+</li>
+                        <li>✓ Firefox 84+</li>
+                        <li>✓ Safari 14+</li>
+                        <li>✓ Edge 88+</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testing -->
+        <section class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 border-b-2 border-blue-200 pb-2">TESTING & QA</h2>
+            
+            <div class="mb-6">
+                <h3 class="text-lg font-bold mb-3">Tested Scenarios</h3>
+                <div class="grid md:grid-cols-2 gap-2">
+                    <div>✓ Audio recording &lt; 3 minutes</div>
+                    <div>✓ Audio recording = 3 minutes</div>
+                    <div>✓ Microphone permission granted</div>
+                    <div>✓ Microphone permission denied</div>
+                    <div>✓ Audio playback in PostCard</div>
+                    <div>✓ URL detection in post content</div>
+                    <div>✓ Toast auto-close after 3 seconds</div>
+                    <div>✓ Story statistics calculation</div>
+                    <div>✓ Dark/Light theme compatibility</div>
+                    <div>✓ Mobile responsive design</div>
+                    <div>✓ PWA installation</div>
+                    <div>✓ Offline functionality</div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-bold mb-3">Browser Testing</h3>
+                    <ul class="space-y-1">
+                        <li>✓ Chrome 131 (Desktop & Mobile)</li>
+                        <li>✓ Firefox 133 (Desktop)</li>
+                        <li>✓ Safari 17 (Desktop & iOS)</li>
+                        <li>✓ Edge 131 (Desktop)</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-3">Device Testing</h3>
+                    <ul class="space-y-1">
+                        <li>✓ Desktop (1920x1080)</li>
+                        <li>✓ Laptop (1366x768)</li>
+                        <li>✓ Tablet (768x1024)</li>
+                        <li>✓ Mobile (375x667)</li>
+                        <li>✓ Mobile (414x896)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Migration -->
+        <section class="mb-12 bg-yellow-50 rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 text-yellow-600 border-b-2 border-yellow-200 pb-2">MIGRATION & UPGRADE</h2>
+            
+            <div class="mb-6">
+                <h3 class="text-lg font-bold mb-3">Upgrade dari Version 26.02.04</h3>
+                <ol class="list-decimal list-inside space-y-2 ml-4">
+                    <li>Backup data existing (Export)</li>
+                    <li>Update aplikasi ke version 26.02.08</li>
+                    <li>Refresh browser / Restart PWA</li>
+                    <li>Data otomatis compatible (no migration needed)</li>
+                    <li>Fitur baru langsung tersedia</li>
+                </ol>
+            </div>
+            
+            <div class="bg-green-100 border-l-4 border-green-500 p-4 mb-4">
+                <p class="font-bold">Breaking Changes</p>
+                <p>TIDAK ADA - Backward compatible 100%</p>
+            </div>
+            
+            <div class="bg-blue-100 border-l-4 border-blue-500 p-4">
+                <p class="font-bold">New Permissions</p>
+                <p>Microphone access (untuk voice recorder) - User akan diminta permission saat pertama kali gunakan fitur</p>
+            </div>
+        </section>
+
+        <!-- Known Issues -->
+        <section class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 border-b-2 border-blue-200 pb-2">KNOWN ISSUES & LIMITATIONS</h2>
+            
+            <div class="mb-6">
+                <h3 class="text-lg font-bold mb-3">Limitations</h3>
+                <div class="space-y-3">
+                    <div>
+                        <p class="font-semibold">1. Audio Recording</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>Maximum 3 minutes per recording</li>
+                            <li>1 audio per post</li>
+                            <li>Format tergantung browser (WebM/MP4)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="font-semibold">2. URL Detection</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>Tidak ada preview card/metadata</li>
+                            <li>Alasan: Offline-first & CORS</li>
+                            <li>Hanya clickable link dengan icon</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="font-semibold">3. Browser Support</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>MediaRecorder API tidak support di browser lama</li>
+                            <li>Fallback: Hide voice recorder button</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-green-100 border-l-4 border-green-500 p-4">
+                <p class="font-bold">Known Issues</p>
+                <p>TIDAK ADA - All features tested and working</p>
+            </div>
+        </section>
+
+        <!-- Credits -->
+        <section class="mb-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 text-blue-600 border-b-2 border-blue-200 pb-2">CREDITS & ACKNOWLEDGMENTS</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h3 class="text-lg font-bold mb-3 text-gray-700">Developer</h3>
+                    <p class="font-bold">M. Nafiurohman</p>
+                    <ul class="space-y-1 mt-2">
+                        <li>Email: <a href="mailto:nafiurohman25@gmail.com" class="text-blue-600 hover:underline">nafiurohman25@gmail.com</a></li>
+                        <li>Website: <a href="https://nafiurohman.pages.dev" class="text-blue-600 hover:underline">nafiurohman.pages.dev</a></li>
+                        <li>GitHub: <a href="https://github.com/nafiurohman" class="text-blue-600 hover:underline">@nafiurohman</a></li>
+                        <li>Instagram: <a href="https://instagram.com/nafiurohman_" class="text-blue-600 hover:underline">@nafiurohman_</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-3 text-gray-700">Organization</h3>
+                    <p class="font-bold">Bezn Project</p>
+                    <ul class="space-y-1 mt-2">
+                        <li>Website: <a href="https://beznproject.web.id" class="text-blue-600 hover:underline">beznproject.web.id</a></li>
+                        <li>Email: <a href="mailto:support@beznproject.web.id" class="text-blue-600 hover:underline">support@beznproject.web.id</a></li>
+                        <li>Instagram: <a href="https://instagram.com/bezn.project" class="text-blue-600 hover:underline">@bezn.project</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-lg font-bold mb-3 text-gray-700">Open Source Libraries</h3>
+                <div class="grid md:grid-cols-3 gap-3">
+                    <div>• React - UI Library</div>
+                    <div>• Vite - Build Tool</div>
+                    <div>• Tailwind CSS - CSS Framework</div>
+                    <div>• shadcn/ui - UI Components</div>
+                    <div>• Framer Motion - Animation Library</div>
+                    <div>• Lucide React - Icon Library</div>
+                    <div>• idb - IndexedDB Wrapper</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Support -->
+        <section class="mb-12 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 border-b-2 border-white pb-2">CONTACT & SUPPORT</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h3 class="text-lg font-bold mb-3">Developer Contact</h3>
+                    <ul class="space-y-2">
+                        <li>📧 Email: nafiurohman25@gmail.com</li>
+                        <li>📱 WhatsApp: 081358198565</li>
+                        <li>🌐 Website: nafiurohman.pages.dev</li>
+                        <li>📷 Instagram: @nafiurohman_</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-3">Bezn Project Contact</h3>
+                    <ul class="space-y-2">
+                        <li>📧 Email: support@beznproject.web.id</li>
+                        <li>📱 WhatsApp: 085189643588</li>
+                        <li>🌐 Website: beznproject.web.id</li>
+                        <li>📷 Instagram: @bezn.project</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                <h3 class="text-lg font-bold mb-2">💰 Donation</h3>
+                <p>Jika selfQ bermanfaat, dukung pengembangan:</p>
+                <p class="font-bold mt-2">Bank Jago: 507938016692</p>
+                <p>a.n M. Nafiurohman</p>
+            </div>
+        </section>
+
+        <!-- License -->
+        <section class="mb-12 bg-gray-100 rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800 border-b-2 border-gray-300 pb-2">LICENSE & COPYRIGHT</h2>
+            
+            <div class="space-y-3">
+                <p><strong>License:</strong> MIT License</p>
+                <p><strong>Copyright:</strong> © 2025 M. Nafiurohman. All rights reserved.</p>
+                
+                <div class="bg-white p-4 rounded mt-4 text-sm">
+                    <p class="mb-2">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+                    
+                    <p class="mb-2">The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+                    
+                    <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-8 border-t-4 border-blue-600">
+            <div class="mb-4">
+                <p class="text-lg font-bold">Generated: 8 Februari 2025</p>
+                <p class="text-lg">Version: <span class="text-blue-600 font-bold">26.02.08</span></p>
+                <p class="text-lg">Codename: <span class="text-purple-600 font-bold">Voice & Stats Edition</span></p>
+            </div>
+            
+            <div class="mb-4">
+                <p>Developer: <strong>M. Nafiurohman</strong></p>
+                <p>Organization: <strong>Bezn Project</strong></p>
+            </div>
+            
+            <div class="text-2xl font-bold text-blue-600 mb-2">
+                Terima kasih telah menggunakan selfQ!
+            </div>
+            <div class="mt-6 space-x-4">
+                <a href="/docs" class="inline-block bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors font-semibold">
+                    Lihat Dokumentasi Lainnya
+                </a>
+                <a href="https://selfq.bezn.web.id" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                </a>
+                    Kunjungi selfQ
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+            class="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors">
+        ↑
+    </button>
+</body>
+</html>

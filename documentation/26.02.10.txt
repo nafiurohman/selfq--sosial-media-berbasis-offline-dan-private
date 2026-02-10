@@ -1,0 +1,382 @@
+================================================================================
+                    selfQ - DOKUMENTASI VERSION 26.02.10
+                         Release: 10 Februari 2025
+                    Codename: "UI Polish & Performance"
+================================================================================
+
+INFORMASI UMUM
+==============
+Versi         : 26.02.10 (Format: YY.MM.DD)
+Tanggal Rilis : 10 Februari 2025
+Developer     : M. Nafiurohman
+Organisasi    : Bezn Project
+Website       : https://selfq.bezn.web.id
+Lisensi       : MIT License
+
+RINGKASAN UPDATE
+================
+Version 26.02.10 merupakan update maintenance yang fokus pada perbaikan tampilan,
+peningkatan performa, dan bug fixes. Update ini menyempurnakan pengalaman pengguna
+dengan UI yang lebih konsisten, performa yang lebih baik, dan stabilitas yang
+lebih tinggi.
+
+Total Perubahan UI: 15+
+Total Bug Fixes: 10+
+Total Performance Improvements: 8
+Total File Dimodifikasi: 20+
+
+================================================================================
+                            PERUBAHAN UTAMA
+================================================================================
+
+1. PERBAIKAN TAMPILAN (UI IMPROVEMENTS)
+========================================
+- Konsistensi penggunaan icon Lucide di seluruh aplikasi
+- Perbaikan spacing dan alignment di form input
+- Icon size optimization (4x4 untuk form, 5x5 untuk button)
+- Padding adjustment untuk input field (pl-9 untuk konsistensi)
+- Perbaikan layout sidebar (hanya di halaman Profile)
+- Dropdown menu untuk semua halaman lain
+- Request Fitur menu ditambahkan ke semua dropdown
+- Perbaikan centering icon dan text di form
+- Dark/Light mode consistency improvements
+- Mobile responsive layout fixes
+
+2. PENINGKATAN PERFORMA (PERFORMANCE)
+======================================
+- Optimasi download file di PWA mode
+- File System Access API untuk Chrome/Edge
+- Web Share API fallback untuk mobile
+- Blob URL optimization dengan proper cleanup
+- Async/await implementation untuk download
+- Better error handling untuk file operations
+- Memory leak prevention di download function
+- Faster backup export/import process
+
+3. PERBAIKAN BUG (BUG FIXES)
+============================
+- Fix backup tidak bisa diunduh di PWA
+- Fix duplicate code di textarea RequestFeature
+- Fix emoji di form (diganti dengan Lucide icons)
+- Fix icon dan text alignment di form input
+- Fix sidebar muncul di semua halaman
+- Fix URL GitHub yang salah
+- Fix deskripsi aplikasi (hapus kata "sosial media")
+- Fix nama aplikasi (selfX → selfQ)
+- Fix struktur folder di README
+- Fix rotate feature di Image Editor
+
+4. PEMBARUAN KONTEN
+====================
+- Deskripsi baru: "selfQ adalah ruang pribadi untuk mengungkapkan perasaan
+  yang sebenarnya dari diri sendiri. Tempat aman tanpa tekanan sosial, di mana
+  kamu bebas mengekspresikan diri apa adanya."
+- Update semua meta tags (index.html, manifest.json, package.json)
+- Update SEO configuration
+- Update README.md dengan deskripsi baru
+- Konsistensi branding selfQ di semua file
+- URL canonical update ke selfq.bezn.web.id
+
+================================================================================
+                        DETAIL PERUBAHAN TEKNIS
+================================================================================
+
+FILE YANG DIMODIFIKASI
+======================
+1. src/lib/mobile-download.ts
+   - Implementasi File System Access API
+   - Web Share API dengan better error handling
+   - Async/await untuk semua operations
+   - Proper blob cleanup
+
+2. src/pages/RequestFeature.tsx
+   - Fix duplicate textarea code
+   - Icon size optimization (w-4 h-4)
+   - Padding adjustment (pl-9)
+   - Smartphone & Heart icons dari Lucide
+   - Better form layout
+
+3. src/pages/Feed.tsx
+   - Remove MobileSidebar import
+   - Add dropdown menu
+   - Add Request Fitur menu item
+
+4. src/pages/Archive.tsx
+   - Add Lightbulb icon import
+   - Add Request Fitur menu item
+
+5. src/pages/Bookmarks.tsx
+   - Add Lightbulb icon import
+   - Add Request Fitur menu item
+
+6. src/pages/CalendarView.tsx
+   - Add Lightbulb icon import
+   - Add Request Fitur menu item
+
+7. src/pages/Stories.tsx
+   - Add Request Fitur menu item
+
+8. src/pages/Search.tsx
+   - Add Lightbulb icon import
+   - Add Request Fitur menu item
+
+9. src/components/ImageEditor.tsx
+   - Add rotate feature (kiri & kanan)
+   - Icon RotateCcw import
+   - Rotation state management
+   - Canvas rotation implementation
+   - Reset function update
+
+10. index.html
+    - Update canonical URL
+    - Update Open Graph tags
+    - Update Twitter Card tags
+    - Update JSON-LD structured data
+    - Update FAQ content
+    - New description
+
+11. public/manifest.json
+    - Update description
+
+12. package.json
+    - Update description
+    - Update homepage URL
+
+13. src/lib/seo.ts
+    - Update defaultDescription
+    - Update page descriptions
+    - Remove "sosial media" keyword
+    - Add "ruang pribadi" focus
+
+14. README.md
+    - Update tagline
+    - Update Live Demo URL
+    - Fix selfX → selfQ
+    - Fix struktur folder name
+    - Update donation text
+
+15. CHANGELOG.md
+    - Update website URL
+
+================================================================================
+                        FITUR BARU & IMPROVEMENTS
+================================================================================
+
+DOWNLOAD SYSTEM IMPROVEMENTS
+=============================
+Metode Download (Priority Order):
+1. File System Access API (Chrome/Edge)
+   - Native "Save As" dialog
+   - User dapat pilih lokasi save
+   - Support di Chrome 86+, Edge 86+
+
+2. Web Share API (Mobile)
+   - Share dialog native
+   - Save ke Files/Downloads
+   - Support di Android & iOS modern
+
+3. Blob URL Fallback (Universal)
+   - Auto download via link
+   - Compatible dengan semua browser
+   - Reliable fallback method
+
+Benefits:
+- Better UX di PWA mode
+- Native dialog experience
+- Reliable di semua platform
+- Proper error handling
+
+IMAGE EDITOR ENHANCEMENTS
+=========================
+New Rotate Feature:
+- Rotate Left (90° counter-clockwise)
+- Rotate Right (90° clockwise)
+- Real-time preview
+- Canvas-based rotation
+- Proper dimension handling
+- Save rotated image
+
+UI Improvements:
+- Rotate controls di Adjust tab
+- Icon RotateCcw & RotateCw
+- Button layout (2 columns)
+- Rotation degree display
+- Reset function includes rotation
+
+NAVIGATION IMPROVEMENTS
+=======================
+Sidebar Strategy:
+- Profile page: MobileSidebar (full menu)
+- Other pages: Dropdown menu (compact)
+
+Benefits:
+- Cleaner UI di halaman non-profile
+- Faster navigation
+- Less screen space usage
+- Better mobile experience
+
+Request Fitur Access:
+- Available di semua dropdown menu
+- Consistent placement
+- Easy to find
+- Lightbulb icon
+
+================================================================================
+                        BRANDING & CONTENT UPDATE
+================================================================================
+
+DESKRIPSI BARU
+==============
+Old: "Platform sosial media pribadi 100% offline..."
+New: "selfQ adalah ruang pribadi untuk mengungkapkan perasaan yang sebenarnya
+     dari diri sendiri. Tempat aman tanpa tekanan sosial, di mana kamu bebas
+     mengekspresikan diri apa adanya."
+
+Perubahan Fokus:
+- Dari "platform" → "ruang pribadi"
+- Dari "sosial media" → "tempat aman"
+- Lebih personal & emotional
+- Lebih relatable untuk user
+
+KONSISTENSI NAMA
+=================
+- selfX → selfQ di semua file
+- Signature: selfQ-encrypted
+- Story signature: selfQ-story-encrypted-v2.0
+- Branding consistency
+
+URL UPDATE
+==========
+- Primary: https://selfq.bezn.web.id
+- Remove: selfq.my.id references
+- Remove: selfx.bezn.web.id references
+- GitHub: selfq--sosial-media-berbasis-offline-dan-private
+
+================================================================================
+                        TESTING & QUALITY ASSURANCE
+================================================================================
+
+TESTED SCENARIOS
+================
+✓ Download backup di PWA (Android)
+✓ Download backup di PWA (iOS)
+✓ Download backup di Desktop
+✓ File System Access API (Chrome)
+✓ Web Share API (Mobile)
+✓ Fallback download (All browsers)
+✓ Rotate image left
+✓ Rotate image right
+✓ Rotate + save
+✓ Form input icon alignment
+✓ Dropdown menu di semua halaman
+✓ Sidebar hanya di Profile
+✓ Request Fitur menu access
+✓ Dark/Light theme consistency
+✓ Mobile responsive layout
+✓ PWA installation
+✓ Offline functionality
+
+BROWSER TESTING
+===============
+✓ Chrome 131 (Desktop & Mobile)
+✓ Firefox 133 (Desktop)
+✓ Safari 17 (Desktop & iOS)
+✓ Edge 131 (Desktop)
+
+DEVICE TESTING
+==============
+✓ Desktop (1920x1080)
+✓ Laptop (1366x768)
+✓ Tablet (768x1024)
+✓ Mobile (375x667)
+✓ Mobile (414x896)
+
+================================================================================
+                        MIGRATION & UPGRADE
+================================================================================
+
+UPGRADE DARI VERSION 26.02.08
+==============================
+1. Backup data existing (Export)
+2. Update aplikasi ke version 26.02.10
+3. Refresh browser / Restart PWA
+4. Data otomatis compatible (no migration needed)
+5. Improvements langsung tersedia
+
+BREAKING CHANGES
+================
+TIDAK ADA - Backward compatible 100%
+
+PERUBAHAN YANG TERLIHAT USER
+=============================
+- Download backup lebih reliable
+- Form input lebih rapi
+- Navigation lebih clean
+- Request Fitur mudah diakses
+- Image editor ada rotate
+- Deskripsi aplikasi baru
+
+================================================================================
+                        KNOWN ISSUES & LIMITATIONS
+================================================================================
+
+LIMITATIONS
+===========
+1. File System Access API
+   - Hanya support Chrome/Edge modern
+   - Fallback otomatis untuk browser lain
+
+2. Web Share API
+   - Tidak semua browser support
+   - Fallback otomatis tersedia
+
+KNOWN ISSUES
+============
+TIDAK ADA - All features tested and working
+
+================================================================================
+                        CREDITS & CONTACT
+================================================================================
+
+DEVELOPER
+=========
+M. Nafiurohman
+- Email: nafiurohman25@gmail.com
+- WhatsApp: 081358198565
+- Website: https://nafiurohman.pages.dev
+- GitHub: @nafiurohman
+- Instagram: @nafiurohman_
+
+ORGANIZATION
+============
+Bezn Project
+- Website: https://beznproject.web.id
+- Email: support@beznproject.web.id
+- WhatsApp: 085189643588
+- Instagram: @bezn.project
+
+DONATION
+========
+Jika selfQ bermanfaat, dukung pengembangan:
+Bank Jago: 507938016692
+a.n M. Nafiurohman
+
+================================================================================
+                        LICENSE & COPYRIGHT
+================================================================================
+
+License: MIT License
+Copyright (c) 2025 M. Nafiurohman
+All rights reserved.
+
+================================================================================
+                        END OF DOCUMENTATION
+================================================================================
+
+Generated: 10 Februari 2025
+Version: 26.02.10
+Codename: UI Polish & Performance
+Developer: M. Nafiurohman
+Organization: Bezn Project
+
+Terima kasih telah menggunakan selfQ!

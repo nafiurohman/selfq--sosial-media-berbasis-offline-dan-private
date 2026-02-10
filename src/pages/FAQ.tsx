@@ -35,24 +35,24 @@ export default function FAQ() {
 
   const faqData = [
     {
-      category: "Dasar-dasar selfX",
+      category: "Dasar-dasar selfQ",
       icon: HelpCircle,
       questions: [
         {
-          q: "Apa itu selfX?",
-          a: "selfX adalah platform journaling pribadi yang 100% offline. Ini adalah ruang aman untuk menulis pikiran, perasaan, dan pengalaman Anda tanpa khawatir data bocor atau diintip pihak lain. Semua data tersimpan lokal di perangkat Anda dengan enkripsi tingkat tinggi."
+          q: "Apa itu selfQ?",
+          a: "selfQ adalah platform journaling pribadi yang 100% offline. Ini adalah ruang aman untuk menulis pikiran, perasaan, dan pengalaman Anda tanpa khawatir data bocor atau diintip pihak lain. Semua data tersimpan lokal di perangkat Anda dengan enkripsi tingkat tinggi."
         },
         {
-          q: "Apakah selfX benar-benar gratis?",
-          a: "Ya, selfX sepenuhnya gratis tanpa iklan, tracking, atau biaya tersembunyi. Ini adalah proyek open source dari Bezn Project yang bertujuan memberikan privasi digital kepada semua orang."
+          q: "Apakah selfQ benar-benar gratis?",
+          a: "Ya, selfQ sepenuhnya gratis tanpa iklan, tracking, atau biaya tersembunyi. Ini adalah proyek open source dari Bezn Project yang bertujuan memberikan privasi digital kepada semua orang."
         },
         {
-          q: "Siapa yang membuat selfX?",
-          a: "selfX dikembangkan oleh Bezn Project, sebuah studio kreatif dan lab riset yang fokus pada teknologi privacy-first dan solusi digital yang memberdayakan pengguna."
+          q: "Siapa yang membuat selfQ?",
+          a: "selfQ dikembangkan oleh Bezn Project, sebuah studio kreatif dan lab riset yang fokus pada teknologi privacy-first dan solusi digital yang memberdayakan pengguna."
         },
         {
-          q: "Apakah selfX tersedia untuk semua perangkat?",
-          a: "Ya, selfX adalah Progressive Web App (PWA) yang bisa diakses melalui browser modern di desktop, tablet, dan smartphone. Anda juga bisa menginstalnya seperti aplikasi native di Android dan iOS."
+          q: "Apakah selfQ tersedia untuk semua perangkat?",
+          a: "Ya, selfQ adalah Progressive Web App (PWA) yang bisa diakses melalui browser modern di desktop, tablet, dan smartphone. Anda juga bisa menginstalnya seperti aplikasi native di Android dan iOS."
         }
       ]
     },
@@ -61,8 +61,8 @@ export default function FAQ() {
       icon: Shield,
       questions: [
         {
-          q: "Bagaimana selfX melindungi privasi saya?",
-          a: "selfX menggunakan pendekatan 'privacy by design' dengan enkripsi AES-256-GCM berlapis salt. Data Anda tidak pernah meninggalkan perangkat, tidak ada server yang menyimpan informasi pribadi, dan tidak ada tracking atau analytics."
+          q: "Bagaimana selfQ melindungi privasi saya?",
+          a: "selfQ menggunakan pendekatan 'privacy by design' dengan enkripsi AES-256-GCM berlapis salt. Data Anda tidak pernah meninggalkan perangkat, tidak ada server yang menyimpan informasi pribadi, dan tidak ada tracking atau analytics."
         },
         {
           q: "Apakah data saya aman jika perangkat hilang atau rusak?",
@@ -70,11 +70,11 @@ export default function FAQ() {
         },
         {
           q: "Bisakah pihak lain membaca data saya?",
-          a: "Tidak. Bahkan pengembang selfX tidak bisa membaca data Anda karena enkripsi dilakukan di sisi klien dengan kunci yang hanya Anda ketahui. Tanpa password Anda, data tidak bisa dibuka."
+          a: "Tidak. Bahkan pengembang selfQ tidak bisa membaca data Anda karena enkripsi dilakukan di sisi klien dengan kunci yang hanya Anda ketahui. Tanpa password Anda, data tidak bisa dibuka."
         },
         {
-          q: "Apakah selfX mengumpulkan data analytics?",
-          a: "Tidak sama sekali. selfX tidak menggunakan Google Analytics, Facebook Pixel, atau layanan tracking lainnya. Tidak ada cookies, tidak ada fingerprinting, dan tidak ada pengumpulan data."
+          q: "Apakah selfQ mengumpulkan data analytics?",
+          a: "Tidak sama sekali. selfQ tidak menggunakan Google Analytics, Facebook Pixel, atau layanan tracking lainnya. Tidak ada cookies, tidak ada fingerprinting, dan tidak ada pengumpulan data."
         }
       ]
     },
@@ -83,20 +83,20 @@ export default function FAQ() {
       icon: Wifi,
       questions: [
         {
-          q: "Bagaimana selfX bisa bekerja offline?",
-          a: "selfX menggunakan teknologi Service Worker dan IndexedDB untuk menyimpan semua data dan aset aplikasi di perangkat Anda. Setelah instalasi pertama, tidak perlu koneksi internet untuk menggunakan aplikasi."
+          q: "Bagaimana selfQ bisa bekerja offline?",
+          a: "selfQ menggunakan teknologi Service Worker dan IndexedDB untuk menyimpan semua data dan aset aplikasi di perangkat Anda. Setelah instalasi pertama, tidak perlu koneksi internet untuk menggunakan aplikasi."
         },
         {
-          q: "Apakah saya perlu internet untuk menginstall selfX?",
-          a: "Ya, Anda perlu koneksi internet hanya untuk instalasi pertama. Setelah itu, selfX bisa digunakan sepenuhnya offline."
+          q: "Apakah saya perlu internet untuk menginstall selfQ?",
+          a: "Ya, Anda perlu koneksi internet hanya untuk instalasi pertama. Setelah itu, selfQ bisa digunakan sepenuhnya offline."
         },
         {
-          q: "Berapa banyak storage yang dibutuhkan selfX?",
-          a: "Aplikasi selfX sendiri hanya membutuhkan sekitar 5-10MB. Storage untuk data Anda tergantung pada jumlah post, foto, dan video yang Anda simpan. Setiap foto dibatasi 10MB dan video 20MB."
+          q: "Berapa banyak storage yang dibutuhkan selfQ?",
+          a: "Aplikasi selfQ sendiri hanya membutuhkan sekitar 5-10MB. Storage untuk data Anda tergantung pada jumlah post, foto, dan video yang Anda simpan. Setiap foto dibatasi 10MB dan video 20MB."
         },
         {
           q: "Bisakah saya sync data antar perangkat?",
-          a: "Tidak ada fitur sync otomatis karena selfX tidak menggunakan server. Namun, Anda bisa mengekspor data dari satu perangkat dan mengimpornya ke perangkat lain secara manual."
+          a: "Tidak ada fitur sync otomatis karena selfQ tidak menggunakan server. Namun, Anda bisa mengekspor data dari satu perangkat dan mengimpornya ke perangkat lain secara manual."
         }
       ]
     },
@@ -114,7 +114,7 @@ export default function FAQ() {
         },
         {
           q: "Bisakah saya restore data di perangkat berbeda?",
-          a: "Ya, file backup (.json) bisa diimpor ke perangkat apapun yang menjalankan selfX. Pastikan Anda ingat password untuk membuka file backup."
+          a: "Ya, file backup (.json) bisa diimpor ke perangkat apapun yang menjalankan selfQ. Pastikan Anda ingat password untuk membuka file backup."
         },
         {
           q: "Apakah file backup aman?",
@@ -164,7 +164,7 @@ export default function FAQ() {
         },
         {
           q: "Bisakah saya mengatur tema atau tampilan?",
-          a: "Ya, selfX mendukung light mode dan dark mode yang bisa diatur di Settings. Tema akan mengikuti preferensi sistem secara default."
+          a: "Ya, selfQ mendukung light mode dan dark mode yang bisa diatur di Settings. Tema akan mengikuti preferensi sistem secara default."
         }
       ]
     },
@@ -196,8 +196,8 @@ export default function FAQ() {
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-primary/5 via-background to-primary/5">
       {/* SEO Meta Tags */}
       <div style={{ display: 'none' }}>
-        <h1>FAQ selfX - Pertanyaan yang Sering Diajukan</h1>
-        <p>Temukan jawaban untuk pertanyaan umum tentang selfX, platform journaling pribadi offline dengan enkripsi AES-256. Pelajari cara backup, restore, dan menggunakan fitur-fitur selfX.</p>
+        <h1>FAQ selfQ - Pertanyaan yang Sering Diajukan</h1>
+        <p>Temukan jawaban untuk pertanyaan umum tentang selfQ, platform journaling pribadi offline dengan enkripsi AES-256. Pelajari cara backup, restore, dan menggunakan fitur-fitur selfQ.</p>
       </div>
 
       {/* Header */}
@@ -218,7 +218,7 @@ export default function FAQ() {
             className="gap-2"
           >
             <HelpCircle className="w-4 h-4" />
-            <span className="hidden sm:inline">Tentang selfX</span>
+            <span className="hidden sm:inline">Tentang selfQ</span>
           </Button>
         </nav>
       </header>
@@ -247,7 +247,7 @@ export default function FAQ() {
             transition={{ delay: 0.1 }}
             className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto"
           >
-            Temukan jawaban untuk pertanyaan umum tentang selfX. 
+            Temukan jawaban untuk pertanyaan umum tentang selfQ. 
             Jika tidak menemukan jawaban yang Anda cari, jangan ragu untuk menghubungi kami.
           </motion.p>
         </div>
@@ -323,7 +323,7 @@ export default function FAQ() {
                 onClick={() => navigate('/about')}
                 className="gap-2"
               >
-                Tentang selfX
+                Tentang selfQ
               </Button>
             </div>
           </motion.div>

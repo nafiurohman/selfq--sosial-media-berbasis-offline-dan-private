@@ -18,6 +18,7 @@ import { ShareModal } from '@/components/ShareModal';
 import { MediaViewer } from '@/components/MediaViewer';
 import { addComment, deleteComment, setBookmark, getBookmarkCategories, toggleArchive } from '@/lib/db';
 import { linkifyText } from '@/lib/urlUtils';
+import { parseMarkdown } from '@/lib/markdown';
 import { toast } from '@/lib/toast';
 
 interface PostCardProps {
@@ -123,7 +124,7 @@ export const PostCard = forwardRef<HTMLElement, PostCardProps>(({ post, onLike, 
     const extension = item.type === 'image' ? 'jpg' : item.type === 'video' ? 'mp4' : 'webm';
     const link = document.createElement('a');
     link.href = item.data;
-    link.download = `selfX_${timestamp}_${item.id.slice(-6)}.${extension}`;
+    link.download = `selfQ_${timestamp}_${item.id.slice(-6)}.${extension}`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -162,8 +163,13 @@ export const PostCard = forwardRef<HTMLElement, PostCardProps>(({ post, onLike, 
   // Check if post has media (photo or video cannot be shared)
   const hasMedia = currentPost.image || currentPost.video || (currentPost.media && currentPost.media.length > 0);
 
-  // Linkify content
-  const linkedContent = useMemo(() => linkifyText(currentPost.content), [currentPost.content]);
+  // Process content - parse markdown then linkify URLs
+  const processedContent = useMemo(() => {
+    // First parse markdown
+    const markdown = parseMarkdown(currentPost.content);
+    // Then linkify URLs
+    return linkifyText(markdown);
+  }, [currentPost.content]);
 
   return (
     <>
@@ -255,8 +261,8 @@ export const PostCard = forwardRef<HTMLElement, PostCardProps>(({ post, onLike, 
               </h3>
             )}
             <div 
-              className="text-foreground whitespace-pre-wrap break-words leading-relaxed prose prose-sm max-w-none"
-              dangerouslySetInnerHTML={{ __html: linkedContent }}
+              className="text-foreground whitespace-pre-wrap break-words leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: processedContent }}
             />
             
             {/* Multi-media display */}

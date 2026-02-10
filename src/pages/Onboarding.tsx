@@ -75,7 +75,7 @@ export default function Onboarding() {
     try {
       const text = await file.text();
       
-      // Decrypt and validate selfX signature
+      // Decrypt and validate selfQ signature
       const { decryptData } = await import('@/lib/crypto');
       const data = await decryptData<{
         version: string;
@@ -84,9 +84,9 @@ export default function Onboarding() {
         encrypted: boolean;
       }>(text);
       
-      // Validate selfX backup structure
+      // Validate selfQ backup structure
       if (!data.version || !data.user || !Array.isArray(data.posts) || !data.encrypted) {
-        throw new Error('File bukan backup selfX yang valid');
+        throw new Error('File bukan backup selfQ yang valid');
       }
       
       await initDB();
@@ -100,8 +100,8 @@ export default function Onboarding() {
     } catch (error) {
       console.error('Import failed:', error);
       if (error instanceof Error) {
-        if (error.message.includes('Invalid selfX backup')) {
-          toast.error('File bukan backup selfX yang valid');
+        if (error.message.includes('Invalid selfQ backup')) {
+          toast.error('File bukan backup selfQ yang valid');
         } else if (error.message.includes('atob')) {
           toast.error('File rusak atau format tidak didukung');
         } else {
@@ -144,7 +144,7 @@ export default function Onboarding() {
                     transition={{ type: 'spring', damping: 10 }}
                     className="w-20 h-20 rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-lg"
                   >
-                    <img src="/images/logo/logo.png" alt="selfX Logo" className="w-full h-full rounded-2xl" />
+                    <img src="/images/logo/logo.png" alt="selfQ Logo" className="w-full h-full rounded-2xl" />
                   </motion.div>
                   <h1 className="text-2xl font-bold">Selamat Datang!</h1>
                   <p className="text-muted-foreground mt-2">
@@ -229,7 +229,7 @@ export default function Onboarding() {
                           <div className="flex-1">
                             <h3 className="font-semibold text-lg">Pelajari Lebih Lanjut</h3>
                             <p className="text-sm text-muted-foreground mt-1">
-                              Tentang selfX dan fitur-fiturnya
+                              Tentang selfQ dan fitur-fiturnya
                             </p>
                           </div>
                           <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-info transition-colors" />
@@ -237,7 +237,7 @@ export default function Onboarding() {
                       </button>
                     </TooltipTrigger>
                     <TooltipContent className="hidden md:block">
-                      <p>Pelajari lebih lanjut tentang selfX</p>
+                      <p>Pelajari lebih lanjut tentang selfQ</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
@@ -264,7 +264,7 @@ export default function Onboarding() {
                         </h4>
                         <p className="text-xs text-muted-foreground mt-0.5">
                           {isInstalled 
-                            ? 'selfX sudah terinstall di perangkatmu' 
+                            ? 'selfQ sudah terinstall di perangkatmu' 
                             : 'Sangat disarankan agar data tersimpan di perangkat'}
                         </p>
                       </div>
@@ -281,7 +281,7 @@ export default function Onboarding() {
                             </Button>
                           </TooltipTrigger>
                           <TooltipContent className="hidden md:block">
-                            <p>Install selfX sebagai aplikasi di perangkatmu</p>
+                            <p>Install selfQ sebagai aplikasi di perangkatmu</p>
                           </TooltipContent>
                         </Tooltip>
                       )}
@@ -319,11 +319,11 @@ export default function Onboarding() {
               >
                 <div className="text-center mb-8">
                   <div className="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center">
-                    <img src="/images/logo/logo.png" alt="selfX Logo" className="w-full h-full rounded-2xl" />
+                    <img src="/images/logo/logo.png" alt="selfQ Logo" className="w-full h-full rounded-2xl" />
                   </div>
                   <h1 className="text-2xl font-bold">Impor Data</h1>
                   <p className="text-muted-foreground mt-2">
-                    Pilih file backup selfX (.json)
+                    Pilih file backup selfQ (.json)
                   </p>
                 </div>
 
@@ -393,7 +393,7 @@ export default function Onboarding() {
               >
                 <div className="text-center mb-8">
                   <div className="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center">
-                    <img src="/images/logo/logo.png" alt="selfX Logo" className="w-full h-full rounded-2xl" />
+                    <img src="/images/logo/logo.png" alt="selfQ Logo" className="w-full h-full rounded-2xl" />
                   </div>
                   <h1 className="text-2xl font-bold">Buat Akun</h1>
                   <p className="text-muted-foreground mt-2">

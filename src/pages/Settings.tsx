@@ -93,7 +93,7 @@ export default function Settings() {
     try {
       const encryptedData = await exportAllData();
       const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
-      const filename = `selfx-backup-${timestamp}.json`;
+      const filename = `selfq-backup-${timestamp}.json`;
       
       await downloadFile(encryptedData, filename, 'application/json');
       toast.success('Data berhasil diekspor (terenkripsi)');
@@ -130,7 +130,7 @@ export default function Settings() {
       setShowImportDialog(true);
     } catch (error) {
       console.error('Import validation failed:', error);
-      toast.error('File tidak valid. Pastikan ini adalah backup selfX yang benar.');
+      toast.error('File tidak valid. Pastikan ini adalah backup selfQ yang benar.');
     } finally {
       setIsImporting(false);
       e.target.value = '';
@@ -170,9 +170,9 @@ export default function Settings() {
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title="Pengaturan - selfX"
-        description="Pengaturan aplikasi selfX - platform sosial media pribadi offline"
-        keywords="pengaturan selfx, settings, konfigurasi aplikasi"
+        title="Pengaturan - selfQ"
+        description="Pengaturan aplikasi selfQ - platform sosial media pribadi offline"
+        keywords="pengaturan selfq, settings, konfigurasi aplikasi"
       />
       
       {/* Navigation */}
@@ -293,7 +293,7 @@ export default function Settings() {
                   <div>
                     <p className="font-medium">Pusat Bantuan</p>
                     <p className="text-sm text-muted-foreground">
-                      Tutorial lengkap dan panduan menggunakan selfX
+                      Tutorial lengkap dan panduan menggunakan selfQ
                     </p>
                   </div>
                 </div>
@@ -307,7 +307,7 @@ export default function Settings() {
                 <div className="flex items-center gap-3">
                   <Shield className="w-5 h-5 text-green-600" />
                   <div>
-                    <p className="font-medium">Tentang selfX</p>
+                    <p className="font-medium">Tentang selfQ</p>
                     <p className="text-sm text-muted-foreground">
                       Informasi aplikasi, developer, dan teknologi
                     </p>
@@ -366,7 +366,7 @@ export default function Settings() {
                 <div className="flex-1">
                   <p className="font-medium">Belikan Developer Kopi ☕</p>
                   <p className="text-sm text-muted-foreground">
-                    selfX gratis selamanya! Dukung pengembangan dengan donasi
+                    selfQ gratis selamanya! Dukung pengembangan dengan donasi
                   </p>
                 </div>
               </div>

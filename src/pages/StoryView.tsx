@@ -135,9 +135,9 @@ export default function StoryView() {
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title={story.title ? `${story.title} - selfX` : 'Cerita - selfX'}
+        title={story.title ? `${story.title} - selfQ` : 'Cerita - selfQ'}
         description={story.synopsis || story.content.substring(0, 160)}
-        keywords={`cerita, ${story.category}, selfx`}
+        keywords={`cerita, ${story.category}, selfq`}
       />
       
       <Navigation />

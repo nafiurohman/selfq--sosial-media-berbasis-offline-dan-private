@@ -292,6 +292,24 @@
   .desktop-sidebar {
     @apply hidden lg:flex fixed left-0 top-0 h-full w-72 bg-white dark:bg-gray-900;
     @apply flex-col p-6 z-40 border-r border-gray-100 dark:border-gray-800;
+    @apply overflow-y-auto;
+  }
+  
+  /* Custom scrollbar for sidebar */
+  .desktop-sidebar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .desktop-sidebar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  .desktop-sidebar::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+  }
+  
+  .desktop-sidebar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-600;
   }
   
   /* Main content with 2-column layout */

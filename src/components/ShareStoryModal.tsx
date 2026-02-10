@@ -4,6 +4,7 @@ import { X, Download, Copy, Share2, CheckCircle, Shield } from 'lucide-react';
 import { toast } from '@/lib/toast';
 import { getUser } from '@/lib/storage';
 import { encryptStoryData } from '@/lib/storyEncryption';
+import { downloadFile } from '@/lib/mobile-download';
 
 interface ShareStoryModalProps {
   isOpen: boolean;
@@ -46,17 +47,11 @@ export function ShareStoryModal({ isOpen, onClose, story }: ShareStoryModalProps
     setIsEncrypting(true);
     try {
       const data = await generateShareData();
-      const blob = new Blob([data], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `selfX-story-encrypted-${story.title.replace(/[^a-zA-Z0-9]/g, '-')}.json`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      const filename = `selfQ-story-encrypted-${story.title.replace(/[^a-zA-Z0-9]/g, '-')}.json`;
+      await downloadFile(data, filename, 'application/json');
       toast.success('File cerita terenkripsi berhasil diunduh');
     } catch (error) {
+      console.error('Download story failed:', error);
       toast.error('Gagal mengenkripsi cerita');
     } finally {
       setIsEncrypting(false);
@@ -172,7 +167,7 @@ export function ShareStoryModal({ isOpen, onClose, story }: ShareStoryModalProps
                 <ul className="space-y-1 text-xs">
                   <li>• Enkripsi AES-256-GCM dengan 3 layer</li>
                   <li>• Salt berlapis untuk setiap layer</li>
-                  <li>• Signature selfX khusus untuk validasi</li>
+                  <li>• Signature selfQ khusus untuk validasi</li>
                   <li>• 100,000 iterasi PBKDF2 per layer</li>
                 </ul>
               </div>
@@ -183,7 +178,7 @@ export function ShareStoryModal({ isOpen, onClose, story }: ShareStoryModalProps
           <div className="mt-4 p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
             <p className="text-sm text-blue-700 dark:text-blue-400">
               <span className="font-medium">Catatan:</span> File JSON terenkripsi ini hanya dapat dibuka 
-              dengan selfX versi terbaru. Penerima dapat mengimpor menggunakan fitur "Terima Cerita".
+              dengan selfQ versi terbaru. Penerima dapat mengimpor menggunakan fitur "Terima Cerita".
             </p>
           </div>
         </div>

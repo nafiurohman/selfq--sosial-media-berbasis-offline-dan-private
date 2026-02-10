@@ -1,14 +1,14 @@
 /**
- * selfX Application Version
+ * selfQ Application Version
  * Format: YY.MM.DD (Year.Month.Day)
  */
 
 export const APP_VERSION = '26.01.08';
-export const APP_NAME = 'selfX';
+export const APP_NAME = 'selfQ';
 export const APP_DESCRIPTION = 'Sosial Media Pribadi Offline';
 export const APP_AUTHOR = 'M. Nafiurohman';
 export const APP_ORGANIZATION = 'Bezn Project';
-export const APP_WEBSITE = 'https://selfx.bezn.web.id';
+export const APP_WEBSITE = 'https://selfq.bezn.web.id';
 
 export const VERSION_INFO = {
   version: APP_VERSION,

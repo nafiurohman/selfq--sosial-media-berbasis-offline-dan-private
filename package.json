@@ -1,12 +1,12 @@
 {
-  "name": "selfx-sosial-media-pribadi",
+  "name": "selfq-ruang-pribadimu",
   "private": true,
-  "version": "26.01.08",
-  "description": "Platform sosial media pribadi 100% offline dengan enkripsi AES-256",
-  "homepage": "https://selfx.bezn.web.id",
+  "version": "26.02.10",
+  "description": "selfQ adalah ruang pribadi untuk mengungkapkan perasaan yang sebenarnya dari diri sendiri. Tempat aman tanpa tekanan sosial, bebas mengekspresikan diri apa adanya.",
+  "homepage": "https://selfq.bezn.web.id",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nafiurohman/selfx--sosial-media-pribadi.git"
+    "url": "https://github.com/nafiurohman/selfq--sosial-media-berbasis-offline-dan-private.git"
   },
   "author": {
     "name": "M. Nafiurohman",

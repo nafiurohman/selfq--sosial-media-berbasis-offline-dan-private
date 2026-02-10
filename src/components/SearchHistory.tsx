@@ -3,7 +3,7 @@ import { Clock, X, TrendingUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const MAX_HISTORY = 10;
-const STORAGE_KEY = 'selfx_search_history';
+const STORAGE_KEY = 'selfq_search_history';
 
 export function SearchHistory({ onSelect }: { onSelect: (query: string) => void }) {
   const [history, setHistory] = useState<string[]>([]);

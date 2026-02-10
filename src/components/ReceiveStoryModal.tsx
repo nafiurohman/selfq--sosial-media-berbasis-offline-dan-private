@@ -11,7 +11,7 @@ interface ReceiveStoryModalProps {
   onSuccess: () => void;
 }
 
-const SELFX_SIGNATURE = 'selfX-story-v1.0';
+const SELFX_SIGNATURE = 'selfQ-story-v1.0';
 
 export function ReceiveStoryModal({ isOpen, onClose, onSuccess }: ReceiveStoryModalProps) {
   const [isDragOver, setIsDragOver] = useState(false);
@@ -25,7 +25,7 @@ export function ReceiveStoryModal({ isOpen, onClose, onSuccess }: ReceiveStoryMo
     
     // Check signature first
     if (data.signature !== SELFX_SIGNATURE) {
-      throw new Error('File bukan dari selfX atau versi tidak kompatibel');
+      throw new Error('File bukan dari selfQ atau versi tidak kompatibel');
     }
 
     // Validate required fields
@@ -85,7 +85,7 @@ export function ReceiveStoryModal({ isOpen, onClose, onSuccess }: ReceiveStoryMo
       } else {
         // Handle legacy unencrypted format
         if (jsonData.signature !== SELFX_SIGNATURE) {
-          throw new Error('File bukan dari selfX atau versi tidak kompatibel');
+          throw new Error('File bukan dari selfQ atau versi tidak kompatibel');
         }
         storyData = jsonData;
       }
@@ -204,7 +204,7 @@ export function ReceiveStoryModal({ isOpen, onClose, onSuccess }: ReceiveStoryMo
                     Drop file JSON di sini atau klik untuk pilih
                   </p>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Hanya file JSON dari selfX yang diterima
+                    Hanya file JSON dari selfQ yang diterima
                   </p>
                 </div>
               </div>
@@ -255,7 +255,7 @@ export function ReceiveStoryModal({ isOpen, onClose, onSuccess }: ReceiveStoryMo
                 <ul className="space-y-1 text-xs">
                   <li>• Format: JSON (.json)</li>
                   <li>• Maksimal: 10MB</li>
-                  <li>• Dari selfX dengan signature valid</li>
+                  <li>• Dari selfQ dengan signature valid</li>
                   <li>• Mendukung format lama dan terenkripsi</li>
                 </ul>
               </div>

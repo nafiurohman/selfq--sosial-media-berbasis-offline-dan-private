@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Home, Search, Bookmark, User, Settings, ChevronDown, BookOpen, Calendar, Archive } from 'lucide-react';
+import { Home, Search, Bookmark, User, Settings, ChevronDown, BookOpen, Calendar, Archive, Lightbulb, Bug } from 'lucide-react';
 import { getUser } from '@/lib/storage';
 import {
   DropdownMenu,
@@ -60,8 +60,8 @@ export function Navigation({ onCompose, onReceiveShare }: NavigationProps) {
 
         {/* Logo 
         <div className="flex items-center gap-3 mb-8">
-          <img src="/images/logo/logo.png" alt="selfX Logo" className="w-10 h-10 rounded-2xl shadow-sm" />
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">selfX</h1>
+          <img src="/images/logo/logo.png" alt="selfQ Logo" className="w-10 h-10 rounded-2xl shadow-sm" />
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">selfQ</h1>
         </div>
         */}
 
@@ -114,6 +114,32 @@ export function Navigation({ onCompose, onReceiveShare }: NavigationProps) {
           >
             <Settings className="w-5 h-5" />
             <span>Pengaturan</span>
+          </button>
+          
+          <button
+            onClick={() => navigate('/request-feature')}
+            className={cn(
+              'w-full flex items-center gap-4 px-6 py-4 rounded-3xl transition-all duration-200 font-medium',
+              isActive('/request-feature')
+                ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
+                : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/50 hover:text-gray-800 dark:hover:text-gray-200'
+            )}
+          >
+            <Lightbulb className="w-5 h-5" />
+            <span>Request Fitur</span>
+          </button>
+          
+          <button
+            onClick={() => navigate('/report-bug')}
+            className={cn(
+              'w-full flex items-center gap-4 px-6 py-4 rounded-3xl transition-all duration-200 font-medium',
+              isActive('/report-bug')
+                ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
+                : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/50 hover:text-gray-800 dark:hover:text-gray-200'
+            )}
+          >
+            <Bug className="w-5 h-5" />
+            <span>Report Bug</span>
           </button>
         </div>
       </nav>

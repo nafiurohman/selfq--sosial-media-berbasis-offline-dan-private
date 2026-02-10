@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Archive, ChevronDown, User, Settings, Bookmark } from 'lucide-react';
+import { Archive, ChevronDown, User, Settings, Bookmark, Lightbulb, Bug } from 'lucide-react';
 import { getArchivedPosts, toggleLike, deletePost, toggleArchive, addPost } from '@/lib/db';
 import type { Post, MediaItem } from '@/lib/types';
 import { PostCard } from '@/components/PostCard';
@@ -69,9 +69,9 @@ export default function ArchivePage() {
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title="Arsip - selfX"
-        description="Post yang diarsipkan di selfX"
-        keywords="arsip selfx, archived posts"
+        title="Arsip - selfQ"
+        description="Post yang diarsipkan di selfQ"
+        keywords="arsip selfq, archived posts"
       />
       
       <Navigation />
@@ -81,7 +81,7 @@ export default function ArchivePage() {
         <header className="clean-nav sticky top-0 z-30 md:hidden">
           <div className="container flex items-center justify-between h-16 px-4">
             <div className="flex items-center gap-3">
-              <img src="/images/logo/logo.png" alt="selfX Logo" className="w-8 h-8 rounded-xl" />
+              <img src="/images/logo/logo.png" alt="selfQ Logo" className="w-8 h-8 rounded-xl" />
               <h1 className="text-lg font-bold">Arsip</h1>
             </div>
 
@@ -119,6 +119,14 @@ export default function ArchivePage() {
                   <DropdownMenuItem onClick={() => navigate('/settings')}>
                     <Settings className="w-4 h-4 mr-2" />
                     Pengaturan
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/request-feature')}>
+                    <Lightbulb className="w-4 h-4 mr-2" />
+                    Request Fitur
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/report-bug')}>
+                    <Bug className="w-4 h-4 mr-2" />
+                    Report Bug
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Settings, User, Bookmark, Archive } from 'lucide-react';
+import { ChevronDown, Settings, User, Bookmark, Archive, Lightbulb, Bug } from 'lucide-react';
 import { getUser } from '@/lib/storage';
 import { getAllPosts, addPost, deletePost, toggleLike, updatePost } from '@/lib/db';
 import type { Post, MediaItem } from '@/lib/types';
@@ -133,9 +133,9 @@ export default function Feed() {
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title="Feed - selfX"
-        description="Timeline postingan di selfX - platform sosial media pribadi offline yang mengutamakan privasi"
-        keywords="feed selfx, timeline, postingan pribadi, sosial media offline"
+        title="Feed - selfQ"
+        description="Timeline postingan di selfQ - platform sosial media pribadi offline yang mengutamakan privasi"
+        keywords="feed selfq, timeline, postingan pribadi, sosial media offline"
       />
       
       {/* Navigation */}
@@ -150,8 +150,8 @@ export default function Feed() {
         <header className="clean-nav sticky top-0 z-30 md:hidden">
           <div className="container flex items-center justify-between h-16 px-4">
             <div className="flex items-center gap-3">
-              <img src="/images/logo/logo.png" alt="selfX Logo" className="w-8 h-8 rounded-xl" />
-              <h1 className="text-lg font-bold">selfX</h1>
+              <img src="/images/logo/logo.png" alt="selfQ Logo" className="w-8 h-8 rounded-xl" />
+              <h1 className="text-lg font-bold">selfQ</h1>
             </div>
 
             {user && (
@@ -188,6 +188,14 @@ export default function Feed() {
                   <DropdownMenuItem onClick={() => navigate('/settings')}>
                     <Settings className="w-4 h-4 mr-2" />
                     Pengaturan
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/request-feature')}>
+                    <Lightbulb className="w-4 h-4 mr-2" />
+                    Request Fitur
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/report-bug')}>
+                    <Bug className="w-4 h-4 mr-2" />
+                    Report Bug
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

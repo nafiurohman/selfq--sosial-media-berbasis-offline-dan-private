@@ -262,7 +262,7 @@ export default function StoryEditor() {
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title={story.title ? `${story.title} - Editor` : 'Editor Cerita - selfX'}
+        title={story.title ? `${story.title} - Editor` : 'Editor Cerita - selfQ'}
         description="Editor cerita dengan fitur lengkap untuk menulis"
       />
 

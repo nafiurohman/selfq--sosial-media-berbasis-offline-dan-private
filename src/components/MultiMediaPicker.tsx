@@ -296,7 +296,7 @@ export function MultiMediaPicker({ media, onMediaChange, className }: MultiMedia
     const extension = item.type === 'image' ? 'jpg' : 'mp4';
     const link = document.createElement('a');
     link.href = item.data;
-    link.download = `selfX_${timestamp}_${item.id.slice(-6)}.${extension}`;
+    link.download = `selfQ_${timestamp}_${item.id.slice(-6)}.${extension}`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

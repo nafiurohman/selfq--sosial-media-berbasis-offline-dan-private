@@ -6,9 +6,9 @@ export default function Terms() {
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title="Ketentuan Layanan - selfX"
-        description="Ketentuan layanan penggunaan selfX - platform sosial media pribadi offline yang mengutamakan privasi pengguna."
-        keywords="ketentuan layanan selfx, terms of service, syarat penggunaan, bezn project"
+        title="Ketentuan Layanan - selfQ"
+        description="Ketentuan layanan penggunaan selfQ - platform sosial media pribadi offline yang mengutamakan privasi pengguna."
+        keywords="ketentuan layanan selfq, terms of service, syarat penggunaan, bezn project"
       />
       
       <Navigation />
@@ -21,7 +21,7 @@ export default function Terms() {
             className="max-w-4xl mx-auto"
           >
             <div className="text-center mb-8">
-              <img src="/images/logo/logo.png" alt="selfX Logo" className="w-16 h-16 mx-auto mb-4 rounded-xl" />
+              <img src="/images/logo/logo.png" alt="selfQ Logo" className="w-16 h-16 mx-auto mb-4 rounded-xl" />
               <h1 className="text-3xl font-bold mb-2">Ketentuan Layanan</h1>
               <p className="text-muted-foreground">Terakhir diperbarui: Januari 2025</p>
             </div>
@@ -30,7 +30,7 @@ export default function Terms() {
               <section>
                 <h2 className="text-xl font-semibold mb-4">1. Penerimaan Ketentuan</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Dengan mengakses dan menggunakan selfX ("Layanan"), Anda menyetujui untuk terikat dengan 
+                  Dengan mengakses dan menggunakan selfQ ("Layanan"), Anda menyetujui untuk terikat dengan 
                   ketentuan layanan ini. Jika Anda tidak setuju dengan ketentuan ini, mohon jangan gunakan 
                   layanan kami.
                 </p>
@@ -39,7 +39,7 @@ export default function Terms() {
               <section>
                 <h2 className="text-xl font-semibold mb-4">2. Deskripsi Layanan</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  selfX adalah platform sosial media pribadi berbasis Progressive Web App (PWA) yang:
+                  selfQ adalah platform sosial media pribadi berbasis Progressive Web App (PWA) yang:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground space-y-2">
                   <li>Beroperasi 100% offline setelah instalasi</li>
@@ -74,7 +74,7 @@ export default function Terms() {
               <section>
                 <h2 className="text-xl font-semibold mb-4">4. Tanggung Jawab Pengguna</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  Sebagai pengguna selfX, Anda bertanggung jawab untuk:
+                  Sebagai pengguna selfQ, Anda bertanggung jawab untuk:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground space-y-2">
                   <li>Melakukan backup data secara berkala</li>
@@ -106,7 +106,7 @@ export default function Terms() {
               <section>
                 <h2 className="text-xl font-semibold mb-4">6. Batasan Tanggung Jawab</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  selfX disediakan "sebagaimana adanya" tanpa jaminan apapun. Bezn Project dan 
+                  selfQ disediakan "sebagaimana adanya" tanpa jaminan apapun. Bezn Project dan 
                   pengembang tidak bertanggung jawab atas:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground space-y-2 mt-4">
@@ -120,8 +120,8 @@ export default function Terms() {
               <section>
                 <h2 className="text-xl font-semibold mb-4">7. Kekayaan Intelektual</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  selfX adalah proyek open source di bawah lisensi MIT. Kode sumber tersedia untuk 
-                  umum, namun merek dagang "selfX" dan "Bezn Project" tetap menjadi milik pengembang.
+                  selfQ adalah proyek open source di bawah lisensi MIT. Kode sumber tersedia untuk 
+                  umum, namun merek dagang "selfQ" dan "Bezn Project" tetap menjadi milik pengembang.
                 </p>
               </section>
 

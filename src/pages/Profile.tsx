@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Camera, User as UserIcon, Heart, MessageCircle, Image, Video, ChevronDown, Settings, Edit, HelpCircle, Info, BarChart3, FileText, Flame, FileCheck, Shield, Bookmark, Archive, BookOpen, Calendar } from 'lucide-react';
+import { Camera, User as UserIcon, Heart, MessageCircle, Image, Video, Menu, Settings, Edit, HelpCircle, Info, BarChart3, FileText, Flame, FileCheck, Shield, Bookmark, Archive, BookOpen, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getUser, updateUser } from '@/lib/storage';
 import { getAllPosts, addPost, toggleLike, deletePost } from '@/lib/db';
@@ -12,6 +12,7 @@ import { SEO } from '@/components/SEO';
 import { ComposeModal } from '@/components/ComposeModal';
 import { FloatingMenu } from '@/components/FloatingMenu';
 import { ReceiveShareModal } from '@/components/ReceiveShareModal';
+import { MobileSidebar } from '@/components/MobileSidebar';
 import { toast } from '@/lib/toast';
 import {
   DropdownMenu,
@@ -37,6 +38,7 @@ export default function Profile() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [isComposeOpen, setIsComposeOpen] = useState(false);
   const [isReceiveShareOpen, setIsReceiveShareOpen] = useState(false);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
@@ -174,9 +176,9 @@ export default function Profile() {
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title={`${user.name} - Profil | selfX`}
-        description={`Profil ${user.name} di selfX - platform sosial media pribadi offline`}
-        keywords="profil selfx, user profile, sosial media pribadi"
+        title={`${user.name} - Profil | selfQ`}
+        description={`Profil ${user.name} di selfQ - platform sosial media pribadi offline`}
+        keywords="profil selfq, user profile, sosial media pribadi"
       />
       
       {/* Navigation */}
@@ -190,64 +192,26 @@ export default function Profile() {
         <header className="clean-nav sticky top-0 z-30 md:hidden">
           <div className="container flex items-center justify-between h-16 px-4">
             <div className="flex items-center gap-3">
-              <img src="/images/logo/logo.png" alt="selfX Logo" className="w-8 h-8 rounded-xl" />
+              <img src="/images/logo/logo.png" alt="selfQ Logo" className="w-8 h-8 rounded-xl" />
               <h1 className="text-lg font-bold">Profil</h1>
             </div>
 
             {user && (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button className="flex items-center gap-2 p-2 rounded-full hover:bg-secondary transition-colors">
-                    <div className="avatar-sm rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
-                      {user.avatar ? (
-                        <img src={user.avatar} alt="Avatar" className="w-full h-full object-cover rounded-full" />
-                      ) : (
-                        <span className="text-white font-semibold text-sm">
-                          {user.name.charAt(0).toUpperCase()}
-                        </span>
-                      )}
-                    </div>
-                    <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56">
-                  <DropdownMenuItem onClick={() => setIsEditing(!isEditing)}>
-                    <Edit className="w-4 h-4 mr-2" />
-                    {isEditing ? 'Batal Edit' : 'Edit Profil'}
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={() => navigate('/bookmarks')}>
-                    <Bookmark className="w-4 h-4 mr-2" />
-                    Bookmark
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => navigate('/archive')}>
-                    <Archive className="w-4 h-4 mr-2" />
-                    Arsip
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={() => navigate('/help')}>
-                    <HelpCircle className="w-4 h-4 mr-2" />
-                    Pusat Bantuan
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => navigate('/about')}>
-                    <Info className="w-4 h-4 mr-2" />
-                    Tentang selfX
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => navigate('/terms')}>
-                    <FileCheck className="w-4 h-4 mr-2" />
-                    Syarat & Ketentuan
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => navigate('/privacy')}>
-                    <Shield className="w-4 h-4 mr-2" />
-                    Kebijakan Privasi
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={() => navigate('/settings')}>
-                    <Settings className="w-4 h-4 mr-2" />
-                    Pengaturan
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <button
+                onClick={() => setIsMobileSidebarOpen(true)}
+                className="flex items-center gap-2 p-2 rounded-full hover:bg-secondary transition-colors"
+              >
+                <div className="avatar-sm rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                  {user.avatar ? (
+                    <img src={user.avatar} alt="Avatar" className="w-full h-full object-cover rounded-full" />
+                  ) : (
+                    <span className="text-white font-semibold text-sm">
+                      {user.name.charAt(0).toUpperCase()}
+                    </span>
+                  )}
+                </div>
+                <Menu className="w-4 h-4 text-muted-foreground" />
+              </button>
             )}
           </div>
         </header>
@@ -609,6 +573,13 @@ export default function Profile() {
         isOpen={isReceiveShareOpen}
         onClose={() => setIsReceiveShareOpen(false)}
         onSuccess={loadStats}
+      />
+
+      {/* Mobile Sidebar */}
+      <MobileSidebar
+        isOpen={isMobileSidebarOpen}
+        onClose={() => setIsMobileSidebarOpen(false)}
+        onEditProfile={() => setIsEditing(!isEditing)}
       />
     </div>
   );

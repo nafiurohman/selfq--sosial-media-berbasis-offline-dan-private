@@ -51,7 +51,7 @@ export function Footer() {
         </div>
 
         <div className="mt-6 pt-4 border-t border-border/50 text-center text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} selfX - Ruang pribadi, Tanpa tekanan.</p>
+          <p>© {new Date().getFullYear()} selfQ - Ruang pribadi, Tanpa tekanan.</p>
         </div>
       </div>
     </footer>

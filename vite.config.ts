@@ -20,9 +20,9 @@ export default defineConfig(({ mode }) => ({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "favicon.svg", "icon-192.png", "icon-512.png"],
       manifest: {
-        name: "selfX - Sosial Mediamu Sendiri",
-        short_name: "selfX",
-        description: "Platform sosial media pribadi berbasis offline dengan privasi tinggi. Tempat aman untuk mengekspresikan diri tanpa khawatir data bocor.",
+        name: "selfQ - Ruang Pribadimu, Tanpa Tekanan",
+        short_name: "selfQ",
+        description: "Ruang pribadi digital 100% offline dengan privasi tinggi. Tanpa tekanan, tanpa drama.",
         theme_color: "#1DA1F2",
         background_color: "#f8fafc",
         display: "standalone",

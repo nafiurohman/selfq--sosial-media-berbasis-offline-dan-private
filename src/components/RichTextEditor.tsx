@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
-import { Bold, Italic, Underline, List, ListOrdered, Heading1, Heading2, Link as LinkIcon } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { Bold, Italic, Underline, List } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -11,149 +11,167 @@ interface RichTextEditorProps {
 }
 
 export function RichTextEditor({ value, onChange, placeholder, className }: RichTextEditorProps) {
-  const editorRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [isFocused, setIsFocused] = useState(false);
 
-  useEffect(() => {
-    if (editorRef.current && editorRef.current.innerHTML !== value) {
-      editorRef.current.innerHTML = value;
-    }
-  }, [value]);
+  const insertFormatting = (prefix: string, suffix: string = '') => {
+    const textarea = textareaRef.current;
+    if (!textarea) return;
 
-  const execCommand = (command: string, value?: string) => {
-    document.execCommand(command, false, value);
-    editorRef.current?.focus();
-    updateContent();
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const selectedText = value.substring(start, end);
+    
+    const newText = value.substring(0, start) + prefix + selectedText + suffix + value.substring(end);
+    onChange(newText);
+
+    setTimeout(() => {
+      textarea.focus();
+      if (selectedText) {
+        textarea.setSelectionRange(start, start + prefix.length + selectedText.length + suffix.length);
+      } else {
+        const newCursorPos = start + prefix.length;
+        textarea.setSelectionRange(newCursorPos, newCursorPos);
+      }
+    }, 0);
   };
 
-  const updateContent = () => {
-    if (editorRef.current) {
-      onChange(editorRef.current.innerHTML);
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter') {
+      const textarea = textareaRef.current;
+      if (!textarea) return;
+
+      const start = textarea.selectionStart;
+      const lineStart = value.lastIndexOf('\n', start - 1) + 1;
+      const currentLine = value.substring(lineStart, start);
+
+      // Check for bullet list
+      const bulletMatch = currentLine.match(/^(\s*)-\s/);
+      if (bulletMatch) {
+        e.preventDefault();
+        const indent = bulletMatch[1];
+        const newText = value.substring(0, start) + '\n' + indent + '- ' + value.substring(start);
+        onChange(newText);
+        setTimeout(() => {
+          const newPos = start + indent.length + 3;
+          textarea.setSelectionRange(newPos, newPos);
+        }, 0);
+        return;
+      }
     }
   };
 
-  const insertLink = () => {
+  const handleBold = () => insertFormatting('**', '**');
+  const handleItalic = () => insertFormatting('*', '*');
+  const handleUnderline = () => insertFormatting('<u>', '</u>');
+  
+  const handleBulletList = () => {
+    const textarea = textareaRef.current;
+    if (!textarea) return;
+    
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const selectedText = value.substring(start, end);
+    
+    if (selectedText) {
+      // Convert selected lines to bullet list
+      const lines = selectedText.split('\n');
+      const bulletLines = lines.map(line => line.trim() ? `- ${line.trim()}` : line).join('\n');
+      const newText = value.substring(0, start) + bulletLines + value.substring(end);
+      onChange(newText);
+      setTimeout(() => {
+        textarea.focus();
+        textarea.setSelectionRange(start, start + bulletLines.length);
+      }, 0);
+    } else {
+      // Insert bullet at cursor
+      const lineStart = value.lastIndexOf('\n', start - 1) + 1;
+      if (start === lineStart) {
+        insertFormatting('- ', '');
+      } else {
+        insertFormatting('\n- ', '');
+      }
+    }
+  };
+  
+  const handleLink = () => {
     const url = prompt('Masukkan URL:');
     if (url) {
-      execCommand('createLink', url);
+      const textarea = textareaRef.current;
+      if (!textarea) return;
+      
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const selectedText = value.substring(start, end) || 'link';
+      
+      insertFormatting(`[${selectedText}](${url})`, '');
     }
   };
 
   return (
     <div className={cn('space-y-2', className)}>
       {/* Toolbar */}
-      <div className="flex flex-wrap items-center gap-1 p-2 bg-secondary/30 rounded-lg border border-border/30">
+      <div className="inline-flex items-center gap-1 p-1.5 bg-secondary/30 rounded-lg border border-border/30">
         <Button
           type="button"
           variant="ghost"
           size="sm"
-          onClick={() => execCommand('bold')}
-          className="h-8 w-8 p-0"
-          title="Bold (Ctrl+B)"
+          onClick={handleBold}
+          className="h-7 w-7 p-0 hover:bg-primary/10"
+          title="Bold"
         >
-          <Bold className="w-4 h-4" />
+          <Bold className="w-3.5 h-3.5" />
         </Button>
         <Button
           type="button"
           variant="ghost"
           size="sm"
-          onClick={() => execCommand('italic')}
-          className="h-8 w-8 p-0"
-          title="Italic (Ctrl+I)"
+          onClick={handleItalic}
+          className="h-7 w-7 p-0 hover:bg-primary/10"
+          title="Italic"
         >
-          <Italic className="w-4 h-4" />
+          <Italic className="w-3.5 h-3.5" />
         </Button>
         <Button
           type="button"
           variant="ghost"
           size="sm"
-          onClick={() => execCommand('underline')}
-          className="h-8 w-8 p-0"
-          title="Underline (Ctrl+U)"
+          onClick={handleUnderline}
+          className="h-7 w-7 p-0 hover:bg-primary/10"
+          title="Underline"
         >
-          <Underline className="w-4 h-4" />
-        </Button>
-        
-        <div className="w-px h-6 bg-border mx-1" />
-        
-        <Button
-          type="button"
-          variant="ghost"
-          size="sm"
-          onClick={() => execCommand('formatBlock', '<h1>')}
-          className="h-8 w-8 p-0"
-          title="Heading 1"
-        >
-          <Heading1 className="w-4 h-4" />
-        </Button>
-        <Button
-          type="button"
-          variant="ghost"
-          size="sm"
-          onClick={() => execCommand('formatBlock', '<h2>')}
-          className="h-8 w-8 p-0"
-          title="Heading 2"
-        >
-          <Heading2 className="w-4 h-4" />
+          <Underline className="w-3.5 h-3.5" />
         </Button>
         
-        <div className="w-px h-6 bg-border mx-1" />
+        <div className="w-px h-5 bg-border mx-0.5" />
         
         <Button
           type="button"
           variant="ghost"
           size="sm"
-          onClick={() => execCommand('insertUnorderedList')}
-          className="h-8 w-8 p-0"
+          onClick={handleBulletList}
+          className="h-7 w-7 p-0 hover:bg-primary/10"
           title="Bullet List"
         >
-          <List className="w-4 h-4" />
-        </Button>
-        <Button
-          type="button"
-          variant="ghost"
-          size="sm"
-          onClick={() => execCommand('insertOrderedList')}
-          className="h-8 w-8 p-0"
-          title="Numbered List"
-        >
-          <ListOrdered className="w-4 h-4" />
-        </Button>
-        
-        <div className="w-px h-6 bg-border mx-1" />
-        
-        <Button
-          type="button"
-          variant="ghost"
-          size="sm"
-          onClick={insertLink}
-          className="h-8 w-8 p-0"
-          title="Insert Link"
-        >
-          <LinkIcon className="w-4 h-4" />
+          <List className="w-3.5 h-3.5" />
         </Button>
       </div>
 
       {/* Editor */}
-      <div
-        ref={editorRef}
-        contentEditable
-        onInput={updateContent}
+      <textarea
+        ref={textareaRef}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        onKeyDown={handleKeyDown}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
+        placeholder={placeholder}
         className={cn(
-          'min-h-[120px] p-4 rounded-lg border bg-background',
+          'w-full min-h-[120px] p-4 rounded-lg border bg-background resize-none',
           'focus:outline-none focus:ring-2 focus:ring-primary/50',
-          'prose prose-sm max-w-none',
-          'prose-headings:mt-4 prose-headings:mb-2',
-          'prose-p:my-2',
-          'prose-ul:my-2 prose-ol:my-2',
-          'prose-li:my-1',
-          isFocused ? 'border-primary/50' : 'border-border/30',
-          !value && 'empty:before:content-[attr(data-placeholder)] empty:before:text-muted-foreground'
+          'text-sm leading-relaxed',
+          isFocused ? 'border-primary/50' : 'border-border/30'
         )}
-        data-placeholder={placeholder}
-        suppressContentEditableWarning
       />
     </div>
   );

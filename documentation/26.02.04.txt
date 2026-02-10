@@ -1,0 +1,294 @@
+================================================================================
+                    selfX - DOKUMENTASI VERSION 26.01.04
+                         Release: 4 Januari 2025
+                    Codename: "Stories & Design Refresh"
+================================================================================
+
+INFORMASI UMUM
+==============
+Versi         : 26.01.04 (Format: YY.MM.DD)
+Tanggal Rilis : 4 Januari 2025
+Developer     : M. Nafiurohman
+Organisasi    : Bezn Project
+Website       : https://selfx.bezn.web.id
+Lisensi       : MIT License
+
+RINGKASAN UPDATE
+================
+Version 26.01.04 merupakan update yang fokus pada perbaikan bug kritis,
+penambahan fitur "Ceritamu" untuk menulis cerita panjang, dan refresh
+desain UI dengan konsep glassmorphism yang lebih modern.
+
+Total Bug Fixes: 2
+Total Fitur Baru: 1
+Total Perubahan Desain: Major UI Refresh
+
+
+================================================================================
+                            BUG FIXES
+================================================================================
+
+1. FIX TEMA KEMBALI CERAH SAAT REFRESH
+=======================================
+Deskripsi:
+Memperbaiki bug kritis dimana tema dark mode kembali ke light mode setiap
+kali halaman di-refresh atau reload.
+
+Masalah Sebelumnya:
+- User memilih dark mode
+- Setelah refresh halaman, tema kembali ke light mode
+- User harus set ulang dark mode setiap kali buka aplikasi
+- Preferensi tema tidak tersimpan dengan benar
+
+Solusi:
+- Implementasi proper theme persistence di localStorage
+- Theme initialization saat app startup
+- Sync theme state dengan localStorage
+- Prevent theme flash on page load
+
+Implementasi Teknis:
+- Update initTheme() function di src/lib/storage.ts
+- Add theme persistence logic
+- Proper localStorage read/write
+- Theme state management improvement
+
+Impact:
+- User experience lebih baik
+- Tema konsisten setelah refresh
+- Tidak perlu set ulang preferensi tema
+
+
+2. FIX UPLOAD POSTINGAN DI HALAMAN LAIN
+========================================
+Deskripsi:
+Memperbaiki bug dimana upload postingan hanya bisa dilakukan di halaman Home,
+tidak bisa di halaman lainnya seperti Profile, Bookmarks, dll.
+
+Masalah Sebelumnya:
+- Upload button hanya muncul di Home page
+- User harus kembali ke Home untuk upload post
+- Workflow tidak efisien
+- Inconsistent user experience
+
+Solusi:
+- Global upload functionality
+- Upload button accessible dari semua halaman
+- Consistent post creation flow
+- Better component architecture
+
+Implementasi Teknis:
+- Refactor PostCreator component
+- Make it globally accessible
+- Update Navigation component
+- Add upload trigger di semua halaman
+
+Impact:
+- Upload post dari halaman manapun
+- Workflow lebih efisien
+- Better user experience
+- Consistent functionality
+
+
+================================================================================
+                            FITUR BARU
+================================================================================
+
+FITUR "CERITAMU" (STORIES)
+===========================
+Deskripsi:
+Halaman khusus untuk menampung cerita seru atau curhatan dalam bentuk tulisan
+panjang. Fitur ini bisa digunakan sebagai tempat draft sebelum diunggah ke
+platform cerpen atau lainnya.
+
+Fitur Detail:
+- Editor lengkap untuk menulis cerita panjang
+- Support rich text formatting
+- Auto-save untuk prevent data loss
+- Kategori cerita (Senang, Sedih, Lucu, Horor, dll)
+- Character count dan reading time estimation
+- Draft management
+- Search dan filter cerita
+- Export cerita ke file
+- Dark/Light mode support
+
+Use Cases:
+- Menulis cerita pendek atau novel
+- Draft untuk platform cerpen (Wattpad, Fizzo, dll)
+- Personal journaling dengan format panjang
+- Curhatan atau refleksi pribadi
+- Creative writing practice
+- Story development dan brainstorming
+
+Keunggulan:
+- Offline-first: Semua cerita tersimpan lokal
+- Privacy: Tidak ada yang bisa baca kecuali kamu
+- No limits: Tulis sepanjang yang kamu mau
+- Auto-save: Tidak khawatir kehilangan tulisan
+- Organized: Kategori dan search yang mudah
+
+Implementasi Teknis:
+- New Stories page (src/pages/Stories.tsx)
+- Story editor component
+- IndexedDB untuk storage
+- Auto-save mechanism
+- Category management
+- Search functionality
+
+File Terkait:
+- src/pages/Stories.tsx (BARU)
+- src/pages/StoryEditor.tsx (BARU)
+- src/pages/StoryView.tsx (BARU)
+- src/components/StoryCard.tsx (BARU)
+- src/lib/db.ts (MODIFIED)
+
+
+================================================================================
+                        PERUBAHAN DESAIN
+================================================================================
+
+MAJOR UI REFRESH - GLASSMORPHISM
+=================================
+Deskripsi:
+Merapikan dan memperbarui desain yang sebelumnya terlihat flat menjadi lebih
+modern dengan konsep glassmorphism serta sudut rounded yang lebih besar.
+
+Perubahan Detail:
+
+1. Glassmorphism Effect
+   - Backdrop blur untuk card dan modal
+   - Semi-transparent backgrounds
+   - Layered depth dengan shadows
+   - Modern dan elegant look
+
+2. Rounded Corners
+   - Border radius lebih besar (dari 8px → 16px)
+   - Consistent rounded corners di semua komponen
+   - Softer appearance
+   - More friendly UI
+
+3. Card Design
+   - Glass effect dengan blur
+   - Subtle shadows untuk depth
+   - Better spacing dan padding
+   - Improved readability
+
+4. Navigation
+   - Glassmorphism navbar
+   - Floating effect
+   - Better visual hierarchy
+   - Smooth transitions
+
+5. Buttons
+   - Rounded buttons dengan glass effect
+   - Hover states yang lebih smooth
+   - Better touch targets
+   - Consistent styling
+
+6. Modals & Dialogs
+   - Glass backdrop
+   - Smooth animations
+   - Better focus management
+   - Improved accessibility
+
+7. Color Scheme
+   - Refined color palette
+   - Better contrast ratios
+   - Dark mode improvements
+   - Consistent theming
+
+Impact:
+- More modern appearance
+- Better visual hierarchy
+- Improved user experience
+- Professional look and feel
+- Better brand identity
+
+Implementasi Teknis:
+- Update Tailwind config
+- New CSS utilities untuk glass effect
+- Component styling updates
+- Animation improvements
+- Theme refinements
+
+File Terkait:
+- src/index.css (MODIFIED)
+- tailwind.config.ts (MODIFIED)
+- Multiple component files (MODIFIED)
+
+
+================================================================================
+                        TEKNOLOGI & DEPENDENCIES
+================================================================================
+
+CORE TECHNOLOGIES
+=================
+- React 18.3.1
+- TypeScript 5.8.3
+- Vite 5.4.19
+- Tailwind CSS 3.4.17
+
+LIBRARIES
+=========
+- Framer Motion - Animations
+- Lucide React - Icons
+- idb - IndexedDB wrapper
+- date-fns - Date formatting
+
+
+================================================================================
+                        MIGRATION & UPGRADE
+================================================================================
+
+UPGRADE DARI VERSION SEBELUMNYA
+================================
+1. Backup data existing (Export)
+2. Update aplikasi ke version 26.01.04
+3. Refresh browser / Restart PWA
+4. Data otomatis compatible (no migration needed)
+5. Fitur baru langsung tersedia
+
+BREAKING CHANGES
+================
+TIDAK ADA - Backward compatible 100%
+
+
+================================================================================
+                        CREDITS & CONTACT
+================================================================================
+
+DEVELOPER
+=========
+M. Nafiurohman
+- Email: nafiurohman25@gmail.com
+- Website: https://nafiurohman.pages.dev
+- GitHub: @nafiurohman
+- Instagram: @nafiurohman_
+
+ORGANIZATION
+============
+Bezn Project
+- Website: https://beznproject.web.id
+- Email: support@beznproject.web.id
+- Instagram: @bezn.project
+
+
+================================================================================
+                        LICENSE & COPYRIGHT
+================================================================================
+
+License: MIT License
+Copyright (c) 2025 M. Nafiurohman
+All rights reserved.
+
+
+================================================================================
+                        END OF DOCUMENTATION
+================================================================================
+
+Generated: 4 Januari 2025
+Version: 26.01.04
+Codename: Stories & Design Refresh
+Developer: M. Nafiurohman
+Organization: Bezn Project
+
+Terima kasih telah menggunakan selfX!

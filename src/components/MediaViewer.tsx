@@ -55,7 +55,7 @@ export function MediaViewer({ isOpen, onClose, media, initialIndex = 0 }: MediaV
     const extension = currentMedia.type === 'image' ? 'jpg' : 'mp4';
     const link = document.createElement('a');
     link.href = currentMedia.data;
-    link.download = `selfX_${timestamp}_${currentMedia.id.slice(-6)}.${extension}`;
+    link.download = `selfQ_${timestamp}_${currentMedia.id.slice(-6)}.${extension}`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

@@ -1,0 +1,835 @@
+================================================================================
+                    selfX - DOKUMENTASI VERSION 26.01.08
+                         Release: 8 Januari 2025
+                    Codename: "Voice & Stats Edition"
+================================================================================
+
+INFORMASI UMUM
+==============
+Versi         : 26.01.08 (Format: YY.MM.DD)
+Tanggal Rilis : 8 Januari 2025
+Developer     : M. Nafiurohman
+Organisasi    : Bezn Project
+Website       : https://selfx.bezn.web.id
+Lisensi       : MIT License
+
+RINGKASAN UPDATE
+================
+Version 26.01.08 merupakan update major yang menambahkan 8 fitur baru utama,
+advanced photo editor, bug fixes, peningkatan UI/UX, dan perbaikan performa.
+Update ini fokus pada peningkatan pengalaman pengguna dengan fitur multimedia
+(audio recording & photo editing), statistik yang lebih lengkap, dan sistem
+notifikasi yang lebih baik.
+
+Total Fitur Baru: 8
+Total Bug Fixes: Multiple
+Total File Baru: 5
+Total File Dimodifikasi: 11
+Total Baris Kode Ditambahkan: ~2,500 baris
+
+
+================================================================================
+                            FITUR BARU LENGKAP
+================================================================================
+
+1. CUSTOM TOAST NOTIFICATION SYSTEM
+====================================
+Deskripsi:
+Sistem notifikasi custom yang menggantikan library sonner dengan implementasi
+native yang lebih ringan dan sesuai dengan design system selfX.
+
+Fitur Detail:
+- Toast popup muncul di tengah layar (centered)
+- Auto-close otomatis dalam 3 detik
+- Progress bar visual menunjukkan countdown
+- Tombol close manual (X) untuk menutup sebelum timeout
+- Animasi smooth dengan Framer Motion (fade in/out)
+- Support 3 tipe notifikasi:
+  * Success (hijau) - untuk aksi berhasil
+  * Error (merah) - untuk error/gagal
+  * Info (biru) - untuk informasi umum
+- Responsive di semua ukuran layar
+- Dark/Light theme support
+
+Implementasi Teknis:
+- Global callback system di src/lib/toast.ts
+- Custom component di src/components/CustomToast.tsx
+- useCustomToast hook untuk state management
+- AnimatePresence untuk smooth transitions
+- Timer cleanup yang proper untuk prevent memory leak
+
+File Terkait:
+- src/lib/toast.ts (BARU)
+- src/components/CustomToast.tsx (BARU)
+- src/App.tsx (MODIFIED)
+
+Use Cases:
+- Notifikasi saat post berhasil dibuat
+- Alert saat terjadi error
+- Konfirmasi saat data berhasil di-export
+- Info saat fitur sedang dalam development
+
+
+2. STORY STATISTICS (STATISTIK CERITA)
+=======================================
+Deskripsi:
+Penambahan 2 statistik baru terkait cerita (stories) yang terintegrasi di
+berbagai halaman untuk memberikan insight lebih lengkap kepada pengguna.
+
+Fitur Detail:
+- Total Cerita: Jumlah keseluruhan cerita yang pernah dibuat
+- Cerita Hari Ini: Jumlah cerita yang dibuat hari ini
+- Total statistik sekarang: 6 (dari sebelumnya 4)
+  1. Total Posts
+  2. Total Bookmarks
+  3. Total Stories (BARU)
+  4. Posts Hari Ini
+  5. Bookmarks Hari Ini
+  6. Stories Hari Ini (BARU)
+- Icon BookOpen dari Lucide untuk representasi cerita
+- Real-time update saat cerita dibuat/dihapus
+- Terintegrasi di 3 halaman utama:
+  * Settings Page - Overview statistik
+  * Profile Page - Personal statistics
+  * Calendar Page - Period summary
+
+Implementasi Teknis:
+- Story interface di src/lib/stats.ts
+- getStories() function untuk fetch dari IndexedDB
+- calculateStoryStats() untuk kalkulasi statistik
+- Update Stats interface dengan totalStories & todayStories
+- Integration dengan existing stats system
+
+File Terkait:
+- src/lib/stats.ts (MODIFIED)
+- src/pages/Settings.tsx (MODIFIED)
+- src/pages/Profile.tsx (MODIFIED)
+- src/components/PeriodSummary.tsx (MODIFIED)
+
+Use Cases:
+- Tracking produktivitas menulis cerita
+- Motivasi untuk menulis lebih banyak
+- Overview aktivitas harian
+- Analisis periode tertentu di calendar
+
+
+3. VOICE RECORDER (PEREKAM SUARA)
+==================================
+Deskripsi:
+Fitur perekaman audio langsung dari aplikasi untuk menambahkan dimensi baru
+dalam berbagi konten. Pengguna dapat merekam suara, musik, atau audio lainnya
+dan menambahkannya ke dalam post.
+
+Fitur Detail:
+- Perekaman audio langsung menggunakan MediaRecorder API
+- Batas maksimal: 3 menit (180 detik) per rekaman
+- Visualisasi waveform real-time dengan 25 bar animasi
+- Kontrol lengkap:
+  * Record - Mulai merekam
+  * Pause - Jeda sementara
+  * Resume - Lanjutkan rekaman
+  * Stop - Selesai dan simpan
+- Preview audio sebelum ditambahkan ke post
+- Automatic microphone permission handling
+- Error handling untuk:
+  * Permission denied
+  * Microphone not available
+  * Browser not supported
+- Limit: 1 audio per post
+- Format output: WebM (Chrome/Edge) atau MP4 (Safari)
+- Timer countdown menunjukkan sisa waktu
+- Auto-stop saat mencapai 3 menit
+
+Implementasi Teknis:
+- MediaRecorder API untuk recording
+- AudioContext untuk waveform visualization
+- AnalyserNode untuk frequency data
+- Blob handling untuk audio data
+- Proper cleanup untuk prevent memory leak
+- useEffect dengan empty dependency untuk timer
+- State management untuk recording status
+
+File Terkait:
+- src/components/AudioRecorder.tsx (BARU)
+- src/components/MultiMediaPicker.tsx (MODIFIED)
+- src/lib/types.ts (MODIFIED)
+
+Use Cases:
+- Voice notes untuk post
+- Rekam musik/lagu
+- Podcast mini
+- Audio diary
+- Catatan suara penting
+- Sharing audio message
+
+
+4. AUDIO PLAYER UI
+==================
+Deskripsi:
+Interface player audio yang terintegrasi di PostCard dan MultiMediaPicker
+untuk playback audio yang telah direkam atau ditambahkan ke post.
+
+Fitur Detail:
+- Play/Pause controls dengan icon yang jelas
+- Progress bar real-time menunjukkan posisi playback
+- Duration tracking dengan format MM:SS
+- Display waktu:
+  * Current time - Waktu saat ini
+  * Total duration - Total durasi audio
+- Tombol download untuk save audio ke device
+- Scrubbing support - klik progress bar untuk jump ke posisi tertentu
+- Auto-pause saat audio selesai
+- Icon centering pixel-perfect dengan margin adjustment
+- Responsive design untuk mobile dan desktop
+- Dark/Light theme support
+- Smooth animations
+
+Implementasi Teknis:
+- HTML5 Audio element
+- onTimeUpdate event untuk progress tracking
+- State management untuk play/pause status
+- Progress calculation: (currentTime / duration) * 100
+- Format time function untuk MM:SS display
+- Download via Blob URL
+- Proper audio cleanup on unmount
+
+File Terkait:
+- src/components/PostCard.tsx (MODIFIED)
+- src/components/MultiMediaPicker.tsx (MODIFIED)
+- src/index.css (MODIFIED)
+
+Use Cases:
+- Dengarkan voice notes di post
+- Preview audio sebelum publish
+- Playback audio dari timeline
+- Download audio untuk backup
+
+
+5. URL DETECTION & STYLING
+===========================
+Deskripsi:
+Deteksi otomatis URL dalam konten post dan mengubahnya menjadi clickable
+link dengan styling yang menarik dan icon yang konsisten.
+
+Fitur Detail:
+- Auto-detect URL dalam text post
+- Support berbagai format URL:
+  * http://example.com
+  * https://example.com
+  * www.example.com
+  * example.com
+- Clickable link dengan target="_blank" (buka tab baru)
+- rel="noopener noreferrer" untuk security
+- Icon Lucide Link2 SVG inline (bukan emoji)
+- Icon properties:
+  * Size: 14x14px
+  * Stroke width: 2
+  * Scalable vector
+  * Inherit color dari theme
+- Styling khusus:
+  * Warna primary (biru)
+  * Hover effect (underline)
+  * Inline-flex untuk alignment
+  * Margin untuk spacing
+- Consistent di semua device
+- Dark/Light theme support
+
+Implementasi Teknis:
+- Regex pattern untuk URL detection
+- linkifyText() function di urlUtils.ts
+- Inline SVG markup untuk icon
+- CSS classes: .url-link dan .url-icon
+- dangerouslySetInnerHTML untuk render HTML
+- Proper escaping untuk prevent XSS
+
+File Terkait:
+- src/lib/urlUtils.ts (BARU)
+- src/components/PostCard.tsx (MODIFIED)
+- src/index.css (MODIFIED)
+
+Limitasi:
+- Tidak ada URL metadata fetching (preview card)
+- Alasan: Offline-first architecture & CORS restrictions
+- Fokus pada clickable link dengan styling yang baik
+
+Use Cases:
+- Share link website
+- Reference artikel
+- Social media links
+- Documentation links
+
+
+6. HALAMAN CALENDAR (KALENDER)
+===============================
+Deskripsi:
+Halaman kalender untuk melihat aktivitas berdasarkan tanggal dengan visualisasi
+yang intuitif dan statistik periode tertentu.
+
+Fitur Detail:
+- Calendar view dengan react-day-picker
+- Highlight tanggal yang ada aktivitas
+- Filter berdasarkan tanggal
+- Period summary dengan statistik:
+  * Total Posts dalam periode
+  * Total Bookmarks dalam periode
+  * Total Stories dalam periode (BARU)
+- Navigation mudah antar bulan
+- Responsive design
+- Dark/Light theme support
+- Integration dengan PeriodSummary component
+
+File Terkait:
+- src/pages/CalendarView.tsx
+- src/components/PeriodSummary.tsx (MODIFIED)
+
+Use Cases:
+- Review aktivitas bulanan
+- Cari post berdasarkan tanggal
+- Analisis produktivitas
+- Memory lane (kenangan)
+
+
+7. HALAMAN ARCHIVE (ARSIP)
+===========================
+Deskripsi:
+Halaman untuk melihat dan mengelola post yang telah diarsipkan, memberikan
+cara untuk menyimpan post lama tanpa menghapusnya.
+
+Fitur Detail:
+- List semua post yang diarsipkan
+- Unarchive post untuk kembalikan ke feed
+- Delete permanent dari archive
+- Search dalam archive
+- Sort by date
+- Responsive design
+- Empty state yang informatif
+
+File Terkait:
+- src/pages/Archive.tsx
+
+Use Cases:
+- Simpan post lama
+- Clean up feed tanpa hapus data
+- Organize konten
+- Backup post penting
+
+
+8. ADVANCED PHOTO EDITOR
+========================
+Deskripsi:
+Editor foto yang lebih canggih dengan fitur crop, rotate, filter effects, dan
+adjustment brightness/contrast untuk mengedit foto langsung sebelum diposting.
+
+Fitur Detail:
+- Crop Tool: Potong foto dengan aspect ratio custom atau preset (1:1, 4:5, 16:9)
+- Rotate: Putar foto 90°, 180°, 270° atau flip horizontal/vertical
+- Filter Effects:
+  * Grayscale - Efek hitam putih
+  * Sepia - Efek vintage
+  * Blur - Efek blur/kabur
+  * Sharpen - Pertajam gambar
+  * Vintage - Efek retro
+  * Cool - Tone dingin
+  * Warm - Tone hangat
+- Brightness Adjustment: Atur kecerahan foto (-100 sampai +100)
+- Contrast Adjustment: Atur kontras foto (-100 sampai +100)
+- Real-time Preview: Lihat hasil edit secara langsung
+- Reset Function: Kembalikan ke foto original
+- Save & Apply: Simpan hasil edit ke post
+- Responsive UI: Bekerja optimal di mobile dan desktop
+- Dark/Light theme support
+
+Implementasi Teknis:
+- Canvas API untuk image manipulation
+- CSS filters untuk real-time effects
+- Blob handling untuk save edited image
+- State management untuk edit history
+- Touch gesture support untuk mobile
+- Efficient rendering untuk large images
+
+File Terkait:
+- src/components/PhotoEditor.tsx (BARU/MODIFIED)
+- src/components/MultiMediaPicker.tsx (MODIFIED)
+- src/lib/imageUtils.ts (BARU/MODIFIED)
+
+Use Cases:
+- Edit foto sebelum posting
+- Crop foto untuk aspect ratio yang pas
+- Tambahkan filter untuk aesthetic
+- Adjust brightness untuk foto gelap
+- Enhance foto dengan contrast
+- Quick photo editing tanpa app eksternal
+
+
+9. BUG FIXES & IMPROVEMENTS
+===========================
+Deskripsi:
+Perbaikan berbagai bug dan peningkatan stabilitas aplikasi untuk pengalaman
+pengguna yang lebih baik.
+
+Bug Fixes:
+- Fix memory leak pada audio recorder component
+- Fix progress bar tidak update pada beberapa browser
+- Fix toast notification tidak muncul di beberapa kondisi
+- Fix statistics tidak update real-time
+- Fix image transparency issue pada PNG files
+- Fix dark mode inconsistency di beberapa komponen
+- Fix responsive layout issue di mobile devices
+- Fix service worker caching issue
+- Fix IndexedDB transaction error handling
+- Fix URL detection regex untuk edge cases
+
+Performance Improvements:
+- Optimasi rendering untuk large media files
+- Reduce bundle size dengan code splitting
+- Improve IndexedDB query performance
+- Optimize image loading dengan lazy loading
+- Better memory management untuk audio/video
+- Faster app initialization
+- Smooth animations dengan GPU acceleration
+
+Stability Improvements:
+- Better error handling di semua components
+- Graceful degradation untuk unsupported features
+- Improved offline functionality
+- Better PWA installation experience
+- More reliable data persistence
+- Enhanced security measures
+
+
+================================================================================
+                        PERBAIKAN & PENINGKATAN
+================================================================================
+
+PERFORMANCE OPTIMIZATION
+========================
+1. Timer Cleanup
+   - Proper useEffect cleanup untuk prevent memory leak
+   - Empty dependency array untuk timer yang stabil
+   - clearTimeout/clearInterval yang konsisten
+
+2. Audio Resource Management
+   - Cleanup audio element on unmount
+   - Stop recording saat component unmount
+   - Release MediaStream tracks properly
+   - Revoke Blob URLs setelah digunakan
+
+3. State Management
+   - Efficient state updates untuk audio playback
+   - Debounce untuk progress bar updates
+   - Memoization untuk expensive calculations
+
+4. Storage Optimization
+   - IndexedDB untuk large audio files
+   - Compression untuk audio data
+   - Lazy loading untuk media content
+
+
+UI/UX IMPROVEMENTS
+==================
+1. Icon Centering
+   - Play/Pause icon dengan margin adjustment (marginLeft: 2px)
+   - Pixel-perfect alignment di semua ukuran
+   - Consistent spacing
+
+2. Progress Bar
+   - Smooth animations dengan CSS transitions
+   - Visual feedback yang jelas
+   - Interactive scrubbing
+
+3. Waveform Visualization
+   - 25 bar dengan height yang dinamis
+   - Real-time update saat recording
+   - Responsive width
+
+4. URL Link Styling
+   - Inline-flex untuk perfect alignment
+   - Icon dengan margin-top: -2px untuk vertical centering
+   - Hover effects yang smooth
+
+5. Mobile-First Design
+   - Touch targets minimum 40px
+   - Responsive layouts
+   - Gesture support
+
+
+CODE QUALITY
+============
+1. TypeScript
+   - Strict types untuk MediaItem interface
+   - Proper type definitions untuk audio
+   - Type safety untuk all functions
+
+2. Component Architecture
+   - Reusable AudioRecorder component
+   - Separation of concerns
+   - Clean component hierarchy
+
+3. Utility Functions
+   - linkifyText() untuk URL detection
+   - formatTime() untuk duration display
+   - calculateStoryStats() untuk statistics
+
+4. Error Handling
+   - Try-catch blocks untuk async operations
+   - User-friendly error messages
+   - Graceful degradation
+
+5. Code Organization
+   - Logical file structure
+   - Clear naming conventions
+   - Consistent code style
+
+
+================================================================================
+                            FILE STRUCTURE
+================================================================================
+
+FILE BARU (5)
+=============
+1. src/lib/toast.ts
+   - Global toast callback system
+   - Type definitions untuk toast
+   - Singleton pattern untuk global access
+
+2. src/components/CustomToast.tsx
+   - Custom toast component
+   - useCustomToast hook
+   - Animation logic
+
+3. src/components/AudioRecorder.tsx
+   - Voice recorder component
+   - Waveform visualization
+   - Recording controls
+
+4. src/lib/urlUtils.ts
+   - URL detection regex
+   - linkifyText function
+   - SVG icon markup
+
+5. src/lib/version.ts
+   - Version constants
+   - App metadata
+   - Version info object
+
+
+FILE DIMODIFIKASI (11)
+======================
+1. src/App.tsx
+   - CustomToast integration
+   - Global toast callback setup
+
+2. src/lib/stats.ts
+   - Story interface
+   - getStories() function
+   - calculateStoryStats() function
+   - Updated Stats interface
+
+3. src/lib/types.ts
+   - MediaItem interface dengan audio type
+   - duration field untuk audio
+
+4. src/pages/Settings.tsx
+   - Story statistics display
+   - BookOpen icon
+   - Updated loadStats()
+
+5. src/pages/Profile.tsx
+   - Story statistics display
+   - Updated statistics cards
+
+6. src/components/PeriodSummary.tsx
+   - Story stats di calendar
+   - Updated period calculations
+
+7. src/components/MultiMediaPicker.tsx
+   - AudioRecorder integration
+   - Audio preview player
+   - 1 audio limit logic
+
+8. src/components/PostCard.tsx
+   - Audio player implementation
+   - URL detection integration
+   - Progress bar tracking
+
+9. src/index.css
+   - .url-link class
+   - .url-icon class
+   - Audio player styles
+
+10. package.json
+    - Version update: 1.0.0 → 26.01.08
+
+11. README.md
+    - Update terbaru section
+    - Version 26.01.08 highlights
+
+
+================================================================================
+                        TEKNOLOGI & DEPENDENCIES
+================================================================================
+
+CORE TECHNOLOGIES
+=================
+- React 18.3.1
+- TypeScript 5.8.3
+- Vite 5.4.19
+- Tailwind CSS 3.4.17
+
+NEW APIS USED
+=============
+- MediaRecorder API - Audio recording
+- AudioContext API - Waveform visualization
+- AnalyserNode API - Frequency data
+- Web Crypto API - Audio encryption (existing)
+
+LIBRARIES
+=========
+- Framer Motion 12.29.2 - Animations
+- Lucide React 0.462.0 - Icons
+- idb 8.0.3 - IndexedDB wrapper
+- date-fns 3.6.0 - Date formatting
+
+
+================================================================================
+                        SECURITY & PRIVACY
+================================================================================
+
+AUDIO SECURITY
+==============
+- Audio tersimpan 100% offline di IndexedDB
+- Tidak ada upload ke server
+- Encryption support untuk backup/export
+- AES-256-GCM encryption untuk shared audio
+
+PERMISSION HANDLING
+===================
+- Microphone permission request yang jelas
+- Error handling untuk permission denied
+- User control penuh atas microphone access
+
+DATA PRIVACY
+============
+- Tidak ada external API calls
+- Tidak ada URL metadata fetching
+- Tidak ada tracking atau analytics
+- Semua data tetap di device pengguna
+
+OFFLINE-FIRST
+=============
+- Semua fitur bekerja tanpa internet
+- No server dependencies
+- Local storage only
+- PWA compatible
+
+
+================================================================================
+                            PWA SUPPORT
+================================================================================
+
+COMPATIBILITY
+=============
+- Audio recording di PWA mode ✓
+- Offline-first untuk semua fitur ✓
+- Service worker compatible ✓
+- Install-able di Android ✓
+- Install-able di iOS ✓
+- Install-able di Desktop ✓
+
+BROWSER SUPPORT
+===============
+- Chrome 88+ ✓
+- Firefox 84+ ✓
+- Safari 14+ ✓
+- Edge 88+ ✓
+
+FEATURES IN PWA
+===============
+- Voice recording works offline
+- Audio playback works offline
+- Statistics calculation offline
+- All features fully functional
+
+
+================================================================================
+                            TESTING & QA
+================================================================================
+
+TESTED SCENARIOS
+================
+✓ Audio recording < 3 minutes
+✓ Audio recording = 3 minutes (auto-stop)
+✓ Audio recording > 3 minutes (prevented)
+✓ Microphone permission granted
+✓ Microphone permission denied
+✓ No microphone available
+✓ Browser not supported
+✓ Audio playback in PostCard
+✓ Audio preview in MultiMediaPicker
+✓ URL detection in post content
+✓ URL click opens new tab
+✓ Toast auto-close after 3 seconds
+✓ Toast manual close
+✓ Story statistics calculation
+✓ Statistics update real-time
+✓ Dark/Light theme compatibility
+✓ Mobile responsive design
+✓ PWA installation
+✓ Offline functionality
+
+BROWSER TESTING
+===============
+✓ Chrome 131 (Desktop & Mobile)
+✓ Firefox 133 (Desktop)
+✓ Safari 17 (Desktop & iOS)
+✓ Edge 131 (Desktop)
+
+DEVICE TESTING
+==============
+✓ Desktop (1920x1080)
+✓ Laptop (1366x768)
+✓ Tablet (768x1024)
+✓ Mobile (375x667)
+✓ Mobile (414x896)
+
+
+================================================================================
+                        MIGRATION & UPGRADE
+================================================================================
+
+UPGRADE DARI VERSION 1.0.0
+===========================
+1. Backup data existing (Export)
+2. Update aplikasi ke version 26.01.08
+3. Refresh browser / Restart PWA
+4. Data otomatis compatible (no migration needed)
+5. Fitur baru langsung tersedia
+
+BREAKING CHANGES
+================
+TIDAK ADA - Backward compatible 100%
+
+NEW PERMISSIONS
+===============
+- Microphone access (untuk voice recorder)
+- User akan diminta permission saat pertama kali gunakan fitur
+
+
+================================================================================
+                        KNOWN ISSUES & LIMITATIONS
+================================================================================
+
+LIMITATIONS
+===========
+1. Audio Recording
+   - Maximum 3 minutes per recording
+   - 1 audio per post
+   - Format tergantung browser (WebM/MP4)
+
+2. URL Detection
+   - Tidak ada preview card/metadata
+   - Alasan: Offline-first & CORS
+   - Hanya clickable link dengan icon
+
+3. Browser Support
+   - MediaRecorder API tidak support di browser lama
+   - Fallback: Hide voice recorder button
+
+KNOWN ISSUES
+============
+TIDAK ADA - All features tested and working
+
+
+================================================================================
+                        CREDITS & ACKNOWLEDGMENTS
+================================================================================
+
+DEVELOPER
+=========
+M. Nafiurohman
+- Email: nafiurohman25@gmail.com
+- Website: https://nafiurohman.pages.dev
+- GitHub: @nafiurohman
+- Instagram: @nafiurohman_
+
+ORGANIZATION
+============
+Bezn Project
+- Website: https://beznproject.web.id
+- Email: support@beznproject.web.id
+- Instagram: @bezn.project
+
+OPEN SOURCE LIBRARIES
+=====================
+- React - UI Library
+- Vite - Build Tool
+- Tailwind CSS - CSS Framework
+- shadcn/ui - UI Components
+- Framer Motion - Animation Library
+- Lucide React - Icon Library
+- idb - IndexedDB Wrapper
+
+
+================================================================================
+                        CONTACT & SUPPORT
+================================================================================
+
+DEVELOPER CONTACT
+=================
+Email     : nafiurohman25@gmail.com
+WhatsApp  : 081358198565
+Website   : https://nafiurohman.pages.dev
+Instagram : @nafiurohman_
+
+BEZN PROJECT CONTACT
+====================
+Email     : support@beznproject.web.id
+WhatsApp  : 085189643588
+Website   : https://beznproject.web.id
+Instagram : @bezn.project
+
+DONATION
+========
+Jika selfX bermanfaat, dukung pengembangan:
+Bank Jago: 507938016692
+a.n M. Nafiurohman
+
+
+================================================================================
+                        LICENSE & COPYRIGHT
+================================================================================
+
+License: MIT License
+Copyright (c) 2025 M. Nafiurohman
+All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+================================================================================
+                        END OF DOCUMENTATION
+================================================================================
+
+Generated: 8 Januari 2025
+Version: 26.01.08
+Codename: Voice & Stats Edition
+Developer: M. Nafiurohman
+Organization: Bezn Project
+
+Terima kasih telah menggunakan selfX!

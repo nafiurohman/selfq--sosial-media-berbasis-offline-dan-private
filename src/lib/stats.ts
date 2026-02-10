@@ -22,7 +22,7 @@ export function getStories(): Story[] {
     const allStories: Story[] = [];
     const processedIds = new Set<string>();
     
-    const savedStories = localStorage.getItem('selfx-stories');
+    const savedStories = localStorage.getItem('selfq-stories');
     if (savedStories) {
       const parsed = JSON.parse(savedStories);
       parsed.forEach((story: Story) => {

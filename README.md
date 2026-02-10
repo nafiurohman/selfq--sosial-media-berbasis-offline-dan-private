@@ -1,32 +1,27 @@
-# selfX - Sosial Media Pribadi Offline
+# selfQ - Ruang Pribadimu, Tanpa Tekanan
 
 <div align="center">
-  <img src="public/images/logo/logo.png" alt="selfX Logo" width="120" height="120" style="border-radius: 24px;">
+  <img src="public/images/logo/logo.png" alt="selfQ Logo" width="120" height="120" style="border-radius: 24px;">
   
-  <h3>Platform sosial media pribadi yang mengutamakan privasi dengan penyimpanan 100% offline</h3>
-  
-  [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/nafiurohman/selfx--sosial-media-pribadi)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-  [![PWA](https://img.shields.io/badge/PWA-Ready-blue.svg)](https://web.dev/progressive-web-apps/)
-  [![Version](https://img.shields.io/badge/Version-26.01.08-brightgreen.svg)](https://github.com/nafiurohman/selfx--sosial-media-pribadi)
+  <h3>selfQ adalah ruang pribadi untuk mengungkapkan perasaan yang sebenarnya dari diri sendiri. Tempat aman tanpa tekanan sosial, di mana kamu bebas mengekspresikan diri apa adanya. 100% offline dengan enkripsi AES-256.</h3>
+
 </div>
 
-## 🎉 Update Terbaru - Version 26.01.08 (8 Januari 2025)
+## 🎉 Update Terbaru - Version 26.02.10 (10 Februari 2025)
 
-**Codename: "Voice & Stats Edition"**
+**Codename: "UI Polish & Performance"**
 
-### Fitur Baru:
-- 🎤 **Voice Recorder** - Rekam audio langsung dengan visualisasi waveform (max 3 menit)
-- 🔊 **Audio Player** - Playback audio dengan progress bar dan kontrol lengkap
-- 🖼️ **Advanced Photo Editor** - Crop, rotate, efek filter, brightness/contrast adjustment
-- 📊 **Story Statistics** - Statistik cerita (Total & Hari Ini) di Settings, Profile, Calendar
-- 🔗 **URL Detection** - Auto-detect URL jadi clickable link dengan icon Lucide
-- 🔔 **Custom Toast** - Notifikasi centered dengan auto-close 3 detik & progress bar
-- 📅 **Calendar View** - Lihat aktivitas berdasarkan tanggal dengan period summary
-- 📦 **Archive Page** - Kelola post yang diarsipkan
-- 🐛 **Bug Fixes** - Perbaikan berbagai bug dan peningkatan stabilitas
+### Perubahan Utama:
+- 🎨 **UI Improvements** - Perbaikan tampilan form, icon consistency, spacing optimization
+- ⚡ **Performance Boost** - Download system optimization, File System Access API, Web Share API
+- 🐛 **Bug Fixes** - Fix backup download di PWA, form alignment, sidebar placement, rich text editor
+- 🔄 **Image Editor** - Tambah fitur rotate (kiri & kanan) dengan real-time preview
+- ✍️ **Rich Text Editor** - Mode plain text default, toolbar compact, auto-list continuation
+- 📝 **Content Update** - Deskripsi baru, branding consistency, URL update
+- 🎯 **Navigation** - Report Bug & Request Fitur accessible di sidebar & dropdown menu
+- 🎨 **Compose Modal** - Centered position, proper spacing, mobile-first design
 
-📖 **[Dokumentasi Lengkap Version 26.01.08](https://selfx.bezn.web.id/docs/26.01.08.html)** | **[Text Version](documentation/26.01.08.txt)**
+📖 **[Dokumentasi Lengkap Version 26.02.10](https://selfq.bezn.web.id/docs/26.02.10.html)** | **[Text Version](documentation/26.02.10.txt)**
 
 ## 🌟 Fitur Utama
 
@@ -43,15 +38,17 @@
 - **Responsive design**: Optimal di semua ukuran layar
 - **Native-like experience**: Performa seperti aplikasi native
 
-### 🎨 **Fitur Lengkap**
+### ✨ **Fitur Lengkap**
 - **Multi-format media**: Foto dan video dengan 3 opsi dimensi (4:5, 1:1, original)
-- **Advanced Photo Editor**: Crop, rotate, filter effects, brightness/contrast adjustment (NEW)
+- **Advanced Photo Editor**: Crop, rotate, filter effects, brightness/contrast adjustment
+- **Rich Text Editor**: Bold, italic, underline, bullet list dengan mode toggle
 - **Transparansi gambar**: Mendukung PNG dengan background transparan
 - **Sistem komentar**: Interaktif dengan toggle show/hide
 - **Bookmark dengan kategori**: Organisasi konten yang fleksibel
 - **Sharing terenkripsi**: Berbagi post antar pengguna dengan enkripsi end-to-end
 - **Dark/Light mode**: Tema yang dapat disesuaikan
 - **Export/Import**: Backup dan restore data terenkripsi
+- **Report Bug & Request Fitur**: Kirim feedback langsung ke developer via WhatsApp
 
 ### ✍️ **Fitur Cerita (Stories)**
 - **Editor lengkap**: Menulis cerita panjang dengan editor yang nyaman
@@ -73,7 +70,7 @@
 
 ## 🚀 Demo
 
-**Live Demo**: [https://selfx.bezn.web.id](https://selfx.bezn.web.id)
+**Live Demo**: [https://selfq.bezn.web.id](https://selfq.bezn.web.id)
 
 ## 📋 Persyaratan Sistem
 
@@ -101,7 +98,7 @@
 ## 📁 Struktur Project
 
 ```
-selfx/
+selfq/
 ├── public/
 │   ├── images/logo/          # Logo aplikasi
 │   ├── manifest.json         # PWA manifest
@@ -117,6 +114,8 @@ selfx/
 │   │   ├── Profile.tsx     # Halaman profil
 │   │   ├── Stories.tsx     # Halaman cerita
 │   │   ├── StoryEditor.tsx # Editor cerita
+│   │   ├── RequestFeature.tsx # Request fitur baru
+│   │   ├── ReportBug.tsx   # Lapor bug
 │   │   └── ...
 │   ├── lib/                # Utilities & logic
 │   │   ├── db.ts          # Database operations
@@ -168,8 +167,8 @@ selfx/
 - **Key Derivation**: PBKDF2 dengan 100,000 iterasi
 - **Salt**: Random 16 bytes per layer
 - **Layers**: 3 layer enkripsi untuk backup
-- **Signature**: Validasi khusus selfX untuk autentikasi
-- **Story Encryption**: Enkripsi terpisah untuk cerita dengan signature selfX-story-encrypted-v2.0
+- **Signature**: Validasi khusus selfQ untuk autentikasi
+- **Story Encryption**: Enkripsi terpisah untuk cerita dengan signature selfQ-story-encrypted-v2.0
 
 ### Data Storage
 - **Local**: IndexedDB + LocalStorage
@@ -228,7 +227,7 @@ selfx/
 
 ## 💰 Donasi
 
-Jika selfX bermanfaat untuk Anda, dukung pengembangan dengan donasi:
+Jika selfQ bermanfaat untuk Anda, dukung pengembangan dengan donasi:
 
 **Bank Jago**  
 No. Rekening: `507938016692`  
@@ -250,7 +249,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 🏢 Bezn Project
 
-selfX adalah bagian dari **Bezn Project** - inisiatif pengembangan aplikasi yang berfokus pada privasi dan keamanan pengguna.
+selfQ adalah bagian dari **Bezn Project** - inisiatif pengembangan aplikasi yang berfokus pada privasi dan keamanan pengguna.
 
 ### Platform Lainnya
 - [Money Record](https://moneyrecord.web.id) - Aplikasi pencatat keuangan
@@ -274,6 +273,7 @@ selfX adalah bagian dari **Bezn Project** - inisiatif pengembangan aplikasi yang
 ---
 
 <div align="center">
+  <p>selfQ - Ruang Pribadimu, Tanpa Tekanan</p>
   <p>by <a href="https://beznproject.web.id">Bezn Project</a></p>
   <p>© 2025 M. Nafiurohman. All rights reserved.</p>
 </div>

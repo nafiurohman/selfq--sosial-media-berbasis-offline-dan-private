@@ -65,6 +65,7 @@ export function ComposeModal({ isOpen, onClose, onSubmit, editPost }: ComposeMod
       setTitle('');
       setContent('');
       setMedia([]);
+      setUseRichText(false);
     }
   }, [isOpen, editPost]);
 

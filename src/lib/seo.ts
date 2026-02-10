@@ -1,10 +1,10 @@
-// SEO Configuration for selfX
+// SEO Configuration for selfQ
 export const seoConfig = {
-  defaultTitle: 'selfX - Platform Sosial Media Pribadi Offline | Bezn Project',
-  titleTemplate: '%s | selfX - Bezn Project',
-  defaultDescription: 'Platform sosial media pribadi 100% offline dengan enkripsi AES-256. Berbagi momen tanpa takut data bocor. Gratis, aman, dan sepenuhnya milikmu. PWA ready untuk Android & iOS.',
-  siteUrl: 'https://selfx.bezn.web.id',
-  siteName: 'selfX by Bezn Project',
+  defaultTitle: 'selfQ - Ruang Pribadimu, Tanpa Tekanan | Bezn Project',
+  titleTemplate: '%s | selfQ - Bezn Project',
+  defaultDescription: 'selfQ adalah ruang pribadi untuk mengungkapkan perasaan yang sebenarnya dari diri sendiri. Tempat aman tanpa tekanan sosial, di mana kamu bebas mengekspresikan diri apa adanya. 100% offline dengan enkripsi AES-256. Gratis selamanya.',
+  siteUrl: 'https://selfq.bezn.web.id',
+  siteName: 'selfQ by Bezn Project',
   images: {
     default: '/og-image.png',
     twitter: '/twitter-image.png',
@@ -19,7 +19,7 @@ export const seoConfig = {
   organization: {
     name: 'Bezn Project',
     url: 'https://beznproject.web.id',
-    logo: 'https://selfx.bezn.web.id/images/logo/logo.png',
+    logo: 'https://selfq.bezn.web.id/images/logo/logo.png',
     contact: {
       developer: {
         name: 'M. Nafiurohman',
@@ -45,39 +45,39 @@ export const seoConfig = {
 // Page-specific SEO configurations
 export const pageConfigs = {
   home: {
-    title: 'selfX - Platform Sosial Media Pribadi Offline | Bezn Project',
-    description: 'Platform sosial media pribadi 100% offline dengan enkripsi AES-256. Berbagi momen tanpa takut data bocor. Gratis, aman, dan sepenuhnya milikmu.',
-    keywords: 'sosial media pribadi, platform offline, enkripsi data, PWA Indonesia, bezn project, selfx, social media aman, offline first, privacy focused, alternatif twitter instagram',
+    title: 'selfQ - Ruang Pribadimu, Tanpa Tekanan | Bezn Project',
+    description: 'selfQ adalah ruang pribadi untuk mengungkapkan perasaan yang sebenarnya dari diri sendiri. Tempat aman tanpa tekanan sosial, di mana kamu bebas mengekspresikan diri apa adanya. 100% offline dengan enkripsi AES-256.',
+    keywords: 'ruang pribadi, tempat curhat, ekspresikan diri, platform offline, enkripsi data, PWA Indonesia, bezn project, selfq, aplikasi aman, offline first, privacy focused, diary digital, jurnal pribadi',
     path: '/'
   },
   about: {
-    title: 'Tentang selfX - Platform Sosial Media Pribadi',
-    description: 'Pelajari lebih lanjut tentang selfX, platform sosial media pribadi yang 100% offline. Kenapa pilih selfX? Privasi terjamin, enkripsi kuat, tanpa server.',
-    keywords: 'tentang selfx, privacy by design, enkripsi AES-256, sosial media offline, bezn project, platform sosial media pribadi',
+    title: 'Tentang selfQ - Ruang Pribadi untuk Mengekspresikan Diri',
+    description: 'Pelajari lebih lanjut tentang selfQ, ruang pribadi yang 100% offline. Kenapa pilih selfQ? Privasi terjamin, enkripsi kuat, tanpa server.',
+    keywords: 'tentang selfq, privacy by design, enkripsi AES-256, ruang pribadi offline, bezn project, tempat aman ekspresikan diri',
     path: '/about'
   },
   faq: {
-    title: 'FAQ - Pertanyaan yang Sering Diajukan tentang selfX',
-    description: 'Temukan jawaban untuk pertanyaan umum tentang selfX. Cara backup, restore, keamanan data, fitur offline, dan troubleshooting.',
-    keywords: 'FAQ selfx, pertanyaan selfx, cara backup selfx, keamanan data, troubleshooting, panduan selfx',
+    title: 'FAQ - Pertanyaan yang Sering Diajukan tentang selfQ',
+    description: 'Temukan jawaban untuk pertanyaan umum tentang selfQ. Cara backup, restore, keamanan data, fitur offline, dan troubleshooting.',
+    keywords: 'FAQ selfq, pertanyaan selfq, cara backup selfq, keamanan data, troubleshooting, panduan selfq',
     path: '/faq'
   },
   help: {
-    title: 'Pusat Bantuan selfX - Panduan Platform Sosial Media Pribadi',
-    description: 'Panduan lengkap menggunakan selfX. Tutorial backup, restore, fitur sosial media, tips & trik, dan solusi masalah umum.',
-    keywords: 'bantuan selfx, panduan selfx, tutorial selfx, cara menggunakan selfx, tips sosial media pribadi',
+    title: 'Pusat Bantuan selfQ - Panduan Ruang Pribadi Digital',
+    description: 'Panduan lengkap menggunakan selfQ. Tutorial backup, restore, fitur lengkap, tips & trik, dan solusi masalah umum.',
+    keywords: 'bantuan selfq, panduan selfq, tutorial selfq, cara menggunakan selfq, tips ruang pribadi digital',
     path: '/help'
   },
   privacy: {
-    title: 'Kebijakan Privasi selfX - Komitmen Privasi Anda',
-    description: 'Kebijakan privasi selfX yang transparan. Bagaimana kami melindungi data Anda dengan enkripsi AES-256 dan prinsip privacy by design.',
-    keywords: 'kebijakan privasi selfx, perlindungan data, enkripsi, privacy by design, GDPR compliance',
+    title: 'Kebijakan Privasi selfQ - Komitmen Privasi Anda',
+    description: 'Kebijakan privasi selfQ yang transparan. Bagaimana kami melindungi data Anda dengan enkripsi AES-256 dan prinsip privacy by design.',
+    keywords: 'kebijakan privasi selfq, perlindungan data, enkripsi, privacy by design, GDPR compliance',
     path: '/privacy'
   },
   terms: {
-    title: 'Syarat & Ketentuan selfX - Aturan Penggunaan',
-    description: 'Syarat dan ketentuan penggunaan selfX. Hak dan kewajiban pengguna, batasan layanan, dan ketentuan hukum.',
-    keywords: 'syarat ketentuan selfx, aturan penggunaan, terms of service, hak pengguna',
+    title: 'Syarat & Ketentuan selfQ - Aturan Penggunaan',
+    description: 'Syarat dan ketentuan penggunaan selfQ. Hak dan kewajiban pengguna, batasan layanan, dan ketentuan hukum.',
+    keywords: 'syarat ketentuan selfq, aturan penggunaan, terms of service, hak pengguna',
     path: '/terms'
   }
 };
@@ -100,7 +100,7 @@ export const generateStructuredData = (pageType: keyof typeof pageConfigs) => {
     },
     about: {
       '@type': 'SoftwareApplication',
-      name: 'selfX',
+      name: 'selfQ',
       applicationCategory: 'ProductivityApplication',
       operatingSystem: 'Web Browser, Android, iOS'
     },
@@ -121,15 +121,15 @@ export const generateStructuredData = (pageType: keyof typeof pageConfigs) => {
         mainEntity: [
           {
             '@type': 'Question',
-            name: 'Apakah selfX benar-benar offline?',
+            name: 'Apakah selfQ benar-benar offline?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Ya, selfX 100% offline setelah instalasi. Semua data disimpan di perangkat Anda dan tidak memerlukan koneksi internet untuk berfungsi.'
+              text: 'Ya, selfQ 100% offline setelah instalasi. Semua data disimpan di perangkat Anda dan tidak memerlukan koneksi internet untuk berfungsi.'
             }
           },
           {
             '@type': 'Question',
-            name: 'Bagaimana keamanan data di selfX?',
+            name: 'Bagaimana keamanan data di selfQ?',
             acceptedAnswer: {
               '@type': 'Answer',
               text: 'Data Anda dienkripsi menggunakan AES-256-GCM dengan salt berlapis. Tidak ada server yang menyimpan data Anda, semuanya tersimpan lokal di perangkat.'

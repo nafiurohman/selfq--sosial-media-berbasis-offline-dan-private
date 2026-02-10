@@ -1,6 +1,6 @@
 // AES-256-GCM encryption with salt for multi-layer security
 
-const ENCRYPTION_KEY = 'selfX-secure-key-2024';
+const ENCRYPTION_KEY = 'selfQ-secure-key-2024';
 const SALT_ROUNDS = 3; // Multiple layers of encryption
 const SELFX_SIGNATURE = 'SELFX_BACKUP_V2'; // Signature untuk validasi
 const SELFX_SHARE_SIGNATURE = 'SELFX_SHARE_V1'; // Signature untuk shared post
@@ -98,7 +98,7 @@ export async function decrypt(encryptedData: string): Promise<string> {
 
 // Encrypt any object - with size limit check and signature
 export async function encryptData<T>(data: T): Promise<string> {
-  // Add selfX signature to data
+  // Add selfQ signature to data
   const dataWithSignature = {
     signature: SELFX_SIGNATURE,
     data: data
@@ -116,7 +116,7 @@ export async function encryptData<T>(data: T): Promise<string> {
 
 // Encrypt shared post with signature
 export async function encryptSharedData<T>(data: T): Promise<string> {
-  // Add selfX share signature to data
+  // Add selfQ share signature to data
   const dataWithSignature = {
     signature: SELFX_SHARE_SIGNATURE,
     data: data
@@ -137,9 +137,9 @@ export async function decryptSharedData<T>(encryptedData: string): Promise<T> {
   const jsonString = await decrypt(encryptedData);
   const parsed = JSON.parse(jsonString);
   
-  // Validate selfX share signature
+  // Validate selfQ share signature
   if (!parsed.signature || parsed.signature !== SELFX_SHARE_SIGNATURE) {
-    throw new Error('Invalid selfX shared post');
+    throw new Error('Invalid selfQ shared post');
   }
   
   return parsed.data as T;
@@ -150,9 +150,9 @@ export async function decryptData<T>(encryptedData: string): Promise<T> {
   const jsonString = await decrypt(encryptedData);
   const parsed = JSON.parse(jsonString);
   
-  // Validate selfX signature
+  // Validate selfQ signature
   if (!parsed.signature || parsed.signature !== SELFX_SIGNATURE) {
-    throw new Error('Invalid selfX backup file');
+    throw new Error('Invalid selfQ backup file');
   }
   
   return parsed.data as T;

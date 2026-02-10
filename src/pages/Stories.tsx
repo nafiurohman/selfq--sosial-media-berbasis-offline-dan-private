@@ -23,7 +23,9 @@ import {
   Check,
   FolderEdit,
   Bookmark,
-  Archive
+  Archive,
+  Lightbulb,
+  Bug
 } from 'lucide-react';
 import { Navigation } from '@/components/Navigation';
 import { FloatingMenu } from '@/components/FloatingMenu';
@@ -99,7 +101,7 @@ export default function Stories() {
   }, []);
 
   const loadCategories = () => {
-    const saved = localStorage.getItem('selfx-story-categories');
+    const saved = localStorage.getItem('selfq-story-categories');
     if (saved) {
       const custom = JSON.parse(saved);
       setCategories(prev => [
@@ -119,7 +121,7 @@ export default function Stories() {
     };
     const updated = [...categories, newCategory];
     setCategories(updated);
-    localStorage.setItem('selfx-story-categories', JSON.stringify(updated.filter(c => c.isCustom)));
+    localStorage.setItem('selfq-story-categories', JSON.stringify(updated.filter(c => c.isCustom)));
     setNewCategoryName('');
     setIsAddingCategory(false);
   };
@@ -127,7 +129,7 @@ export default function Stories() {
   const deleteCategory = (categoryId: string) => {
     const updated = categories.filter(c => c.id !== categoryId);
     setCategories(updated);
-    localStorage.setItem('selfx-story-categories', JSON.stringify(updated.filter(c => c.isCustom)));
+    localStorage.setItem('selfq-story-categories', JSON.stringify(updated.filter(c => c.isCustom)));
     // Update stories that use this category to 'all'
     const updatedStories = stories.map(s => s.category === categoryId ? { ...s, category: 'all' } : s);
     setStories(updatedStories);
@@ -137,7 +139,7 @@ export default function Stories() {
     if (!newName.trim()) return;
     const updated = categories.map(c => c.id === categoryId ? { ...c, name: newName } : c);
     setCategories(updated);
-    localStorage.setItem('selfx-story-categories', JSON.stringify(updated.filter(c => c.isCustom)));
+    localStorage.setItem('selfq-story-categories', JSON.stringify(updated.filter(c => c.isCustom)));
     setEditingCategory(null);
     setEditCategoryName('');
   };
@@ -164,7 +166,7 @@ export default function Stories() {
       const processedIds = new Set<string>();
       
       // Load from localStorage for now
-      const savedStories = localStorage.getItem('selfx-stories');
+      const savedStories = localStorage.getItem('selfq-stories');
       if (savedStories) {
         const parsed = JSON.parse(savedStories);
         parsed.forEach((story: Story) => {
@@ -208,9 +210,9 @@ export default function Stories() {
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title="Ceritamu - selfX"
-        description="Tulis dan kelola cerita pribadi di selfX"
-        keywords="cerita, menulis, story, selfx"
+        title="Ceritamu - selfQ"
+        description="Tulis dan kelola cerita pribadi di selfQ"
+        keywords="cerita, menulis, story, selfq"
       />
       
       <Navigation />
@@ -220,7 +222,7 @@ export default function Stories() {
         <header className="clean-nav sticky top-0 z-30 md:hidden">
           <div className="container flex items-center justify-between h-16 px-4">
             <div className="flex items-center gap-3">
-              <img src="/images/logo/logo.png" alt="selfX Logo" className="w-8 h-8 rounded-xl" />
+              <img src="/images/logo/logo.png" alt="selfQ Logo" className="w-8 h-8 rounded-xl" />
               <h1 className="text-lg font-bold">Ceritamu</h1>
             </div>
 
@@ -258,6 +260,14 @@ export default function Stories() {
                   <DropdownMenuItem onClick={() => navigate('/settings')}>
                     <Settings className="w-4 h-4 mr-2" />
                     Pengaturan
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/request-feature')}>
+                    <Lightbulb className="w-4 h-4 mr-2" />
+                    Request Fitur
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/report-bug')}>
+                    <Bug className="w-4 h-4 mr-2" />
+                    Report Bug
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={() => navigate('/stories/new')}>

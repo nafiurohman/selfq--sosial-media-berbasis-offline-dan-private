@@ -1,8 +1,8 @@
 {
-  "name": "selfX - Platform Sosial Media Pribadi Offline",
-  "short_name": "selfX",
-  "description": "Platform sosial media pribadi 100% offline dengan enkripsi AES-256. Berbagi momen tanpa takut data bocor. Gratis, aman, dan sepenuhnya milikmu.",
-  "id": "selfx-pwa-app",
+  "name": "selfQ - Ruang Pribadimu, Tanpa Tekanan",
+  "short_name": "selfQ",
+  "description": "selfQ adalah ruang pribadi untuk mengungkapkan perasaan yang sebenarnya dari diri sendiri. Tempat aman tanpa tekanan sosial, di mana kamu bebas mengekspresikan diri apa adanya. 100% offline dengan enkripsi AES-256.",
+  "id": "selfq-pwa-app",
   "scope": "/",
   "start_url": "/?source=pwa",
   "display": "standalone",

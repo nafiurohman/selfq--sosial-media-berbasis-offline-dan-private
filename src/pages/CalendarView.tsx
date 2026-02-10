@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar as CalendarIcon, TrendingUp, ChevronDown, User, Settings, Bookmark, Archive } from 'lucide-react';
+import { Calendar as CalendarIcon, ChevronDown, User, Settings, Bookmark, Archive, Lightbulb, Bug } from 'lucide-react';
 import { format, isSameDay } from 'date-fns';
 import { id } from 'date-fns/locale';
 import { getAllPosts, toggleLike, deletePost, addPost } from '@/lib/db';
@@ -11,7 +11,6 @@ import { SEO } from '@/components/SEO';
 import { CalendarHeatmap } from '@/components/CalendarHeatmap';
 import { PeriodSummary } from '@/components/PeriodSummary';
 import { PostCard } from '@/components/PostCard';
-import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { FloatingMenu } from '@/components/FloatingMenu';
 import { ComposeModal } from '@/components/ComposeModal';
@@ -29,7 +28,6 @@ export default function CalendarView() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
-  const [viewMode, setViewMode] = useState<'month' | 'year'>('month');
   const [isComposeOpen, setIsComposeOpen] = useState(false);
   const [isReceiveShareOpen, setIsReceiveShareOpen] = useState(false);
   const navigate = useNavigate();
@@ -91,9 +89,9 @@ export default function CalendarView() {
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title="Kalender - selfX"
+        title="Kalender - selfQ"
         description="Lihat aktivitas posting dalam tampilan kalender"
-        keywords="kalender selfx, calendar view, heatmap aktivitas"
+        keywords="kalender selfq, calendar view, heatmap aktivitas"
       />
       
       <Navigation />
@@ -103,7 +101,7 @@ export default function CalendarView() {
         <header className="clean-nav sticky top-0 z-30 md:hidden">
           <div className="container flex items-center justify-between h-16 px-4">
             <div className="flex items-center gap-3">
-              <img src="/images/logo/logo.png" alt="selfX Logo" className="w-8 h-8 rounded-xl" />
+              <img src="/images/logo/logo.png" alt="selfQ Logo" className="w-8 h-8 rounded-xl" />
               <h1 className="text-lg font-bold">Kalender</h1>
             </div>
 
@@ -142,6 +140,14 @@ export default function CalendarView() {
                     <Settings className="w-4 h-4 mr-2" />
                     Pengaturan
                   </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/request-feature')}>
+                    <Lightbulb className="w-4 h-4 mr-2" />
+                    Request Fitur
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/report-bug')}>
+                    <Bug className="w-4 h-4 mr-2" />
+                    Report Bug
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             )}
@@ -159,9 +165,7 @@ export default function CalendarView() {
             </div>
           ) : (
             <div className="grid lg:grid-cols-3 gap-6">
-              {/* Left Column - Calendar & Summary */}
               <div className="lg:col-span-2 space-y-6">
-                {/* Calendar Heatmap */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -174,14 +178,13 @@ export default function CalendarView() {
                   />
                 </motion.div>
 
-                {/* Period Summary */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
                   className="modern-card p-6"
                 >
-                  <Tabs value={viewMode} onValueChange={(v) => setViewMode(v as 'month' | 'year')}>
+                  <Tabs value="month" onValueChange={() => {}}>
                     <TabsList className="grid w-full grid-cols-2 mb-4">
                       <TabsTrigger value="month">Bulan Ini</TabsTrigger>
                       <TabsTrigger value="year">Tahun Ini</TabsTrigger>
@@ -196,7 +199,6 @@ export default function CalendarView() {
                 </motion.div>
               </div>
 
-              {/* Right Column - Posts on Selected Date */}
               <div className="space-y-4">
                 <div className="sticky top-20">
                   <div className="modern-card p-4 mb-4">

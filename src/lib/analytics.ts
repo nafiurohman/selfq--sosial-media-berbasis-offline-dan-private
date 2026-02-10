@@ -1,4 +1,4 @@
-// Privacy-focused analytics for selfX
+// Privacy-focused analytics for selfQ
 // This module provides basic usage analytics without compromising user privacy
 
 interface AnalyticsEvent {

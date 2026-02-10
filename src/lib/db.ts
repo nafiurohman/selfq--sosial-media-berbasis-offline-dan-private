@@ -389,9 +389,9 @@ export async function importAllData(encryptedData: string): Promise<void> {
   }
   
   // Update user in localStorage
-  localStorage.setItem('selfx-user', JSON.stringify(data.user));
+  localStorage.setItem('selfq-user', JSON.stringify(data.user));
   if (data.settings?.theme) {
-    localStorage.setItem('selfx-theme', data.settings.theme);
+    localStorage.setItem('selfq-theme', data.settings.theme);
   }
 }
 
@@ -454,8 +454,8 @@ export async function clearAllData(): Promise<void> {
   await db.delete('settings', 'app-settings');
   
   // Clear localStorage
-  localStorage.removeItem('selfx-user');
-  localStorage.removeItem('selfx-theme');
-  localStorage.removeItem('selfx-onboarded');
-  localStorage.removeItem('selfx-terms-accepted');
+  localStorage.removeItem('selfq-user');
+  localStorage.removeItem('selfq-theme');
+  localStorage.removeItem('selfq-onboarded');
+  localStorage.removeItem('selfq-terms-accepted');
 }

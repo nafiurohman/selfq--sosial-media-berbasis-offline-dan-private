@@ -20,6 +20,8 @@ import StoryView from "./pages/StoryView";
 import Onboarding from "./pages/Onboarding";
 import CalendarView from "./pages/CalendarView";
 import Archive from "./pages/Archive";
+import RequestFeature from "./pages/RequestFeature";
+import ReportBug from "./pages/ReportBug";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
 import Terms from "./pages/Terms";
@@ -91,6 +93,8 @@ const App = () => {
             <Route path="/stories/view/:id" element={<ProtectedRoute><StoryView /></ProtectedRoute>} />
             <Route path="/calendar" element={<ProtectedRoute><CalendarView /></ProtectedRoute>} />
             <Route path="/archive" element={<ProtectedRoute><Archive /></ProtectedRoute>} />
+            <Route path="/request-feature" element={<ProtectedRoute><RequestFeature /></ProtectedRoute>} />
+            <Route path="/report-bug" element={<ProtectedRoute><ReportBug /></ProtectedRoute>} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
