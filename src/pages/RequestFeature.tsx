@@ -55,7 +55,7 @@ Dikirim dari selfQ - Ruang Pribadimu, Tanpa Tekanan`;
 
     // Encode message for WhatsApp
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/6281358198565?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/6285189643588?text=${encodedMessage}`;
 
     // Open WhatsApp
     window.open(whatsappUrl, '_blank');
